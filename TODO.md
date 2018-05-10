@@ -1,10 +1,10 @@
 # TODO for dotfiles repo
 
-1. add install script
-2. create appropriate symlinks
-3. determine install procedure (all git clones)
-4. finalize home directory structure
-5. add things to path as needed
-6. add vscode setup & configs
-7. finalize git configs
-8. get git aliases from hume/space
+1. finalize home directory structure
+1. add things to path as needed
+1. add vscode setup & configs
+1. finalize git configs
+1. finalize zshrc!
+1. finalize vimrc!
+1. make oh-my-zsh a submodule
+1. add other scripts for updating, etc.
