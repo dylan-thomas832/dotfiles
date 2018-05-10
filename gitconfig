@@ -4,10 +4,21 @@
 [push]
     default = current
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    ui = true
+    theme = dracula
+#    diff = auto
+#    status = auto
+#    branch = auto
+#    ui = true
+[alias]
+	st = status
+	cm = commit -m
+	cma = commit -a -m
+	br = branch
+	co = checkout
+	df = diff
+	mg = merge
+	ph = push -u
+	pruno = fetch origin --prune
 [core]
     excludesfile = ~/.gitignore
     editor = vim
