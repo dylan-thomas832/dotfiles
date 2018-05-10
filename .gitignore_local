@@ -1,0 +1,5 @@
+# Local ignore for this repo!
+
+/vim/colors/
+/vim/files/
+/vim/autoload/

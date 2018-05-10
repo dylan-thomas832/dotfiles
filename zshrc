@@ -103,7 +103,7 @@ fi
 #
 
 # Nice colors!
-eval `dircolors ~/.dotfiles/dircolors-solarized/dircolors.256dark`
+eval `dircolors ~/.dotfiles/colors_term/dircolors-solarized/dircolors.256dark`
 
 # If we want a local overwrite
 if [ -f ~/.zshrc_local ]; then
