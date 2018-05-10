@@ -22,5 +22,9 @@
 [core]
     excludesfile = ~/.gitignore_global
     editor = vim
+[diff]
+    tool = vimdiff
+[merge]
+    tool = vimdiff
 [include]
     path = ~/.gitconfig_local
