@@ -1,0 +1,8 @@
+# Shell commands
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules.]
+    - [sudo ./bin/new_install_update.sh, Updating and upgrading packages.]
+    - [sudo ./bin/aptget_packages.sh, Installing packages with apt-get.]
+    - [python -m pip install -r requirements.txt --upgrade, Installing Python 2.7 packages]
+    - [python3 -m pip install -r requirements.txt --upgrade, Installing Python 3 packages]

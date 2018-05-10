@@ -1,0 +1,15 @@
+[user]
+    name = Dylan Thomas
+    email = dylan93@vt.edu
+[push]
+    default = current
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+[include]
+    path = ~/.gitconfig_local
