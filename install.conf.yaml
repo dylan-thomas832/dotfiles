@@ -1,8 +1,33 @@
 # Shell commands
 
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~']
+
 - shell:
+    - [git pull origin master, Updating git repo.]
     - [git submodule update --init --recursive, Installing submodules.]
-    - [sudo ./bin/new_install_update.sh, Updating and upgrading packages.]
-    - [sudo ./bin/aptget_packages.sh, Installing packages with apt-get.]
-    - [python -m pip install -r requirements.txt --upgrade, Installing Python 2.7 packages]
-    - [python3 -m pip install -r requirements.txt --upgrade, Installing Python 3 packages]
+    - [chmod +x ~/.dotfiles/bin/*, Making shell scripts executable.]
+    - [sudo ~/.dotfiles/bin/new_install_update.sh, Updating and upgrading packages.]
+    - [sudo ~/.dotfiles/bin/aptget_packages.sh, Installing packages with apt-get.]
+    - [python -m pip install --user -r requirements.txt --upgrade, Installing Python 2.7 packages]
+    - [python3 -m pip install --user -r requirements.txt --upgrade, Installing Python 3 packages]
+    - [mkdir -p ~/docs ~/libraries ~/git_ext ~/projects ~/tars ~/temps, Creating home directories.]
+    - [mkdir -p ~/.dotfiles/vim/files/info, ~/.dotfiles/vim/files/undo ~/.dotfiles/vim/files/swap ~/.dotfiles/vim/files/backup ~/.dotfiles/vim/autoload ~/.dotfiles/vim/colors/, Making required directories in vim/ before linking and copying.]
+    - [curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh, Installing oh-my-zsh.]
+    - [~/.dotfiles/bin/check_for_wsl.sh, Installing fonts & checking Unix type.]
+    - [~/.dotfiles/bin/vim_setup.sh, Setting up VIM.]
+
+- link:
+    ~/.dotfiles: ''
+    ~/.gitconfig: gitconfig
+    ~/.gitignore_global: gitignore_global
+    ~/.vim: vim/
+    ~/.vimrc: vim/vimrc
+    ~/.bashrc: bashrc
+    ~/.zshrc: zshrc
+
+

@@ -20,7 +20,7 @@
 	ph = push -u
 	pruno = fetch origin --prune
 [core]
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore_global
     editor = vim
 [include]
     path = ~/.gitconfig_local
