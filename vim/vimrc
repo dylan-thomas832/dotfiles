@@ -3,61 +3,61 @@
 "
 
 " Ensure we are explicit about not using Vi, but Vim!
-"
 set nocompatible
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Testing 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Feature Testing {{{
 
 "set synmaxcol=200               " only highlight first 200 columns
 "set list                        " Show non-printable characters (returns, etc)
 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Initialization {{{
+
 " Pathogen must be loaded before filetype call!
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 execute pathogen#infect()
+execute pathogen#helptags()
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Misc.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on       " load plugins accorinding to filetype
+let mapleader =","              " set leader for key combos
+
+" }}}
+
+
+" Misc. {{{
+
 set history=500                 " how many lines VIM remembers
 set report=0                    " always report changed lines
-filetype plugin indent on       " load plugins accorinding to filetype
 set autoread                    " read when file is changed from outside
-let mapleader =","              " set leader for key combos
-nnoremap <leader>w :w!<cr>      " fast saving
+set noerrorbells                " No annoying sounds
+set encoding=utf-8                " utf8 standard encoding8
 
-" :W saves the file using sudo
-" command W w !sudo tee % > /dev/null 
 
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+" Wild stuff
+set wildignore=*.o,*~,*.pyc     " Ignore compiled files
 set wildignore+=*/.git/*,*/.vscode/*,*/.DS_Store
+set wildmenu                    " command completion help
 
-" No annoying sounds
-set noerrorbells
+" }}}
 
-" utf8 standard encoding
-set encoding=utf8
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Color scheme
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Display {{{1
+
+" Color scheme {{{2
+
 syntax on                       " enable syntax highlighting
-set t_Co=256                    " enable 256-color mode.
-colorscheme badwolf
-"colorscheme molokai            " Looks great with Dracula theme
+set t_Co=256                    " Enables 256 colors
+"colorscheme badwolf           " No diff in bg
+colorscheme molokai            " No diff in bg
 "set background=dark
-set background=light
-"colorscheme solarized
+"colorscheme solarized         " Requires dark bg
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Indentation & Text
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}2
+
+" Indentation & Text {{{2
+
 set autoindent                  " indent according to previous line
 "set smartindent                 " Apparently can interfere with filetype stuff
 set expandtab                   " use spaces instead of tabs
@@ -68,43 +68,62 @@ set shiftround                  " >> indents to next multiple of `shiftwidth`
 
 " Linebreak, textwidth, and wordwrap
 set linebreak
-set textwidth=200
+set textwidth=100
+set colorcolumn=100             " Create colored column at textwidth
 set wrap
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Editing
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set backspace=indent,eol,start  " make backspace work as you would expect
-set whichwrap+=<,>,h,l
+" }}}2
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UI
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set number
+" UI {{{2
+
+set number                      " line numbers
 set cursorline                  " find current line quickly
 set showmode                    " show current mode
 set showcmd                     " show already type keys
 set scrolloff=7                 " scroll offset to keep cursor visible
-set wildmenu                    " command completion help
 set ruler                       " Always show position
 set cmdheight=2                 " height of command bar
 set showmatch                   " show matching [{(
 set mat=4                       " tenths of a second to show matching braces
 set foldcolumn=1                " Extra margin on left
 
+" }}}2
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Status line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Status line {{{2
 set display=lastline            " show as much as possible of last line
 set laststatus=2                " always show statusline
 " Format status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
+" }}}2
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Searching
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Modelines {{{2
+"set modeline                    " Turns modelines off?
+set modelines=1
+
+" }}}2
+
+" Graphics & Windows {{{2
+set ttyfast                     " faster redrawing
+set lazyredraw                  " only redraw as needed
+set hidden                      " switch between buffers w/o having to save
+set splitbelow                  " open new windows below current
+set splitright                  " open new windoes right of current
+
+" }}}2
+
+" }}}1
+
+
+" Editing {{{
+
+set backspace=indent,eol,start  " make backspace work as you would expect
+set whichwrap+=<,>,h,l
+
+" }}}
+
+
+" Searching {{{
 set incsearch                   " highlight while search
 set hlsearch                    " keep matches highlighted
 set wrapscan                    " search wraps around end-of-file
@@ -115,44 +134,59 @@ set smartcase                   " don't ignore case if contains uppercase letter
 " Disable highlight when <leader><cr> is pressed
 nnoremap <silent> <leader><cr> :nohlsearch<cr>
 
+" }}}
 
-" Map <Space> to / (search), and Ctrl-<Space> resp. Use <space> for folding
-"nnoremap <space> /
-"nnoremap <c-space> ?
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Folding
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Folding {{{
 
-set foldenable                  " enables folding
+set foldmethod=indent           " fold based on indent`
 set foldlevelstart=8            " open most folds by default
 set foldnestmax=10              " only nest 10 folds
-set foldmethod=indent           " fold based on indent`
+set foldenable                  " enables folding
 
 " Remap fold toggle
 nnoremap <space> za
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Graphics
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set ttyfast                     " faster redrawing
-set lazyredraw                  " only redraw as needed
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Windows
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set hidden                      " switch between buffers w/o having to save
-set splitbelow                  " open new windows below current
-set splitright                  " open new windoes right of current
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remappings for movement
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap jk <Esc>`^             " Remap escape key to 'jk'
+" Remappings {{{1
+
+" Saving Files {{{2
+
+" fast saving (forced) & quitting (not forced)
+nnoremap <leader>w :w!<cr>
+nnoremap <leader>q :q<cr>
+
+" :W saves the file using sudo
+command! W w !sudo tee % > /dev/null 
+
+" }}}2
+
+" Misc. {{{2
+
+" Remove Windows ^M - when encodings messed up
+nnoremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+" Toggle paste mode
+nnoremap <leader>pp :setlocal paste!<cr>
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+" save session for next time VIM opened (Reopens with "vim -S")
+nnoremap <leader>s :makesession<cr>
+
+" Remap Escape key to 'jk'. Make sure not to put this comment on same line!
+inoremap jk <Esc>`^
+
+" }}}2
+
+" Movement {{{2
 
 " Remap visual line jumps
-nnoremap j gj
-nnoremap k gk
+map j gj
+map k gk
 
 " Easier movement btwn windows
 nnoremap <C-j> <C-W>j
@@ -184,11 +218,33 @@ nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" }}}2
+
+" Spell checking {{{2
+
+" Pressing ,ss will toggle spell check
+nnoremap <leader>ss :setlocal spell!<cr>
+
+" Shortcuts for spell check
+nnoremap <leader>sn ]s
+nnoremap <leader>sp [s
+nnoremap <leader>sa zg
+nnoremap <leader>s? z=
+
+" }}}2
+
+" Edit/source vimrc/zshrc {{{2
+
+nnoremap <leader>ev :vsp $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ez :vsp ~/.zshrc<cr>
+
+" }}}2
+
+" }}}1
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Autogroups
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autogroups {{{
 
 augroup configgroup
     " Directive clears all autocmds for group
@@ -200,67 +256,32 @@ augroup configgroup
     " Ensure TABs are used in makefiles
     autocmd BufEnter Makefile setlocal noexpandtab 
     autocmd BufEnter makefile setlocal noexpandtab
-    autocmd BufEnter *mk setlocal noexpandtab
+    autocmd BufEnter *.mk setlocal noexpandtab
+    autocmd BufEnter make setlocal noexpandtab
     " Reset shell script tabbing
     autocmd BufEnter *.sh setlocal tabstop=2
     autocmd BufEnter *.sh setlocal shiftwidth=2
     autocmd BufEnter *.sh setlocal softtabstop=2
 augroup end
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Launch config, & plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
+
+
+" Plugins {{{
 
 " Requires Ack, Ag be installed & ack.vim loaded
 " Set Ack to use Ag
 if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
+    let g:ackprg = 'ag --vimgrep --smart-case'
 endif
 " Remap command for searching
 nnoremap <leader>a :Ack
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Pressing ,ss will toggle spell check
-nnoremap <leader>ss :setlocal spell!<cr>
-
-" Shortcuts for spell check
-nnoremap <leader>sn ]s
-nnoremap <leader>sp [s
-nnoremap <leader>sa zg
-nnoremap <leader>s? z=
+" }}}
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Edit/source vimrc/zshrc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>ev :vsp $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>ez :vsp ~/.zshrc<cr>
+" Backups {{{1
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Misc. remaps
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Remove Windows ^M - when encodings messed up
-nnoremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Toggle paste mode
-nnoremap <leader>pp :setlocal paste!<cr>
-
-" highlight last inserted text
-nnoremap gV `[v`]
-
-" save session for next time VIM opened (Reopens with "vim -S")
-nnoremap <leader>s :makesession<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Put temporary files in same directory
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set backup
 set backupdir   =$HOME/.vim/files/backup/
 set backupext   =-vimbackup
@@ -271,10 +292,12 @@ set undofile
 set undodir     =$HOME/.vim/files/undo/
 set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
+" }}}1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Custom functions {{{1
+
+" Helper funcs {{{2
 
 " Returns true if paste mode is enabled
 function! HasPaste()
@@ -285,7 +308,7 @@ function! HasPaste()
 endfunction
 
 " Delete trailing whitespace on save, for filetypes
-function! CleanExtraSpaces()
+function! <SID>CleanExtraSpaces()
     let save_cursor = getpos(".")
     let old_query = getreg('/')
     silent! %s/\s\+$//e
@@ -293,6 +316,7 @@ function! CleanExtraSpaces()
     call setreg('/', old_query)
 endfunction
 
+" Buffer close command
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
     let l:currentBufNum = bufnr("%")
@@ -313,12 +337,42 @@ function! <SID>BufcloseCloseIt()
     endif
 endfunction
 
+" Needs desc
 function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
+
+" }}}2
+
+" Directory lists {{{2
+" Improve location lists!
+function! <SID>LocationPrevious()
+    try
+        lprev
+    catch /^Vim\%((\a\+)\)\=:E553/
+        llast
+    endtry
+endfunction
+
+function! <SID>LocationNext()
+    try
+        lnext
+    catch /^Vim\%((\a\+)\)\=:E553/
+        lfirst
+    endtry
+endfunction
+
+nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPrevious()'<cr>
+nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<cr>
+
+" }}}2
+
+" }}}1
 
 " Enable local overwrites
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
 endif
+
+" vim: foldmethod=marker:foldlevel=0
