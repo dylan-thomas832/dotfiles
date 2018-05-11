@@ -31,6 +31,7 @@
 - link:
     ~/.gitconfig: ./git/gitconfig
     ~/.gitignore_global: ./git/gitignore_global
+    ~/.vscode: vscode/
     ~/.vim: vim/
     ~/.vim/autoload: vim/pathogen/autoload/ 
     ~/.vimrc: vim/vimrc

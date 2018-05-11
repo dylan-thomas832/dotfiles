@@ -6,5 +6,3 @@
 1. finalize git configs
 1. finalize zshrc!
 1. finalize vimrc!
-1. add license
-1. make agnostic to install directory
