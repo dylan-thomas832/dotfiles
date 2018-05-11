@@ -27,7 +27,7 @@ Everything should be taken care of by this script. __NOTE__: This requires eleva
 Simply run the following to update submodules/packages for dotfiles:
 
 ```bash
-./install -c update_modules.conf.yaml
+./install -c update.conf.yaml
 ```
 
 To explicitly update dotbot and copy over a new install.sh file:
