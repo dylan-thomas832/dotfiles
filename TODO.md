@@ -6,5 +6,3 @@
 1. finalize git configs
 1. finalize zshrc!
 1. finalize vimrc!
-1. make oh-my-zsh a submodule
-1. add other scripts for updating, etc.

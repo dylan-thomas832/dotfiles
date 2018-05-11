@@ -19,14 +19,14 @@
     - [~/.dotfiles/bin/vim_setup.sh &> ./logs/vim.out, Setting up VIM.]
 
 - link:
-    ~/.gitconfig: gitconfig
-    ~/.gitignore_global: gitignore_global
+    ~/.gitconfig: ./git/gitconfig
+    ~/.gitignore_global: ./git/gitignore_global
     ~/.vim: vim/
     ~/.vimrc: vim/vimrc
     ~/.oh-my-zsh: oh-my-zsh
-    ~/.bashrc: bashrc
+    ~/.bashrc: ./shell/bashrc
     ~/.zsh: zsh/
-    ~/.zshrc: zshrc
+    ~/.zshrc: ./zsh/zshrc
 
 - shell:
     - [source ~/.zshrc, Sourcing zshrc file.]
