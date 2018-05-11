@@ -6,16 +6,18 @@ This is the main repo for all my generic dotfiles.
 
 Run the following:
 
-    ```bash
-        git clone git@gitlab.hume.vt.edu:dylan93/dotfiles.git ~/.dotfiles && cd ~/.dotfiles
-    ```
+```bash
+git clone git@gitlab.hume.vt.edu:dylan93/dotfiles.git ~/.dotfiles && cd ~/.dotfiles
+```
+
 This will clone the directory to its desired location, and change into that directory.
 
 Next, run the install script (without sudo!):
 
-    ```bash
-        ./install
-    ```
+```bash
+./install
+```
+
 Everything should be taken care of by this script. __NOTE__: This requires elevation (sudo), so be prepared to enter your password.
 
 
@@ -23,15 +25,15 @@ Everything should be taken care of by this script. __NOTE__: This requires eleva
 
 Simply run the following to update submodules/packages for dotfiles:
 
-    ```bash
-        ./install -c update_modules.conf.yaml
-    ```
+```bash
+./install -c update_modules.conf.yaml
+```
 
 To explicitly update dotbot and copy over a new install.sh file:
 
-    ```bash
-        ./bin/update_dotbot.sh
-    ```
+```bash
+./bin/update_dotbot.sh
+```
 
 
 ## Troubleshooting
@@ -39,14 +41,15 @@ To explicitly update dotbot and copy over a new install.sh file:
 - Inspect __logs/__ directory for script outputs & errors!
 - Try changing permissions on shell scripts: 
 
-    ```bash
-        chmod +x -R ~./dotfiles/bin/*
-    ```
+```bash
+chmod +x -R ~./dotfiles/bin/*
+```
+
 - Run check for WSL, which may cause issues:
 
-    ```bash
-        ./bin/check_for_wsl.sh
-    ```
+```bash
+./bin/check_for_wsl.sh
+```
 
 
 ## Dependencies for WSL only
