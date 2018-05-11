@@ -19,7 +19,13 @@ Next, run the install script (without sudo!):
 ./install
 ```
 
-Everything should be taken care of by this script. __NOTE__: This requires elevation (sudo), so be prepared to enter your password.
+Everything should be taken care of by this script. __NOTE__: This requires elevation (sudo), so be prepared to enter your password. This will install only the necessary packages.
+
+To run a complete install (full set of dev apt packages):
+
+```bash
+./install -c install_complete.conf.yaml
+```
 
 
 ## Updating
@@ -49,7 +55,7 @@ chmod +x -R ~./dotfiles/bin/*
 - Run check for WSL, which may cause issues:
 
 ```bash
-./bin/check_for_wsl.sh
+./bin/check_wsl.sh
 ```
 
 
