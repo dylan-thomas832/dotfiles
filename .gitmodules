@@ -11,7 +11,7 @@
 	path = colors_term/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 [submodule "fonts"]
-	path = fonts
+	path = terminal/fonts
 	url = https://github.com/powerline/fonts.git
 [submodule "vim/bundle/ack.vim"]
 	path = vim/bundle/ack.vim
