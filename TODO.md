@@ -5,3 +5,4 @@
 1. add vscode setup & configs
 1. finalize git configs
 1. finalize zshrc!
+1. explore issue with whitespace removal func in vimrc for .sh
