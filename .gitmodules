@@ -8,7 +8,7 @@
 	path = vim/colors_vim/badwolf
 	url = https://github.com/sjl/badwolf.git
 [submodule "colors_term/dircolors-solarized"]
-	path = colors_term/dircolors-solarized
+	path = terminal/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 [submodule "fonts"]
 	path = terminal/fonts
