@@ -1,5 +1,8 @@
 # Local ignore for this repo!
 
+# Ignore logging output files
+*.out
+
 # VIM specific things
 *.netrwhist
 /vim/colors/
