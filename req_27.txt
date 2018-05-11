@@ -1,0 +1,13 @@
+# Basic requirements file for python
+
+pip
+cython
+numpy
+scipy
+matplotlib
+pandas
+nose
+tqdm
+ipython
+jupyter
+concurrent-log-handler

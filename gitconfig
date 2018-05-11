@@ -4,10 +4,11 @@
 [push]
     default = current
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    ui = true
+    theme = dracula
+#    diff = auto
+#    status = auto
+#    branch = auto
+#    ui = true
 [alias]
 	st = status
 	cm = commit -m
