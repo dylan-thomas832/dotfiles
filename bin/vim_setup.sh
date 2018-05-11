@@ -8,5 +8,3 @@ cp ~/.dotfiles/vim/colors_vim/badwolf/colors/badwolf.vim ~/.dotfiles/vim/colors/
 cp ~/.dotfiles/vim/colors_vim/molokai/colors/molokai.vim ~/.dotfiles/vim/colors/
 cp ~/.dotfiles/vim/colors_vim/vim-colors-solarized/colors/solarized.vim ~/.dotfiles/vim/colors/
 
-# Copying pathogen intovim directory
-cp -R ~/.dotfiles/vim/pathogen/autoload/ ~/.dotfiles/vim/

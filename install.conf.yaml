@@ -32,6 +32,7 @@
     ~/.gitconfig: ./git/gitconfig
     ~/.gitignore_global: ./git/gitignore_global
     ~/.vim: vim/
+    ~/.vim/autoload: vim/pathogen/autoload/ 
     ~/.vimrc: vim/vimrc
     ~/.oh-my-zsh: oh-my-zsh
     ~/.bashrc: ./shell/bashrc

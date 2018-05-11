@@ -16,7 +16,8 @@
 
 - shell:
     - [rm -f ./logs/*.out, Removing old log files.]
-    - [git submodule update --init --recursive &> ./logs/git.out, Updating submodules.]
+    - [git submodule foreach git checkout master &> ./logs/git.out, Checking out master branches of submodules.]
+    - [git submodule foreach git pull &> ./logs/git.out, Updating submodules.]
     - [~/.dotfiles/bin/check_for_wsl.sh &> ./logs/wsl.out, Installing fonts & checking Unix type.]
     - [~/.dotfiles/bin/vim_setup.sh &> ./logs/vim.out, Setting up VIM.]
 
@@ -24,6 +25,7 @@
     ~/.gitconfig: ./git/gitconfig
     ~/.gitignore_global: ./git/gitignore_global
     ~/.vim: vim/
+    ~/.vim/autoload: vim/pathogen/autoload/ 
     ~/.vimrc: vim/vimrc
     ~/.oh-my-zsh: oh-my-zsh
     ~/.bashrc: ./shell/bashrc
