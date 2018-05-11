@@ -11,6 +11,9 @@
 
 - clean: ['~']
 
+- link:
+    ~/.dotfiles: ""
+
 - shell:
     - [rm -f ./logs/*.out, Removing old log files.]
     - [git submodule update --init --recursive &> ./logs/git.out, Updating submodules.]
