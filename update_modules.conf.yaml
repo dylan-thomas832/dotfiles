@@ -12,24 +12,18 @@
 - clean: ['~']
 
 - shell:
-    - [git pull origin master &> install.out, Updating git repo.]
-    - [git submodule update --init --recursive &>> install.out, Installing submodules.]
-    - [chmod +x ~/.dotfiles/bin/* &>> install.out, Making shell scripts executable.]
-    - [sudo ~/.dotfiles/bin/new_install_update.sh &>> install.out, Updating and upgrading packages.]
-    - [sudo ~/.dotfiles/bin/aptget_packages.sh &>> install.out, Installing packages with apt-get.]
-    - [python -m pip install --user -r req_27.txt --upgrade &>> install.out, Installing Python 2.7 packages]
-    - [python3 -m pip install --user -r req_35.txt --upgrade &>> install.out, Installing Python 3 packages]
-    - [mkdir -p ~/docs ~/libraries ~/git_ext ~/projects ~/tars ~/temps &>> install.out, Creating home directories.]
-    - [mkdir -p ~/.dotfiles/vim/files/info ~/.dotfiles/vim/files/undo ~/.dotfiles/vim/files/swap ~/.dotfiles/vim/files/backup ~/.dotfiles/vim/autoload ~/.dotfiles/vim/colors &>> install.out, Making required directories in vim/ before linking and copying.]
-    - [~/.dotfiles/bin/get_ohmyzsh.sh &>> install.out, Installing oh-my-zsh.]
-    - [~/.dotfiles/bin/check_for_wsl.sh &>> install.out, Installing fonts & checking Unix type.]
-    - [~/.dotfiles/bin/vim_setup.sh &>> install.out, Setting up VIM.]
+    - [rm -f ./logs/*.out, Removing old log files.]
+    - [git submodule update --init --remote &> ./logs/git.out, Updating submodules.]
+    - [chmod +x ~/.dotfiles/bin/* &> ./logs/shell.out, Making shell scripts executable.]
+    - [~/.dotfiles/bin/check_for_wsl.sh &> ./logs/wsl.out, Installing fonts & checking Unix type.]
+    - [~/.dotfiles/bin/vim_setup.sh &> ./logs/vim.out, Setting up VIM.]
 
 - link:
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.vim: vim/
     ~/.vimrc: vim/vimrc
+    ~/.oh-my-zsh: oh-my-zsh
     ~/.bashrc: bashrc
     ~/.zsh: zsh/
     ~/.zshrc: zshrc
