@@ -4,12 +4,13 @@ This is the main repo for all my generic dotfiles.
 
 ## Installing
 
-Run the following:
+Clone the repository to somewhere you like to store git repos. 
 
 ```bash
-git clone git@gitlab.hume.vt.edu:dylan93/dotfiles.git ~/.dotfiles && cd ~/.dotfiles
+git clone git@github.com:dylan93/dotfiles.git
 ```
 
+__NOTE__: it must not be cloned into ~/.dotfiles
 This will clone the directory to its desired location, and change into that directory.
 
 Next, run the install script (without sudo!):
