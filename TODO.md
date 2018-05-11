@@ -5,4 +5,3 @@
 1. add vscode setup & configs
 1. finalize git configs
 1. finalize zshrc!
-1. finalize vimrc!
