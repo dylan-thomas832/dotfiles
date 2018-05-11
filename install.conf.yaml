@@ -29,16 +29,16 @@
     - [./bin/vim_setup.sh &> ./logs/vim.out, Setting up VIM.]
 
 - link:
-    ~/.gitconfig: ./git/gitconfig
-    ~/.gitignore_global: ./git/gitignore_global
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore_global: git/gitignore_global
     ~/.vscode: vscode/
     ~/.vim: vim/
     ~/.vim/autoload: vim/pathogen/autoload/ 
     ~/.vimrc: vim/vimrc
     ~/.oh-my-zsh: oh-my-zsh
-    ~/.bashrc: ./shell/bashrc
+    ~/.bashrc: shell/bashrc
     ~/.zsh: zsh/
-    ~/.zshrc: ./zsh/zshrc
+    ~/.zshrc: zsh/zshrc
 
 - shell:
     - [source ~/.zshrc, Sourcing zshrc file.]
