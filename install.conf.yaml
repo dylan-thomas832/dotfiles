@@ -12,13 +12,16 @@
 
 - clean: ['~']
 
+- link:
+    ~/.dotfiles: ""
+
 - shell:
     - [rm -f ./logs/*.out, Removing old logs.]
     - [git pull origin master &> ./logs/git.out, Updating git repo.]
     - [git submodule update --init --recursive &>> ./logs/git.out, Installing submodules.]
     - [sudo ~/.dotfiles/bin/new_install_update.sh &> ./logs/aptget.out, Updating and upgrading packages.]
     - [sudo ~/.dotfiles/bin/aptget_packages.sh &>> ./logs/aptget.out, Installing packages with apt-get.]
-    - [python -m pip install --user -r ./python/req_27.txt --upgrade &> ./logs/pip.out, Installing Python 2.7 packages]
+    - [python -m pip install --user -r ./python/req_27.txt --upgrade &> ./logs/pip.out, Installing Python 2 packages]
     - [python3 -m pip install --user -r ./python/req_35.txt --upgrade &>> ./logs/pip.out, Installing Python 3 packages]
     - [mkdir -p ~/docs ~/libraries ~/git_ext ~/projects ~/tars ~/temps &> ./logs/shell.out, Creating home directories.]
     - [mkdir -p ~/.dotfiles/vim/files/info ~/.dotfiles/vim/files/undo ~/.dotfiles/vim/files/swap ~/.dotfiles/vim/files/backup ~/.dotfiles/vim/colors &>> ./logs/shell.out, Making required directories in vim/ before linking and copying.]

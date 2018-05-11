@@ -18,7 +18,7 @@ apt-get install git wget curl vim -y
 apt-get install zsh -y
 
 # Get Ack & Ag
-apt-get install ack-grep silversearcher-ag
+apt-get install ack-grep silversearcher-ag -y
 
 echo "Finished apt-get installs!"
 
