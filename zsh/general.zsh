@@ -105,7 +105,9 @@ fi
 #
 
 # Nice colors!
-eval `dircolors ~/.dotfiles/terminal/dircolors-solarized/dircolors.256dark`
+eval `dircolors ~/.dotfiles/terminal/dircolors-solarized/dircolors.ansi-dark`
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
+
 
 # If we want a local overwrite
 if [ -f ~/.zshrc_local ]; then
