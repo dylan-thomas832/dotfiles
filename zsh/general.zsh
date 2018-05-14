@@ -64,6 +64,9 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  copydir
+  copyfile
+  colored-man-pages
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -75,6 +78,9 @@ source $ZSH/oh-my-zsh.sh
 if [[ -a ~/.localrc ]]; then
     source ~/.localrc
 fi
+
+DEFAULT_USER=dylan93
+prompt_context={}{}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
