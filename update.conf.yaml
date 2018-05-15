@@ -20,11 +20,13 @@
     - [git submodule foreach git pull &> ./logs/git.out, Updating submodules.]
     - [./bin/check_wsl.sh &> ./logs/wsl.out, Installing fonts & checking Unix type.]
     - [./bin/setup_vim.sh &> ./logs/vim.out, Setting up VIM.]
+    - [bash ./vscode/install_vscode_extensions.sh &> ./logs/vscode.out, Install VS Code Extensions.]
 
 - link:
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
     ~/.vscode: vscode/
+    ~/.config/Code/User/settings.json: vscode/settings.json
     ~/.vim: vim/
     ~/.vim/autoload: vim/pathogen/autoload/ 
     ~/.vimrc: vim/vimrc
