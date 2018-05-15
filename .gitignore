@@ -8,3 +8,6 @@
 /vim/colors/
 /vim/files/
 /vim/autoload/
+
+# Ignore extensions in vscode
+/vscode/extensions/
