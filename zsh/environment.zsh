@@ -8,12 +8,9 @@ export PATH=$HOME/.dotfiles/bin:$HOME/.dotfiles/vscode:$PATH
 # Shared library path
 export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib
 
-# Local binaries
-export PATH=/usr/local/bin:$PATH
+# Local binaries. First should already be added
+# export PATH=/usr/local/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
-
-# These should be there already
-# /usr/bin:/usr/sbin:
 
 # Path to manpages?
 export MANPATH="/usr/local/man:$MANPATH"

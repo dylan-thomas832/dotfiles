@@ -85,7 +85,7 @@ set ruler                       " Always show position
 set cmdheight=2                 " height of command bar
 set showmatch                   " show matching [{(
 set mat=4                       " tenths of a second to show matching braces
-set foldcolumn=1                " Extra margin on left
+set foldcolumn=3                " Extra margin on left
 
 " }}}2
 

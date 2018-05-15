@@ -8,3 +8,4 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+alias reload="source ~/.zshrc"
