@@ -1,0 +1,69 @@
+// Place your settings in this file to overwrite the default settings
+{
+    // Don't want telemetry
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    // Editor settings
+    "editor.wordWrap": "on",
+    "editor.mouseWheelScrollSensitivity": 2,
+    "editor.autoIndent": true,
+    "editor.mouseWheelZoom": true,
+    "editor.renderLineHighlight": "gutter",
+    "editor.showFoldingControls": "always",
+    "editor.multiCursorModifier": "ctrlCmd",
+    // Workbench settings
+    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.iconTheme": "vscode-icons",
+    // Files to exclude in vscode project tree
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/.idea": true,
+        "**/.vscode": true,
+        "**/*.pyc": true
+    },
+    // Pylint
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--disable=C0103,C100,C0301,C1001,C0325,C0326,W0403,C0411,R0903"
+    ],
+    // Pep8
+    "python.linting.pep8Enabled": true,
+    "python.linting.pep8Args": [
+        "--ignore=E266,E201,E202,E203,E241,E265,E701,E128,E501",
+        "--max-line-length=150",
+        "--extension-pkg-whitelist=numpy"
+    ],
+    // PyDocStyle
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.pydocstyleArgs": [
+        "--ignore=D301,D400,D205,D213,D203,D400,D202,D204,D101"
+    ],
+    // Markdown support
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false,
+        "editor.tabSize": 2
+    },
+    // Spell Checker
+    "cSpell.userWords": [
+        "Kusterer",
+        "Lons",
+        "PID's",
+        "Transductive",
+        "devnull",
+        "discriminative",
+        "interp",
+        "mongodb",
+        "numpy",
+        "params",
+        "protobuf",
+        "psutil",
+        "rfind",
+        "scrypt",
+        "shutil",
+        "thomasd",
+        "upsert",
+        "ureg"
+    ],
+}
