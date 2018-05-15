@@ -66,4 +66,5 @@
         "upsert",
         "ureg"
     ],
+    "editor.fontFamily": "'DejaVu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 }
