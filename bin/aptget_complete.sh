@@ -15,7 +15,7 @@ apt-get install libopenblas-dev libatlas-base-dev liblapack-dev -y
 apt-get install git wget curl vim -y
 
 # Get zsh
-apt-get install zsh -y
+apt-get install zsh tmux -y
 
 # Get Ack & Ag
 apt-get install ack-grep silversearcher-ag -y
