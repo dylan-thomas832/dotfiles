@@ -41,6 +41,9 @@
     ~/.bashrc: shell/bashrc
     ~/.zsh: zsh/
     ~/.zshrc: zsh/zshrc
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux.conf.local: tmux/tmux.conf.local
 
 - shell:
     - [source ~/.zshrc, Sourcing zshrc file.]
+    - [tmux source-file ~/.tmux.conf, Sourcing tmux theme.]
