@@ -46,4 +46,3 @@
 
 - shell:
     - [source ~/.zshrc, Sourcing zshrc file.]
-    - [tmux source-file ~/.tmux.conf, Sourcing tmux theme.]
