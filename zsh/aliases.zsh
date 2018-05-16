@@ -9,3 +9,4 @@
 #
 
 alias reload="source ~/.zshrc"
+alias newterm="terminator -f --layout=normal &"
