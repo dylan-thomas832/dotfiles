@@ -9,3 +9,5 @@
 #
 
 alias reload="source ~/.zshrc"
+alias newterm="terminator -f --layout=normal &"
+alias check_mongo="ps aux | grep mongo"

@@ -47,6 +47,7 @@
     },
     // Spell Checker
     "cSpell.userWords": [
+        "Convolutional",
         "Kusterer",
         "Lons",
         "PID's",
@@ -55,13 +56,18 @@
         "discriminative",
         "interp",
         "mongodb",
+        "munkres",
+        "ndarray",
         "numpy",
         "params",
         "protobuf",
         "psutil",
+        "pymongo",
         "rfind",
         "scrypt",
         "shutil",
+        "submodule",
+        "submodules",
         "thomasd",
         "upsert",
         "ureg"
