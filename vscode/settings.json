@@ -12,7 +12,7 @@
     "editor.showFoldingControls": "always",
     "editor.multiCursorModifier": "ctrlCmd",
     // Workbench settings
-    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.colorTheme": "Default Dark+",
     "workbench.iconTheme": "vscode-icons",
     // Files to exclude in vscode project tree
     "files.exclude": {

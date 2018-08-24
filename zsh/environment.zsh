@@ -5,6 +5,8 @@ export PATH=$HOME/.dotfiles/bin:$HOME/.dotfiles/vscode:$PATH
 # export PATH=$HOME/anaconda2/bin:$PATH
 # export PATH=$HOME/anaconda3/bin:$PATH
 
+export DISPLAY=:0
+
 # Shared library path
 export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib
 
