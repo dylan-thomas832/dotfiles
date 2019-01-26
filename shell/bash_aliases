@@ -1,0 +1,3 @@
+alias reload="source ~/.bashrc"
+alias g="git"
+#__git_complete g _git

@@ -49,10 +49,10 @@ set wildmenu                    " command completion help
 
 syntax on                       " enable syntax highlighting
 set t_Co=256                    " Enables 256 colors
-"colorscheme badwolf           " No diff in bg
+colorscheme badwolf           " No diff in bg
 "colorscheme molokai            " No diff in bg
 set background=dark
-colorscheme solarized         " Requires dark bg
+"colorscheme solarized         " Requires dark bg
 
 " }}}2
 
