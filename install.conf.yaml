@@ -19,6 +19,7 @@
     - [rm -f ./logs/*.out, Removing old logs.]
     - [git pull origin master &> ./logs/git.out, Updating git repo.]
     - [git submodule update --init --recursive &>> ./logs/git.out, Installing submodules.]
+    - [mkdir -p ~/docs ~/libraries ~/git_ext ~/projects ~/tars ~/temps &> ./logs/shell.out, Creating home directories.]
     - [mkdir -p ~/.dotfiles/vim/files/info ~/.dotfiles/vim/files/undo ~/.dotfiles/vim/files/swap ~/.dotfiles/vim/files/backup ~/.dotfiles/vim/colors &>> ./logs/shell.out, Making required directories in vim/ before linking and copying.]
     - [./bin/setup_vim.sh &> ./logs/vim.out, Setting up VIM.]
 
