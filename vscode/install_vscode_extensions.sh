@@ -3,7 +3,6 @@
 set -e
 
 # Packages to install
-code --install-extension teabyii.ayu
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension yzhang.markdown-all-in-one
 code --install-extension zhuangtongfa.material-theme
@@ -12,5 +11,4 @@ code --install-extension robertohuertasm.vscode-icons
 code --install-extension James-Yu.latex-workshop
 code --install-extension alefragnani.project-manager
 code --install-extension alefragnani.bookmarks
-#code --install-extension
 

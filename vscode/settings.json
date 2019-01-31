@@ -1,76 +1,137 @@
-// Place your settings in this file to overwrite the default settings
 {
     // Don't want telemetry
-    "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    // Miscellaneous
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 0,
+    "vsicons.dontShowNewVersionMessage": true,
     // Editor settings
     "editor.wordWrap": "on",
     "editor.mouseWheelScrollSensitivity": 2,
     "editor.autoIndent": true,
     "editor.mouseWheelZoom": true,
+    "editor.cursorBlinking": "expand",
     "editor.renderLineHighlight": "gutter",
     "editor.showFoldingControls": "always",
     "editor.multiCursorModifier": "ctrlCmd",
+    "editor.fontFamily": "'DejaVu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     // Workbench settings
-    "workbench.colorTheme": "Default Dark+",
+    "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "vscode-icons",
-    // Files to exclude in vscode project tree
+    // Files to exclude in Explorer tab
     "files.exclude": {
         "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
         "**/.DS_Store": true,
-        "**/.idea": true,
         "**/.vscode": true,
-        "**/*.pyc": true
+        "**/__pycache__": true,
+        "**/**/**/*.pyc": true
     },
-    // Pylint
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintArgs": [
-        "--disable=C0103,C100,C0301,C1001,C0325,C0326,W0403,C0411,R0903"
-    ],
-    // Pep8
-    "python.linting.pep8Enabled": true,
-    "python.linting.pep8Args": [
-        "--ignore=E266,E201,E202,E203,E241,E265,E701,E128,E501",
-        "--max-line-length=150",
-        "--extension-pkg-whitelist=numpy"
-    ],
-    // PyDocStyle
-    "python.linting.pydocstyleEnabled": true,
-    "python.linting.pydocstyleArgs": [
-        "--ignore=D301,D400,D205,D213,D203,D400,D202,D204,D101"
-    ],
-    // Markdown support
+    // Force good behavior for html files
+    "[html]": {
+        "editor.wordWrap": "on",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.autoIndent": true
+    },
+    // Force good behavior for markdown files
     "[markdown]": {
         "editor.wordWrap": "on",
-        "editor.quickSuggestions": false,
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.autoIndent": true
     },
-    // Spell Checker
-    "cSpell.userWords": [
-        "Convolutional",
-        "Kusterer",
-        "Lons",
-        "PID's",
-        "Transductive",
-        "devnull",
-        "discriminative",
-        "interp",
-        "mongodb",
-        "munkres",
-        "ndarray",
-        "numpy",
-        "params",
-        "protobuf",
-        "psutil",
-        "pymongo",
-        "rfind",
-        "scrypt",
-        "shutil",
-        "submodule",
-        "submodules",
-        "thomasd",
-        "upsert",
-        "ureg"
+    // Terminal settings
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    // Standard Python settings
+    // "python.pythonPath": "path\\to\\python.exe",
+    "[python]": {
+        "editor.wordWrap": "on",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.autoIndent": true
+    },
+    // Pylint settings (style/code linting)
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--disable="
     ],
-    "editor.fontFamily": "'DejaVu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    // Pep8 settings (style/formatting linting)
+    "python.linting.pep8Enabled": true,
+    "python.linting.pep8Args": [
+        "--max-line-length=120",
+        "--extension-pkg-whitelist=numpy",
+        "--ignore=",
+    ],
+    // Pydocstyle settings (documentation linting)
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.pydocstyleArgs": [
+        "--ignore="
+    ],
+    // Latex Workshop settings
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "C:/texlive/2016/bin/win32/latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "C:/texlive/2016/bin/win32/pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "C:/texlive/2016/bin/win32/bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    // Git & Git Lens settings
+    "git.autofetch": true,
+    //"git.path": "path\\to\\git.exe",
+    // Code spell-checker settings
+    "cSpell.userWords": [
+        "Astromechanics",
+        "Blacksburg",
+        "Cubesat",
+        "DARPA",
+        "Gurobi",
+        "Invariance",
+        "Kalman",
+        "Lyapunov",
+        "Matlab",
+        "Transductive",
+        "Uncomment",
+        "assimulo",
+        "covariances",
+        "cventry",
+        "linalg",
+        "nonsingular",
+        "numba",
+        "numpy",
+        "pylint",
+        "pyplot",
+        "remediate",
+        "scipy",
+        "undeformed",
+        "xlabel",
+        "ylabel"
+    ],
 }
