@@ -1,24 +1,3 @@
-[submodule "colors_vim/vim-colors-solarized"]
-	path = vim/colors_vim/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "colors_vim/molokai"]
-	path = vim/colors_vim/molokai
-	url = https://github.com/tomasr/molokai.git
-[submodule "colors_vim/badwolf"]
-	path = vim/colors_vim/badwolf
-	url = https://github.com/sjl/badwolf.git
-[submodule "colors_term/dircolors-solarized"]
-	path = terminal/dircolors-solarized
-	url = https://github.com/seebi/dircolors-solarized.git
-[submodule "fonts"]
-	path = terminal/fonts
-	url = https://github.com/powerline/fonts.git
-[submodule "vim/bundle/ack.vim"]
-	path = vim/bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
-[submodule "vim/pathogen"]
-	path = vim/pathogen
-	url = https://github.com/tpope/vim-pathogen.git
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
