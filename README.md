@@ -42,6 +42,11 @@ To explicitly update dotbot and copy over a new `dotfile_install` file:
 ./bin/update_dotbot.sh
 ```
 
+Fast forward all submodules to upstream origin/master. Only does master branch.
+```shell
+git submodule foreach git pull origin master --recursive
+```
+
 
 ## Troubleshooting
 
