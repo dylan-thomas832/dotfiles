@@ -1,3 +1,5 @@
+# Note: This file is mainly for setting up oh-my-zsh
+
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
@@ -57,16 +59,24 @@ HIST_STAMPS="mm/dd/yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  git-extras
   copydir
   copyfile
+  colorize
+  dircycle
+  history
+  django
+  extract
   colored-man-pages
+  jsontools
+  pip
+  pyenv
+  python
+  last-working-dir
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
 # Nice colors!
-eval `dircolors ~/.dotfiles/terminal/dircolors-solarized/dircolors.ansi-dark`
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
 

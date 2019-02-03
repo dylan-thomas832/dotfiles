@@ -4,31 +4,30 @@ if [ -f ~/.zshrc_local_before ]; then
 fi
 
 # External plugins (initialized before)
-# source ~/.zsh/plugins_before.zsh
+# source ~/.zshrc.d/plugins_before.zsh
 
-# Settings
-source ~/.zsh/settings.zsh
+# Oh-my-zsh specific settings. Uncomment to use them
+source ~/.zshrc.d/oh-my-zsh-settings.zsh
 
 # Load contained custom functions
-source ~/.zsh/functions.zsh
+source ~/.zshrc.d/functions.zsh
 
 # Set environment variables
-source ~/.zsh/environment.zsh
+source ~/.zshrc.d/environment.zsh
 
 # Aliases
-source ~/.zsh/aliases.zsh
+source ~/.zshrc.d/aliases.zsh
 
 # Custom prompt
-source ~/.zsh/prompt.zsh
+source ~/.zshrc.d/prompt.zsh
 
 # # Syntax highlighting
-# source ~/.zsh/syntax.zsh
+# source ~/.zshrc.d/syntax.zsh
 
 # # External plugins (initialized after)
-# source ~/.zsh/plugins_after.zsh
+# source ~/.zshrc.d/plugins_after.zsh
 
 # Allow local customizations in the ~/.zshrc_local_after file
 if [ -f ~/.zshrc_local_after ]; then
     source ~/.zshrc_local_after
 fi
-

@@ -1,10 +1,8 @@
-# Track dotfile scripts
-export PATH=$HOME/.dotfiles/bin:$HOME/.dotfiles/vscode:$PATH
-
 # Add Anaconda to path
 # export PATH=$HOME/anaconda2/bin:$PATH
 # export PATH=$HOME/anaconda3/bin:$PATH
 
+# Useful for X11 forwarding
 export DISPLAY=:0
 
 # Shared library path
@@ -12,16 +10,13 @@ export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib
 
 # Local binaries. First should already be added
 # export PATH=/usr/local/bin:$PATH
-export PATH="$HOME/.local/bin:$PATH"
+# export PATH="$HOME/.local/bin:$PATH"
 
-# Path to manpages?
+# Path to manpages
 export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # ssh keys
 export SSH_KEY_PATH="~/.ssh/rsa_id"
