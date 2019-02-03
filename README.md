@@ -76,6 +76,10 @@ chmod +x -R ~./dotfiles/bin/*
 - zsh, oh-my-zsh
 - Ack & Ag for vim (pathogen)
 
+## TODO
+
+split apt-get update into various package options (BLAS/ Build/ etc.). Put in own config file. Not apart of any profile
+
 ## Info
 
 [dotbot](https://github.com/anishathalye/dotbot/)
