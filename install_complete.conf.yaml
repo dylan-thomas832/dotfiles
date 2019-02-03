@@ -35,7 +35,7 @@
     ~/.vscode: vscode/
     ~/.config/Code/User/settings.json: vscode/settings.json
     ~/.vim: vim/
-    ~/.vim/autoload: vim/pathogen/autoload/ 
+    ~/.vimrc.bundles: vim/vimrc.bundles
     ~/.vimrc: vim/vimrc
     ~/.oh-my-zsh: oh-my-zsh
     ~/.bashrc: shell/bashrc
