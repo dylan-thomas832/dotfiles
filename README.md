@@ -78,7 +78,10 @@ chmod +x -R ~./dotfiles/bin/*
 
 ## TODO
 
-split apt-get update into various package options (BLAS/ Build/ etc.). Put in own config file. Not apart of any profile
+* split apt-get update into various package options (BLAS/ Build/ etc.). 
+  * Put in own config file. Not apart of any profile
+* remove submodule for oh-my-zsh. Add it to a config
+* move dotbot submodule into meta 
 
 ## Info
 
