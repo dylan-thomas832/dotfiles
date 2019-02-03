@@ -16,6 +16,7 @@ call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
 Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'vim-scripts/taglist.vim'
 Plug 'mileszs/ack.vim'
