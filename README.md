@@ -75,3 +75,8 @@ chmod +x -R ~./dotfiles/bin/*
 ## General Dependencies
 - zsh, oh-my-zsh
 - Ack & Ag for vim (pathogen)
+
+## Info
+
+[dotbot](https://github.com/anishathalye/dotbot/)
+[install profiles](https://github.com/shivapoudel/dotfiles)
