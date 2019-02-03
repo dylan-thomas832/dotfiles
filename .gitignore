@@ -5,7 +5,6 @@
 
 # VIM specific things
 *.netrwhist
-/vim/colors/
 /vim/files/
 /vim/autoload/
 /vim/bundle/

@@ -1,65 +1,92 @@
-"
+"--------------------
 " Dylan Thomas' vimrc
-"
+"--------------------
 
 " Ensure we are explicit about not using Vi, but Vim!
 set nocompatible
 
-
-" Feature Testing {{{
+"----------------
+" Feature Testing
+"----------------
 
 "set synmaxcol=200               " only highlight first 200 columns
 "set list                        " Show non-printable characters (returns, etc)
 
-"}}}
+"---------------
+" Initialization
+"---------------
 
+" Auto-check that vim-plug (plugin manager) is installed. If not
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Initialization {{{
+" Source the file that holds our plugins
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
-" Pathogen must be loaded before filetype call!
-execute pathogen#infect()
-execute pathogen#helptags()
-
-filetype plugin indent on       " load plugins accorinding to filetype
 let mapleader =","              " set leader for key combos
+filetype plugin indent on       " force these
 
-" }}}
+"----------
+" Wild menu
+"----------
 
-
-" Misc. {{{
-
-set history=500                 " how many lines VIM remembers
-set report=0                    " always report changed lines
-set autoread                    " read when file is changed from outside
-set noerrorbells                " No annoying sounds
-set encoding=utf-8                " utf8 standard encoding8
-
-
-" Wild stuff
 set wildignore=*.o,*~,*.pyc     " Ignore compiled files
-set wildignore+=*/.git/*,*/.vscode/*,*/.DS_Store
+set wildignore+=*/.git/*        " Ignore git files
+set wildignore+=*/.vscode/*     " Ignore vscode files
+set wildignore+=*/.DS_Store     " Ignore Mac files
 set wildmenu                    " command completion help
 
-" }}}
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<Tab>"
+    else
+        return "\<C-p>"
+    endif
+endfunction
+inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
+inoremap <S-Tab> <C-n>
 
+"-------------
+" Color scheme
+"-------------
 
-" Display {{{1
+syntax on
+" vim can autodetect this based on $TERM (e.g. 'xterm-256color')
+" but it can be set to force 256 colors
+" set t_Co=256
+if has('gui_running')
+    set background=dark
+    colorscheme solarized
+    let g:lightline = {'colorscheme': 'solarized'}
+elseif &t_Co < 256
+    colorscheme default
+    set nocursorline " looks bad in this mode
+else
+    set background=dark
+    let g:solarized_termcolors=256 " instead of 16 color with mapping in terminal
+    colorscheme solarized
+    " customized colors
+    highlight SignColumn ctermbg=234
+    highlight StatusLine cterm=bold ctermfg=245 ctermbg=235
+    highlight StatusLineNC cterm=bold ctermfg=245 ctermbg=235
+    highlight SpellBad cterm=underline
+endif
 
-" Color scheme {{{2
-
-syntax on                       " enable syntax highlighting
-set t_Co=256                    " Enables 256 colors
-"colorscheme badwolf           " No diff in bg
-"colorscheme molokai            " No diff in bg
-set background=dark
-colorscheme solarized         " Requires dark bg
-
-" }}}2
-
-" Indentation & Text {{{2
+"-------------------
+" Indentation & Text
+"-------------------
 
 set autoindent                  " indent according to previous line
-"set smartindent                 " Apparently can interfere with filetype stuff
 set expandtab                   " use spaces instead of tabs
 set tabstop=4                   " visual spaces ber TAB
 set softtabstop=4               " tab key indents 4 spaces
@@ -69,15 +96,15 @@ set shiftround                  " >> indents to next multiple of `shiftwidth`
 " Linebreak, textwidth, and wordwrap
 set linebreak
 set textwidth=100
-set colorcolumn=100             " Create colored column at textwidth
+set colorcolumn=101             " Create colored column at textwidth
 set wrap
 
-" }}}2
-
-" UI {{{2
+"--------------------
+" Basic editor config
+"--------------------
 
 set number                      " line numbers
-set cursorline                  " find current line quickly
+set numberwidth=5               " width of line number column
 set showmode                    " show current mode
 set showcmd                     " show already type keys
 set scrolloff=7                 " scroll offset to keep cursor visible
@@ -86,73 +113,63 @@ set cmdheight=2                 " height of command bar
 set showmatch                   " show matching [{(
 set mat=4                       " tenths of a second to show matching braces
 set foldcolumn=3                " Extra margin on left
+set history=500                 " how many lines VIM remembers
+set report=0                    " always report changed lines
+set autoread                    " read when file is changed from outside
+set noerrorbells                " No annoying sounds
+set encoding=utf-8              " utf8 standard encoding8
+set modelines=0                 " Turns modelines off for security
+set modeline                    " Turns modelines off for security
+set backspace=indent,eol,start  " make backspace work as you would expect
+set whichwrap+=<,>,h,l
+set nojoinspaces " suppress inserting two spaces between sentences
+set mouse+=a " enable mouse mode (scrolling, selection, etc)
 
-" }}}2
+"------------
+" Status line
+"------------
 
-" Status line {{{2
 set display=lastline            " show as much as possible of last line
 set laststatus=2                " always show statusline
 " Format status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
-" }}}2
+"----------------------------
+" Graphics & Windows Behavior
+"----------------------------
 
-" Modelines {{{2
-"set modeline                    " Turns modelines off?
-set modelines=1
-
-" }}}2
-
-" Graphics & Windows {{{2
 set ttyfast                     " faster redrawing
 set lazyredraw                  " only redraw as needed
 set hidden                      " switch between buffers w/o having to save
 set splitbelow                  " open new windows below current
 set splitright                  " open new windoes right of current
 
-" }}}2
+"----------
+" Searching
+"----------
 
-" }}}1
-
-
-" Editing {{{
-
-set backspace=indent,eol,start  " make backspace work as you would expect
-set whichwrap+=<,>,h,l
-
-" }}}
-
-
-" Searching {{{
 set incsearch                   " highlight while search
 set hlsearch                    " keep matches highlighted
 set wrapscan                    " search wraps around end-of-file
 set ignorecase                  " ignore capitalization
 set smartcase                   " don't ignore case if contains uppercase letter
-
-
 " Disable highlight when <leader><cr> is pressed
 nnoremap <silent> <leader><cr> :nohlsearch<cr>
 
-" }}}
+"-------------
+" Code Folding
+"-------------
 
-
-" Folding {{{
-
-set foldmethod=indent           " fold based on indent`
-set foldlevelstart=8            " open most folds by default
+set foldmethod=syntax           " fold based on indent`
+set foldlevelstart=6            " open most folds by default
 set foldnestmax=10              " only nest 10 folds
 set foldenable                  " enables folding
-
 " Remap fold toggle
 nnoremap <space> za
 
-" }}}
-
-
-" Remappings {{{1
-
-" Saving Files {{{2
+"-----------
+" Remappings
+"-----------
 
 " fast saving (forced) & quitting (not forced)
 nnoremap <leader>w :w!<cr>
@@ -160,10 +177,6 @@ nnoremap <leader>q :q<cr>
 
 " :W saves the file using sudo
 command! W w !sudo tee % > /dev/null 
-
-" }}}2
-
-" Misc. {{{2
 
 " Remove Windows ^M - when encodings messed up
 nnoremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -180,9 +193,13 @@ nnoremap <leader>s :makesession<cr>
 " Remap Escape key to 'jk'. Make sure not to put this comment on same line!
 inoremap jk <Esc>`^
 
-" }}}2
+" Movement
 
-" Movement {{{2
+" Get off my lawn
+"nnoremap <Left> :echoe "Use h"<CR>
+"nnoremap <Right> :echoe "Use l"<CR>
+"nnoremap <Up> :echoe "Use k"<CR>
+"nnoremap <Down> :echoe "Use j"<CR>
 
 " Remap visual line jumps
 map j gj
@@ -218,9 +235,9 @@ nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" }}}2
-
-" Spell checking {{{2
+"---------------
+" Spell checking
+"---------------
 
 " Pressing ,ss will toggle spell check
 nnoremap <leader>ss :setlocal spell!<cr>
@@ -231,26 +248,30 @@ nnoremap <leader>sp [s
 nnoremap <leader>sa zg
 nnoremap <leader>s? z=
 
-" }}}2
-
-" Edit/source vimrc/zshrc {{{2
+"------------------------
+" Edit/source vimrc/zshrc
+"------------------------
 
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ez :vsp ~/.zshrc<cr>
 
-" }}}2
+"-----------
+" Autogroups
+"-----------
 
-" }}}1
-
-
-" Autogroups {{{
+" highlight current line, but only in active window
+augroup CursorLineOnlyInActiveWindow
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+augroup END
 
 augroup configgroup
     " Directive clears all autocmds for group
     autocmd!
     " Whitespace removal
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee,*.zsh :call CleanExtraSpaces()
     " Python
     autocmd FileType python setlocal commentstring=#\ %s
     " Ensure TABs are used in makefiles
@@ -264,40 +285,69 @@ augroup configgroup
     autocmd BufEnter *.sh setlocal softtabstop=2
 augroup end
 
-" }}}
+augroup vimrcEx
+  autocmd!
 
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 
-" Plugins {{{
+  " Set syntax highlighting for specific file types
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile aliases.local,zshrc.local,*/zsh/configs/* set filetype=sh
+  autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+  autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
+  autocmd BufRead,BufNewFile vimrc.local, vimrc.bundles set filetype=vim
+augroup END
+
+"----------------
+" Plugin Settings
+"----------------
 
 " Requires Ack, Ag be installed & ack.vim loaded
-" Set Ack to use Ag
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-    let g:ackprg = 'ag --vimgrep --smart-case'
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Set Ack to use Ag
+  let g:ackprg = 'ag --vimgrep --smart-case'
+  " Remap command for searching
+    nnoremap <leader>a :Ack
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+  endif
 endif
-" Remap command for searching
-nnoremap <leader>a :Ack
 
-" }}}
-
-
-" Backups {{{1
+"----------------
+" File management
+"----------------
 
 set backup
 set backupdir   =$HOME/.vim/files/backup/
 set backupext   =-vimbackup
 set backupskip  =
-set directory   =$HOME/.vim/files/swap//
+set directory   =$HOME/.vim/files/swap/
 set updatecount =100
 set undofile
 set undodir     =$HOME/.vim/files/undo/
 set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
-" }}}1
-
-
-" Custom functions {{{1
-
-" Helper funcs {{{2
+"-----------------
+" Custom functions
+"-----------------
 
 " Returns true if paste mode is enabled
 function! HasPaste()
@@ -342,9 +392,6 @@ function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
 
-" }}}2
-
-" Directory lists {{{2
 " Improve location lists!
 function! <SID>LocationPrevious()
     try
@@ -354,6 +401,7 @@ function! <SID>LocationPrevious()
     endtry
 endfunction
 
+" Improve location lists!
 function! <SID>LocationNext()
     try
         lnext
@@ -365,14 +413,10 @@ endfunction
 nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPrevious()'<cr>
 nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<cr>
 
-" }}}2
-
-" }}}1
-
+"------------------------
 " Enable local overwrites
+"------------------------
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
 endif
-
-" vim: foldmethod=marker:foldlevel=0
