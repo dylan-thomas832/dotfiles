@@ -1,0 +1,5 @@
+- link:
+    "%USERPROFILE%/AppData/Roaming/Code/User/settings.json": editors/vscode/settings_windows.jsonc
+
+- shell:
+  - [./bin/install_vscode_extensions.sh, Installing Visual Studio Code Extensions]
