@@ -1,3 +1,4 @@
 
 - link:
-    ~/.bashrc: /shells/bash/windows.bashrc
+    ~/.bashrc: shells/bash/windows.bashrc
+    ~/.git-completion.bash: shells/bash/git-completion.bash

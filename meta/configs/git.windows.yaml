@@ -3,4 +3,3 @@
     ~/.gitconfig: development/git/gitconfig
     ~/.gitconfig_local: development/git/gitconfig_local.windows
     ~/.gitignore_global: development/git/gitignore_global
-    ~/git-completion.bash: development/git/git-completion.bash
