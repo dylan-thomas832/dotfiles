@@ -37,6 +37,12 @@
         "**/__pycache__": true,
         "**/**/**/*.pyc": true
     },
+    // Helps with syntax highlighting
+    "files.associations": {
+        "*gitconfig*": "properties",
+        "*ignore*": "ignore",
+        "*pythonrc*": "python",
+    },
     // Default configuration overrides for html, markdown, & python languages
     "[html]": {
         "editor.wordWrap": "on",
