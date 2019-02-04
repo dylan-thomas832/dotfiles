@@ -1,4 +1,7 @@
+linux
 git.linux
 vim
-linux
 python.linux
+sh.linux
+bash.linux
+zsh

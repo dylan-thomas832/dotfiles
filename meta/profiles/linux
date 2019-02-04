@@ -1,6 +1,9 @@
 linux
 git.linux
 vim
-vscode.linux
 python.linux
+sh.linux
+bash.linux
+zsh
+vscode.linux
 terminal.linux
