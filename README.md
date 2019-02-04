@@ -80,8 +80,8 @@ chmod +x -R ~./dotfiles/bin/*
 
 * split apt-get update into various package options (BLAS/ Build/ etc.). 
   * Put in own config file. Not apart of any profile
-* remove submodule for oh-my-zsh. Add it to a config
-* move dotbot submodule into meta 
+* remove submodule for oh-my-zsh. Add it to a config?
+* Determine and add tmux configs
 
 ## Info
 
