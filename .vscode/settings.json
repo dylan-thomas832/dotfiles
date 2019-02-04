@@ -3,4 +3,11 @@
         "install-profile": "shellscript",
         "install-standalone": "shellscript",
     },
+    "cSpell.words": [
+        "dotbot",
+        "dotfile",
+        "dotfiles",
+        "submodule",
+        "submodules"
+    ],
 }

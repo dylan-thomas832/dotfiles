@@ -4,6 +4,12 @@ This is the main repo for all my generic dotfiles.
 
 **Checkout [INFO.md](./INFO.md) for more information!**
 
+Windows Users: run this command in bash as an administrator before running the install script
+
+```bash
+export MSYS=winsymlinks:nativestrict
+```
+
 ## Installing
 
 Clone the repository to somewhere you like to store git repos. 
