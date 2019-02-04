@@ -2,6 +2,8 @@
 
 This is the main repo for all my generic dotfiles.
 
+**Checkout [INFO.md](./INFO.md) for more information!**
+
 ## Installing
 
 Clone the repository to somewhere you like to store git repos. 

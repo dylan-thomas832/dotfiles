@@ -22,21 +22,27 @@ You can run these installation commands safely multiple times, if you think that
 
 ### Profiles
 
+I have three profiles currently setup: Linux for Ubuntu desktop, Windows for use with Cmder, and Windows Subsytem for Linux
+
 ```
 meta/profiles/
-└── workstation
+├── windows
+├── linux
+└── wsl 
 ```
 ### Dotbot configurations
 
+Current configuration options. Some of these have linux/windows varieties.
+
 ```
 meta/configs/
-├── git.yaml
-├── npm.yaml
-├── bash.yaml
-├── vscode.yaml
-└── laragon.yaml
+├── bash
+├── git
+├── linux
+├── python
+├── sh
+├── terminal
+├── vim
+├── vscode
+└── zsh
 ```
-
-# License
-
-Copyright (c) 2018 Shiva Poudel | Licensed under [MIT license](http://shivapoudel.mit-license.org)
