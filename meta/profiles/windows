@@ -2,4 +2,5 @@ bash.windows
 git.windows
 vim
 python.windows
+vscode.windows
 terminal.windows
