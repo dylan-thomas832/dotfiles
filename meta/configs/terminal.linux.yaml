@@ -1,0 +1,3 @@
+
+- shell:
+    - [./terminal/fonts/install.sh DejaVuSansMono, Installing powerline fonts - DejaVuSansMono]

@@ -1,0 +1,3 @@
+
+- shell:
+    - [powershell "& ""./terminal/fonts/install.ps1 DejaVuSansMono""", Installing powerline fonts - DejaVuSansMono]
