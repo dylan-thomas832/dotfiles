@@ -6,30 +6,38 @@
   excludesfile = ~/.gitignore_global
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [color]
+  # Color output to terminal, but not pipes
   branch = auto
   diff = auto
   interactive = auto
   status = auto
+  ui = auto
 [alias]
   # These are super useful.
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lola = log --graph --decorate --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all --date=relative
   # Show files ignored by git:
   ign = ls-files -o -i --exclude-standard
   sofetch = fetch --all
   # I'm super lazy
   st = status
+  stb = status -sb
   ci = commit
   cm = commit -m
   cma = commit -a -m
-  br = branch -vv
+  br = branch -v
+  remote = remote -v
   co = checkout
   df = diff
   mg = merge
   ph = push -u
+  # Helpful as well
   unstage = reset HEAD --
+  uncommit = reset --soft HEAD^
   last = log -1 HEAD
+  cp = cherry-pick -x
 [filter "lfs"]
+  # Large-file-storage management
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
@@ -39,7 +47,10 @@
   tool = vimdiff
 [merge]
   tool = vimdiff
+  summary = true
 [include]
   # Allows you to augment this with your own gitconfig in your home directory
   # This way, you can keep this global version clean, and have another private version
   path = ~/.gitconfig_local
+[gc]
+  auto = 100
