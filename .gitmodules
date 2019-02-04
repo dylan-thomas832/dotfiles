@@ -5,20 +5,20 @@
 	path = terminal/fonts
 	url = https://github.com/powerline/fonts
 [submodule "terminal/base16-conemu"]
-	path = terminal/base16-conemu
+	path = terminal/colors/base16-conemu
 	url = https://github.com/martinlindhe/base16-conemu
 [submodule "terminal/base16-shell"]
-	path = terminal/base16-shell
+	path = terminal/colors/base16-shell
 	url = https://github.com/chriskempson/base16-shell
 [submodule "terminal/base16-xfce4"]
-	path = terminal/base16-xfce4
+	path = terminal/colors/base16-xfce4
 	url = https://github.com/afg984/base16-xfce4-terminal
 [submodule "terminal/base16-gnome"]
-	path = terminal/base16-gnome
+	path = terminal/colors/base16-gnome
 	url = https://github.com/aaron-williamson/base16-gnome-terminal
 [submodule "terminal/base16-putty"]
-	path = terminal/base16-putty
+	path = terminal/colors/base16-putty
 	url = https://github.com/benjojo/base-16-putty
 [submodule "terminal/base16-xresources"]
-	path = terminal/base16-xresources
+	path = terminal/colors/base16-xresources
 	url = https://github.com/chriskempson/base16-xresources
