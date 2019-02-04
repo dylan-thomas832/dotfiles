@@ -84,6 +84,10 @@ chmod +x -R ~./dotfiles/bin/*
   * Put in own config file. Not apart of any profile
 * remove submodule for oh-my-zsh. Add it to a config?
 * Determine and add tmux configs
+* Add choco install stuff for ack, ag on Windows
+* Fix linking on windows...
+* Add list of env variables needed
+* Add ctags stuff
 
 ## Info
 
