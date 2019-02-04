@@ -5,10 +5,11 @@
 
 # VIM specific things
 *.netrwhist
-/vim/files/
-/vim/autoload/
-/vim/bundle/
+*/vim/files/*
+*/vim/autoload/*
+*/vim/bundle/*
 
 # Ignore vscode
 .vscode/
+!.vscode/settings.json
 
