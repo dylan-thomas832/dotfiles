@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "install-profile": "shellscript",
+        "install-standalone": "shellscript",
+    },
+}
