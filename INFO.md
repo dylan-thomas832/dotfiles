@@ -22,7 +22,7 @@ You can run these installation commands safely multiple times, if you think that
 
 ### Profiles
 
-I have three profiles currently setup: Linux for Ubuntu desktop, Windows for use with Cmder, and Windows Subsytem for Linux
+I have three profiles currently setup: Linux for Ubuntu desktop, Windows for use with Cmder, and Windows Subsystem for Linux
 
 ```
 meta/profiles/
@@ -32,7 +32,7 @@ meta/profiles/
 ```
 ### Dotbot configurations
 
-Current configuration options. Some of these have linux/windows varieties.
+Current configuration options. Some of these have Linux/windows varieties.
 
 ```
 meta/configs/
