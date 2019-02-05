@@ -10,6 +10,11 @@ Windows Users: run this command in bash as an administrator before running the i
 export MSYS=winsymlinks:nativestrict
 ```
 
+Install chocolatey in an administrative Powershell. If it's installed, you can use the standalone choco config
+```bash
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+
 Also, this assumes using a terminal emulator like Cmder. Use the "bash" environment to install. You may run into trouble if you have `crlf` line-endings.
 
 ## Installing
