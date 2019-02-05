@@ -10,6 +10,8 @@ Windows Users: run this command in bash as an administrator before running the i
 export MSYS=winsymlinks:nativestrict
 ```
 
+Also, this assumes using a terminal emulator like Cmder. Use the "bash" environment to install. You may run into trouble if you have `crlf` line-endings.
+
 ## Installing
 
 Clone the repository to somewhere you like to store git repos. 
