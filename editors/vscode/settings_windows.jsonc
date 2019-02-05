@@ -43,6 +43,7 @@
         "*ignore*": "ignore",
         "*pythonrc*": "python",
     },
+    "files.eol": "\n", // /r/n is bad!
     // Default configuration overrides for html, markdown, & python languages
     "[html]": {
         "editor.wordWrap": "on",
@@ -190,5 +191,4 @@
         "xlabel",
         "ylabel"
     ],
-    "files.eol": "\n",
 }

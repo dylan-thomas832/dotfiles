@@ -1,10 +1,8 @@
-[user]
-  name = Dylan Thomas
-  email = dylan93@vt.edu
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  autocrlf = false
 [color]
   # Color output to terminal, but not pipes
   branch = auto

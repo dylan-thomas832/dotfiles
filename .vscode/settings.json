@@ -10,4 +10,7 @@
         "submodule",
         "submodules"
     ],
+    "editor.renderControlCharacters": true,
+    "editor.renderIndentGuides": true,
+    "editor.renderWhitespace": "all",
 }
