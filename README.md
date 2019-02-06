@@ -4,80 +4,102 @@ This is the main repo for all my generic dotfiles.
 
 **Checkout [INFO.md](./INFO.md) for more information!**
 
-Windows Users: run this command in bash as an administrator before running the install script
+## Windows Installation
 
-```bash
-export MSYS=winsymlinks:nativestrict
-```
+List of required & recommended external programs that haven't been automated.
 
-Install chocolatey in an administrative Powershell. If it's installed, you can use the standalone choco config
-```bash
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-```
+- Required:
+  - **VSCode**, for a GUI text editor
+  - **Cmder**, for Linux-esque terminal emulation
 
-Also, this assumes using a terminal emulator like Cmder. Use the "bash" environment to install. You may run into trouble if you have `crlf` line-endings.
+- Possible pre-requirements:
+  - **Ctags**, for better Vim navigation
+  - **Chocolatey**, for improving Vim searching
+  - **Texlive**, for writing LaTeX documents
 
-## Installing
+#### [vscode](https://code.visualstudio.com/)
 
-Clone the repository to somewhere you like to store git repos. 
+1. Download and install the User version
+1. Add to environment path for ease
 
-```bash
-git clone git@github.com:dylan93/dotfiles.git
-```
+#### [cmder](http://cmder.net/)
+ 
+1. Download and install the full version 
+1. Put the folder at __C:/Users/"user-name"/cmder__
+    - Add to path
+1. Create the environment variable `%CMDER_ROOT%` for it's location
+1. From *cmd.exe*, run 
+    ```powershell
+    cmder.exe /register USER
+    ```
 
-__NOTE__: it must not be cloned into ~/.dotfiles
-This will clone the directory to its desired location, and change into that directory.
+#### [ctags](http://ctags.sourceforge.net/)
 
-Next, run the `dotfile_install` script (without sudo!):
+1. Download and extract 
+1. I put them at __C:/ctags58/__
+    - Add this to your environment path
+  
+#### [chocolatey](https://chocolatey.org/install)
 
-```bash
-./dotfile_install
-```
+1. Download and install  (requires elevation)
+1. Once installed, from *cmd.exe*, run
+    ```powershell
+    choco install -y ack ag
+    ```
 
-Everything should be taken care of by this script. __NOTE__: This requires elevation (sudo), so be prepared to enter your password. This will install only the necessary packages.
+#### [texlive](https://tug.org/texlive/acquire-netinstall.html)
 
-To run a complete install (full set of dev apt packages):
+1. Download and install 
+    - This takes a __very__ long time
+1. I install it to __C:/texlive/__
+    - Add __C:/texlive/"year"/bin/win32__ to your path
 
-```bash
-./dotfile_install -c install_complete.conf.yaml
-```
+### Installation procedure
 
+1. In Cmder, open a bash terminal **as an administrator** - {bash::bash as Admin}
+1. To clone the repo and ensure "LF" line endings are used:
+    ```bash
+    git config core.autocrlf=false
+    git clone https://github.com/dylan93/dotfiles.git
+    cd dotfiles
+    ```
+1. Run this to allow for symbolic links
+    ```bash 
+    export MSYS=winsymlinks:nativestrict
+    ```
+1. In Cmder, open a cmd terminal **as an administrator**  - {cmd::Cmder}
+1. Run this command to setup the dotfiles
+    ```powershell
+    sh ./install-profile windows
+    ```
+    - You can edit the configurations included by alterin __meta/profiles/windows__
+1. In the Cmder bash shell, to setup Visual Studio Code extensions, run:
+    ```bash
+    ./bin/install-vscode-extensions
+    ```
+
+## WSL Installation
+
+TBD
+
+## Linux Installation
+
+TBD
 
 ## Updating
 
-Simply run the following to update submodules/packages for dotfiles:
-
-```bash
-./dotfile_install -c update.conf.yaml
-```
-
-To explicitly update dotbot and copy over a new `dotfile_install` file:
-
-```bash
-./bin/update_dotbot.sh
-```
-
-Fast forward all submodules to upstream origin/master. Only does master branch.
+Fast forward all submodules to upstream origin/master. Only does master branch. TBD
 ```shell
 git submodule foreach git pull origin master --recursive
 ```
 
-
 ## Troubleshooting
 
-- Inspect __logs/__ directory for script outputs & errors!
 - Try changing permissions on shell scripts: 
 
 ```bash
 chmod +x -R ~./dotfiles/bin/*
 ```
-
-- Run check for WSL, which may cause issues:
-
-```bash
-./bin/check_wsl.sh
-```
-
 
 ## Dependencies for WSL only
 
@@ -85,7 +107,6 @@ chmod +x -R ~./dotfiles/bin/*
 - wsl-terminal (rosipov theme, DejaVu Sans Mono font)
 - Need to install fonts from *.tff file!
 - Install mintty themes to wsltty/themes !
-
 
 ## General Dependencies
 - zsh, oh-my-zsh
@@ -97,10 +118,6 @@ chmod +x -R ~./dotfiles/bin/*
   * Put in own config file. Not apart of any profile
 * remove submodule for oh-my-zsh. Add it to a config?
 * Determine and add tmux configs
-* Add choco install stuff for ack, ag on Windows
-* Fix linking on windows...
-* Add list of env variables needed
-* Add ctags stuff
 
 ## Info
 

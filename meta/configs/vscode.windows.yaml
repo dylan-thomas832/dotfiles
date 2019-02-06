@@ -1,5 +1,2 @@
 - link:
     "%USERPROFILE%/AppData/Roaming/Code/User/settings.json": editors/vscode/settings_windows.jsonc
-
-- shell: 
-    - [bash ./editors/vscode/install_extensions]
