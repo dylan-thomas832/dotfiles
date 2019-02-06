@@ -79,7 +79,7 @@
     "python.autoComplete.addBrackets": true,
     "python.autoComplete.extraPaths": [],
     // Path to default Python version & ctags exectuable
-    "python.pythonPath": "C:/Users/Dylan/Anaconda3/python.exe", // Uncomment to set manually.
+    "python.pythonPath": "python", // Uncomment to set manually. Useful to put directly in path rather than here. Add python environments for specific projects
     "python.workspaceSymbols.ctagsPath": "C:/ctags58/ctags.exe", // Uncomment to set manually
     // Pylint settings (style/code linting)
     "python.linting.pylintEnabled": true,
@@ -100,7 +100,7 @@
     ],
     // Latex Workshop settings
     "latex-workshop.chktex.enabled": true,
-    "latex-workshop.chktex.path": "C:/texlive/2016/bin/win32/chktex",
+    "latex-workshop.chktex.path": "chktex",
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.latex.clean.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
@@ -124,7 +124,7 @@
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
-            "command": "C:/texlive/2016/bin/win32/latexmk",
+            "command": "latexmk",
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
@@ -135,7 +135,7 @@
         },
         {
             "name": "pdflatex",
-            "command": "C:/texlive/2016/bin/win32/pdflatex",
+            "command": "pdflatex",
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
@@ -145,7 +145,7 @@
         },
         {
             "name": "bibtex",
-            "command": "C:/texlive/2016/bin/win32/bibtex",
+            "command": "bibtex",
             "args": [
                 "%DOCFILE%"
             ]
