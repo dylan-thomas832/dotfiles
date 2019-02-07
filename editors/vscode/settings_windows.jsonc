@@ -161,7 +161,7 @@
     // Markdown extension settings
     "markdown.extension.list.indentationSize": "inherit",
     "markdown.extension.orderedList.marker": "one",
-    "markdown.extension.preview.autoShowPreviewToSide": true,
+    "markdown.extension.preview.autoShowPreviewToSide": false,
     "markdown.extension.toc.githubCompatibility": true,
     // Code spell-checker settings
     "cSpell.spellCheckDelayMs": 20,
