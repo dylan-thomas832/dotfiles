@@ -9,6 +9,7 @@ ipython
 jupyter
 
 # Non-Conda packages. Installed with pip
+powerline
 flake8-docstrings
 flake8-blind-except
 flake8-builtins

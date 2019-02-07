@@ -1,10 +1,11 @@
 
 - link:
-    ~/.pythonrc: development/python/pythonrc
-    ~/.pylintrc: development/python/pylintrc.py
-    ~/.config/flake8: development/python/flake8
+    ~/.pythonrc: development/python/pythonrc.py
+    ~/.pylintrc: development/python/pylintrc.ini
+    ~/.flake8: development/python/flake8.ini
     ~/.config/mypy/config: development/python/mypy.ini
 
 - shell:
-    - [python3 -m pip install --user -U pip, Upgrading pip]
-    - [pip3 install --user -U -r development/python/req.linux.txt, Installing basic packages]
+    - [conda update -y conda, Updating conda]
+    - [conda install -y pip cython flake8 pylint mypy ipython jupyter, Installing conda python packages]
+    - [pip install --user -U -r ./development/python/req.windows.txt, Installing pip python packages]

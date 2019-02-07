@@ -1,8 +1,0 @@
-[flake8]
-ignore = 
-exclude =
-    .git,
-    __pycache__,
-    .vscode,
-max-complexity = 10
-enable-extensions = G

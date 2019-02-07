@@ -1,30 +1,32 @@
-""" ~/.pythonrc.py
-PYTHONRC - Really Neat way to make the python shell fun and usable!
+"""PYTHONRC - Really Neat way to make the python shell fun and usable.
 
 Copy this file to $HOME/.pythonrc.py
-In windows, copy it to $HOMEDRIVE:$HOMEPATH\.pythonrc.py
+In windows, copy it to $HOMEDRIVE:$HOMEPATH/.pythonrc.py
 
 This is called when interactive python interpreter is instructed to:
     import user
 You can force this to import everytime by setting an environment variable:
     export PYTHONSTARTUP="$HOME/.pythonrc.py"
-It makes command history persistent, allows TAB expansion, adds time 
+It makes command history persistent, allows TAB expansion, adds time
 stamp.
 """
 
-class pythonrc:
+
+class PythonRC:
+    """Defines Python RC class."""
+
     histfile = None
     debug = None
 
+    @classmethod
     def init(cls):
-        """Initialize a nice environment to run in
-        """
+        """Initialize a nice environment to run in."""
         import os
         cls.debug = os.getenv('PYTHONRC_DEBUG')
 
         if os.getenv('NOPYTHONRC'):
             # Not loading the python environment
-            cls.dp( "Skipping loading the pythonrc environment stuff" )
+            cls.debug_print("Skipping loading the pythonrc environment stuff")
             return
 
         try:
@@ -35,66 +37,65 @@ class pythonrc:
 
         if readline:
             # Set the history file
-            cls.histfile = os.path.join( os.getenv('HOME', '.'),
-                                         '.python_history' )
-            cls.dp( "Using history file '%s'" % cls.histfile )
+            cls.histfile = os.path.join(os.getenv('HOME', '.'), '.python_history')
+            cls.debug_print("Using history file '%s'" % cls.histfile)
 
             # Read the history file
-            if os.path.exists( cls.histfile ):
+            if os.path.exists(cls.histfile):
                 readline.read_history_file(cls.histfile)
-                cls.dp( "Using existing history information" )
+                cls.debug_print("Using existing history information")
             else:
-                cls.dp( "Creating new history file" )
+                cls.debug_print("Creating new history file")
 
             # Set the number of history items to 3000
             readline.set_history_length(3000)
-            cls.dp( "History size set to 3000" )
+            cls.debug_print("History size set to 3000")
 
             # Put a marker for the starting time.
-            readline.add_history("# starting %s" % cls.strtime() )
-            cls.dp( "Marked start of history file" )
+            readline.add_history("# starting %s" % cls.strtime())
+            cls.debug_print("Marked start of history file")
 
             # Allow Tab Completion
-            import rlcompleter # This sets up python specific completion
+            import rlcompleter  # This sets up python specific completion pylint: disable=unused-import
             readline.parse_and_bind("tab: complete")
-            cls.dp( "Started completion" )
+            cls.debug_print("Started completion")
         else:
-            cls.dp( "No readline available" )
+            cls.debug_print("No readline available")
 
         # Set the prompts
         import sys
-        sys.ps1 = "python%s> " % ".".join( map( str, sys.version_info[:2] ) )
-        sys.ps2 = " " * ( len( sys.ps1 ) - 2 ) + "> "
-        cls.dp( "Set prompts" )
+        sys.ps1 = "python%s> " % ".".join(map(str, sys.version_info[:2]))
+        sys.ps2 = " " * (len(sys.ps1) - 2) + "> "
+        cls.debug_print("Set prompts")
 
         # The the exit function
         import atexit
         atexit.register(cls.exit)
-        cls.dp( "Registered exit function" )
-    init = classmethod( init )
+        cls.debug_print("Registered exit function")
 
-    def dp(cls, *msgs):
-        "Debugging Print"
+    @classmethod
+    def debug_print(cls, *msgs):
+        """Debugging Print."""
         if cls.debug:
             for msg in msgs:
-                print "PYTHONRC: %s" % msg
-    dp = classmethod( dp )
+                print("PYTHONRC: %s" % msg)
 
+    @classmethod
     def strtime(cls):
-        "Returns the time in a nicely formatted string"
+        """Return the time in a nicely formatted string."""
         import time
-        format = "%A %I:%M %p, %B %d, %Y %Z"
-        return time.strftime( format )
-    strtime = classmethod( strtime )
+        str_format = "%A %I:%M %p, %B %d, %Y %Z"
+        return time.strftime(str_format)
 
+    @classmethod
     def exit(cls):
-        "Method to run when everything exits"
-        cls.dp( "Exiting..." )
+        """Run when everything exits."""
+        cls.debug_print("Exiting...")
         if cls.readline:
-            cls.readline.add_history("# leaving %s" % cls.strtime() )
+            cls.readline.add_history("# leaving %s" % cls.strtime())
             cls.readline.write_history_file(cls.histfile)
-        print "Bye now. Love Ya!"
-    exit = classmethod( exit )
+        print("Exiting")
+
 
 if __name__ == "__main__":
-    pythonrc.init()
+    PythonRC.init()
