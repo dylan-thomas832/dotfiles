@@ -65,6 +65,7 @@ syntax on
 " vim can autodetect this based on $TERM (e.g. 'xterm-256color')
 " but it can be set to force 256 colors
 
+set t_Co=256
 set background=dark
 " colorscheme tbd
 colorscheme base16-zenburn
@@ -328,6 +329,13 @@ if executable('ag')
     nnoremap \ :Ag<SPACE>
   endif
 endif
+
+" Vim-airline settings
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
+let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 "----------------
 " File management
