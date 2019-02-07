@@ -60,27 +60,16 @@ inoremap <S-Tab> <C-n>
 " Color scheme
 "-------------
 
+let python_highlight_all=1
 syntax on
 " vim can autodetect this based on $TERM (e.g. 'xterm-256color')
 " but it can be set to force 256 colors
-" set t_Co=256
-if has('gui_running')
-    set background=dark
-    colorscheme solarized
-    let g:lightline = {'colorscheme': 'solarized'}
-elseif &t_Co < 256
-    colorscheme default
-    set nocursorline " looks bad in this mode
-else
-    set background=dark
-    let g:solarized_termcolors=256 " instead of 16 color with mapping in terminal
-    colorscheme solarized
-    " customized colors
-    highlight SignColumn ctermbg=234
-    highlight StatusLine cterm=bold ctermfg=245 ctermbg=235
-    highlight StatusLineNC cterm=bold ctermfg=245 ctermbg=235
-    highlight SpellBad cterm=underline
-endif
+
+set background=dark
+" colorscheme tbd
+colorscheme base16-zenburn
+" or
+" colorscheme solarized
 
 "-------------------
 " Indentation & Text
@@ -95,8 +84,8 @@ set shiftround                  " >> indents to next multiple of `shiftwidth`
 
 " Linebreak, textwidth, and wordwrap
 set linebreak
-set textwidth=100
-set colorcolumn=101             " Create colored column at textwidth
+set textwidth=120
+set colorcolumn=121             " Create colored column at textwidth
 set wrap
 
 "--------------------
@@ -266,6 +255,15 @@ augroup CursorLineOnlyInActiveWindow
     autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
     autocmd WinLeave * setlocal nocursorline
 augroup END
+
+" Python specific settings
+au BufNewFile, BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
 
 augroup configgroup
     " Directive clears all autocmds for group

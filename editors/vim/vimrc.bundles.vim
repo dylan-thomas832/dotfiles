@@ -20,6 +20,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'vim-scripts/taglist.vim'
 Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/indentpython.vim'
 
 if g:has_async
   " Plugins require async
