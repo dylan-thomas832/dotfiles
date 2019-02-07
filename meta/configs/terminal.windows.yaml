@@ -1,4 +1,4 @@
 
 - shell:
-    - [powershell "& ./terminal/fonts/install.ps1 DejaVuSansMono", Installing powerline fonts - DejaVuSansMono]
-    - [powershell "./terminal/colors/base16-conemu/Install-ConEmuTheme.ps1 -ConfigPath %ConEmuDir%/ConEmu.xml -Operation Add -ThemePathOrName ./terminal/colors/base16-conemu/themes/base16-ocean.xml", Installing Cmder Theme]
+    - [powershell -ExecutionPolicy Bypass "& ./terminal/fonts/install.ps1 DejaVuSansMono", Installing powerline fonts - DejaVuSansMono]
+    - [powershell -ExecutionPolicy Bypass "./terminal/colors/base16-conemu/Install-ConEmuTheme.ps1 -ConfigPath %ConEmuDir%/ConEmu.xml -Operation Add -ThemePathOrName ./terminal/colors/base16-conemu/themes/base16-flat.xml", Installing Cmder Theme]
