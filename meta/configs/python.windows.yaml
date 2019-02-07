@@ -1,3 +1,10 @@
 
 - link:
     ~/.pythonrc: development/python/pythonrc
+    ~/.pylintrc: development/python/pylintrc.py
+    ~/.config/flake8: development/python/flake8
+    ~/.config/mypy/config: development/python/mypy.ini
+
+- shell:
+    - [python3 -m pip install --user -U pip, Upgrading pip]
+    - [pip3 install --user -U -r development/python/req.linux.txt, Installing basic packages]
