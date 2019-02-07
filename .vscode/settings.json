@@ -5,9 +5,16 @@
         "flake8": "properties",
     },
     "cSpell.words": [
+        "NOPYTHONRC",
+        "atexit",
         "dotbot",
         "dotfile",
         "dotfiles",
+        "getenv",
+        "msgs",
+        "pythonrc",
+        "rlcompleter",
+        "strftime",
         "submodule",
         "submodules"
     ],
