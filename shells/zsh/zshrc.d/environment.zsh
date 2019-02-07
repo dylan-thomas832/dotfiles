@@ -9,7 +9,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
 # Python startup file
-export PYTHONSTARTUP="$HOME/.pythonrc.py"
+export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # Useful for X11 forwarding
 export DISPLAY=:0

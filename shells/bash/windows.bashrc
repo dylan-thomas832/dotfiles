@@ -20,7 +20,7 @@ else
         export TERM='xterm-color'
 fi
 
-export PYTHONSTARTUP="$HOME/.pythonrc.py"
+export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # Source machine-specific bashrc file
 if [ -f ~/.bashrc_local ]; then
