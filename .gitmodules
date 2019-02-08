@@ -10,3 +10,6 @@
 [submodule "terminal/base16-putty"]
 	path = terminal/colors/base16-putty
 	url = https://github.com/benjojo/base-16-putty
+[submodule "terminal/colors/conemu-themes"]
+	path = terminal/colors/conemu-themes
+	url = git@github.com:joonro/ConEmu-Color-Themes.git
