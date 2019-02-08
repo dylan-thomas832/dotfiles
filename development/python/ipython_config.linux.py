@@ -1,3 +1,4 @@
+# flake8: noqa pylint: skip-file
 from powerline.bindings.ipython.since_5 import PowerlinePrompts
 c = get_config()
 c.TerminalInteractiveShell.simple_prompt = False

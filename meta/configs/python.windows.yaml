@@ -7,5 +7,5 @@
 
 - shell:
     - [conda update -y conda, Updating conda]
-    - [conda install -y pip cython flake8 pylint mypy ipython jupyter, Installing conda python packages]
+    - [conda install -y pip cython flake8 pylint mypy ipython jupyter pywin32, Installing conda python packages]
     - [pip install --user -U -r ./development/python/req.windows.txt, Installing pip python packages]

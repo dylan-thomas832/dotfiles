@@ -7,6 +7,7 @@ pylint
 mypy
 ipython
 jupyter
+pywin32
 
 # Non-Conda packages. Installed with pip
 flake8-docstrings
