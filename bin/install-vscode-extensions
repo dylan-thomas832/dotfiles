@@ -10,6 +10,7 @@ code --install-extension ms-vscode.cpptools                         # C++
 code --install-extension James-Yu.latex-workshop                    # Latex
 code --install-extension yzhang.markdown-all-in-one                 # Markdown
 code --install-extension redhat.vscode-yaml                         # YAML
+code --install-extension dunstontc.viml                             # Vim scripts
 
 # Language improvement packages
 code --install-extension njpwerner.autodocstring                    # Auto-docstring for Python
