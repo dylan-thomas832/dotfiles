@@ -39,6 +39,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+# Colors
+LS_COLORS=$LS_COLORS:'di=1;35;40:ow=1;35;40:'; export LS_COLORS
+
 # ssh keys
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
