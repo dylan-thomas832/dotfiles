@@ -1,8 +1,0 @@
-#!/bin/bash
-
-
-# Open paned window
-tmux new-session -d 'vim' 
-tmux split-window -h 'ipython2'
-tmux split-window -v
-tmux -2 attach-session -d

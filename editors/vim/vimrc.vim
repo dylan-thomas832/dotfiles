@@ -68,9 +68,9 @@ syntax on
 set t_Co=256
 set background=dark
 " colorscheme tbd
-colorscheme base16-zenburn
+" colorscheme base16-zenburn
 " or
-" colorscheme solarized
+colorscheme solarized
 
 "-------------------
 " Indentation & Text
