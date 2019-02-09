@@ -2,8 +2,8 @@ linux
 git
 dev
 vim
-python.linux
 sh.linux
 bash.linux
 zsh
 terminal.linux
+
