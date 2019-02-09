@@ -7,6 +7,6 @@
     ~/.config/mypy/config: development/python/mypy.ini
 
 - shell:
-    - [conda update -y conda, Updating conda]
-    - [conda install -y pip cython flake8 pylint mypy ipython jupyter, Installing conda python packages]
-    - [pip install --user -U -r ./development/python/req.windows.txt, Installing pip python packages]
+    - [~/anaconda3/bin/conda update -y conda, Updating conda]
+    - [~/anaconda3/bin/conda install -y pip cython flake8 pylint mypy ipython jupyter, Installing conda python packages]
+    - [~/anaconda3/bin/pip install --user -U -r ./development/python/req.linux.txt, Installing pip python packages]
