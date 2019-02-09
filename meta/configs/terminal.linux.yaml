@@ -1,7 +1,8 @@
 
 - link:
     ~/.config/base16-shell: terminal/colors/base16-shell
+    ~/.tmux.conf: terminal/tmux/.tmux.confv
+    ~/.tmux.conf.local: terminal/tmux.conf.local
 
 - shell:
     - [./terminal/fonts/install.sh DejaVuSansMono, Installing powerline fonts - DejaVuSansMono]
-
