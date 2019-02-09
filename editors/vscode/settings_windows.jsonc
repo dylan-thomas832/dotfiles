@@ -33,7 +33,6 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        // "**/.vscode": true,
         "**/__pycache__": true,
         "**/**/**/*.pyc": true,
         "**/.mypy_cache": true,
