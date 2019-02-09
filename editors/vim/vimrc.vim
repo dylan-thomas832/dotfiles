@@ -270,7 +270,7 @@ augroup configgroup
     " Directive clears all autocmds for group
     autocmd!
     " Whitespace removal
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee,*.zsh :call CleanExtraSpaces()
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee,*.zsh :call <SID>CleanExtraSpaces()
     " Python
     autocmd FileType python setlocal commentstring=#\ %s
     " Ensure TABs are used in makefiles
