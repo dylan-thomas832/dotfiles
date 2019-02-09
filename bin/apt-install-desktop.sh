@@ -30,5 +30,8 @@ apt autoremove -y
 # Setup oh-my-zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
+# Change to zsh
+chsh -s /bin/zsh
+
 echo "Finished apt-get installs!"
 
