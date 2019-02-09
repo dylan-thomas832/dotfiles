@@ -13,3 +13,6 @@
 [submodule "terminal/colors/conemu-themes"]
 	path = terminal/colors/conemu-themes
 	url = git@github.com:joonro/ConEmu-Color-Themes.git
+[submodule ".tmux"]
+	path = terminal/tmux
+	url = git@github.com:gpakosz/.tmux.git
