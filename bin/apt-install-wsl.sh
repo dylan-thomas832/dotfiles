@@ -18,8 +18,8 @@ apt install -y libopenblas-dev libatlas-base-dev liblapack-dev
 # Esnure we have basics
 apt install -y git wget curl vim ctags
 
-# Get zsh & tmux
-apt install -y zsh
+# Get zsh,tmux, & fonts
+apt install -y zsh tmux fonts-powerline
 
 # Get Ack & Ag
 apt install -y ack-grep silversearcher-ag
@@ -31,7 +31,7 @@ apt autoremove -y
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 # Change to zsh
-chsh -s /bin/zsh
+chsh -s $(/bin/zsh)
 
 echo "Finished apt-get installs!"
 
