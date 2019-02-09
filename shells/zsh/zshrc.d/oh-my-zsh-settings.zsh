@@ -72,7 +72,6 @@ plugins=(
   pip
   pyenv
   python
-  last-working-dir
 )
 
 source $ZSH/oh-my-zsh.sh
