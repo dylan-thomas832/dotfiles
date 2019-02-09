@@ -5,5 +5,5 @@ vim
 sh.linux
 bash.linux
 zsh
+python.linux
 terminal.linux
-
