@@ -1,6 +1,7 @@
 
 - link:
-    ~/.config/mintty/config/themes: terminal
+    '%APPDATA%/wsltty/themes': terminal/mintty/themes
+    '%APPDATA%/wsltty/config': terminal/mintty/config
 
 - shell:
     - [powershell -ExecutionPolicy Bypass "& ./terminal/fonts/install.ps1 DejaVuSansMono", Installing powerline fonts - DejaVuSansMono]

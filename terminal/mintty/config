@@ -1,0 +1,8 @@
+# Mintty settings for WSL
+Font=DejaVu Sans Mono for Powerline
+# ThemeFile=ocean.minttyrc
+# ThemeFile=oceanicnext.minttyrc
+ThemeFile=nord.minttyrc
+# ThemeFile=eightiesminttyrc
+# ThemeFile=solarized.minttyrc
+Term=xterm-256color
