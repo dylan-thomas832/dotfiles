@@ -1,28 +1,31 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
 # Update/upgrade package
-apt-get update
-apt-get upgrade -y
+apt update
+apt upgrade -y
 
 # Pretty basic setup
-apt-get install build-essential gfortran cmake cmake-curses-gui -y
+apt install -y build-essential gfortran cmake cmake-curses-gui 
 
 # Python stuff
-apt-get install python3-dev python3-pip python3-tk -y
+apt install -y python3-dev python3-pip python3-tk
 
 # BLAS/LAPACK
-apt-get install libopenblas-dev libatlas-base-dev liblapack-dev -y
+apt install -y libopenblas-dev libatlas-base-dev liblapack-dev
 
 # Esnure we have basics
-apt-get install git wget curl vim ctags -y
+apt install -y git wget curl vim ctags
 
-# Get zsh
-apt-get install zsh tmux -y
+# Get zsh & tmux
+apt install -y zsh tmux
 
 # Get Ack & Ag
-apt-get install ack-grep silversearcher-ag -y
+apt install -y ack-grep silversearcher-ag
+
+# Remove unneeded packages
+apt autoremove -y
 
 # Setup oh-my-zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
