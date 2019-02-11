@@ -123,3 +123,7 @@ chmod +x -R ~./dotfiles/bin/*
 
 [dotbot](https://github.com/anishathalye/dotbot/)
 [install profiles](https://github.com/shivapoudel/dotfiles)
+
+## License
+
+Copyright (c) 2019 Dylan Thomas | Licensed under [MIT license](https://dylanthomas.mit-license.org/)
