@@ -8,6 +8,8 @@ This is the main repo for all my generic dotfiles.
 
 List of required & recommended external programs that haven't been automated.
 
+**Note**:  Make sure you set your git settings to "autocrlf=false" first
+
 - Required:
   - **VSCode**, for a GUI text editor
   - **Cmder**, for Linux-esque terminal emulation

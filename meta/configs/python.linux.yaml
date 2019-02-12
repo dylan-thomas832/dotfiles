@@ -8,5 +8,5 @@
 
 - shell:
     - [~/anaconda3/bin/conda update -y conda, Updating conda]
-    - [~/anaconda3/bin/conda install -y pip cython flake8 pylint mypy 'ipython<7.0' jupyter, Installing conda python packages]
+    - [~/anaconda3/bin/conda install -y pip cython flake8 pylint mypy "ipython<7.0" jupyter, Installing conda python packages]
     - [~/anaconda3/bin/pip install --user -U -r ./development/python/req.linux.txt, Installing pip python packages]
