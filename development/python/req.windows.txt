@@ -5,7 +5,7 @@ cython
 flake8
 pylint
 mypy
-ipython
+ipython<7.0
 jupyter
 pywin32
 
