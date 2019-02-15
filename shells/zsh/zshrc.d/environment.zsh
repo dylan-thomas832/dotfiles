@@ -39,9 +39,6 @@ export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Colors
-LS_COLORS=$LS_COLORS:'di=1;35;40:ow=1;35;40:'; export LS_COLORS
-
 # ssh keys
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -51,9 +48,14 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
+# Ensure we use zsh
 export SHELL=zsh
 
-fpath=( "$HOME/.zfunctions" $fpath )
+# Vi mode in shell
+bindkey -v
+
+# Colors
+eval $(dircolors -b ${HOME}/.dircolors)
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
