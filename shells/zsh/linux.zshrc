@@ -4,10 +4,7 @@ if [ -f ~/.zshrc_local_before ]; then
 fi
 
 # External plugins (initialized before)
-# source ~/.zshrc.d/plugins_before.zsh
-
-# Oh-my-zsh specific settings. Uncomment to use them
-source ~/.zshrc.d/oh-my-zsh-settings.zsh
+source ~/.zshrc.d/plugins_before.zsh
 
 # Load contained custom functions
 source ~/.zshrc.d/functions.zsh

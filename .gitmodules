@@ -16,3 +16,6 @@
 [submodule ".tmux"]
 	path = terminal/tmux
 	url = git@github.com:gpakosz/.tmux.git
+[submodule "shells\\zsh\\pure"]
+	path = shells\\zsh\\pure
+	url = git@github.com:sindresorhus/pure.git
