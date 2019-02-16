@@ -44,9 +44,9 @@ List of required & recommended external programs that haven't been automated.
 #### [chocolatey](https://chocolatey.org/install)
 
 1. Download and install  (requires elevation)
-1. Once installed, from *cmd.exe*, run
+1. Once installed, from *cmd.exe* (elevated), run
     ```powershell
-    choco install -y ack ag
+    ./bin/choco-install.cmd
     ```
 
 #### [texlive](https://tug.org/texlive/acquire-netinstall.html)
