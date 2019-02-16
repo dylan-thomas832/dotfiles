@@ -3,51 +3,30 @@
 ;= %SystemRoot%\system32\doskey /listsize=1000 /macrofile=%0%
 ;= rem In batch mode, jump to the end of the file
 ;= goto:eof
-;= Add aliases below here
+;= Add aliases below 
 
-rem stuff from cmder default configs
+;= Comment like this
+
+;= Cmder aliases
 pwd=cd
 clear=cls
 history=cat "%CMDER_ROOT%\config\.history"
 unalias=alias /d $1
 cmderr=cd /d "%CMDER_ROOT%"
-rem open epxlorer here
-e.=explorer .
-
-rem Easier navigation: .., ..., ...., ....., ~ and -
+;= Easier navigation
 ..=cd ..
 ...=cd ../..
 ....=cd ../../..
 .....=cd ../../../..
-
-rem Ensure VIM and lazy git
+;= Improve application commands
 vi=vim $*
 g=git $*
-
-rem List files colorized in long format
+;= Improve less output options
 l=ls -lF --color --show-control-chars $*
 ls=ls -lF --color --show-control-chars $*
-rem List all files colorized in long formation
 la=ls -lAF --color --show-control-chars $*
-rem List only directories
-lsd=ls -lF --color | grep --color=never '^d' $*
-
-rem Colorize `grep` output
+lsd=ls -lF --color | grep --color=never "^d"
+;= Colored grep
 grep=grep --color=auto $*
-
-rem Get the week number
-week=date +%V
-
-rem Intuitive map function
-rem For example, to list all directories that contain a certain file:
-rem find . -name .gitattributes | map dirname
-map=xargs -n1 $*
-
-rem Reload the shell (i.e. invoke as a login shell)
-reload=exec ${SHELL} -l
-
-rem Print public key to screen
+;= Print public key to terminal
 pubkey=cat ~/.ssh/id_rsa.pub
-
-rem Print each PATH entry on a separate line
-path='echo -e ${PATH//:/\\n}'

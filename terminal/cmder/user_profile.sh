@@ -9,7 +9,49 @@
 # Adds git completions
 source ~/.git-completion.bash
 
-# Exports
+####### Aliases
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# open epxlorer here
+alias e=explorer
+
+# Ensure VIM & lazy git
+alias vi=vim
+alias g=git
+__git_complete g _git
+
+# CD to cmder root
+alias cmderr="cd ${CMDER_ROOT}"
+
+# List files colorized in long format
+alias l="ls -lF --color --show-control-chars"
+alias ls="ls -lF --color --show-control-chars"
+# List all files colorized in long formation
+alias la="ls -lAF --color --show-control-chars"
+# List only directories
+alias lsd="ls -lF --color | grep --color=never '^d'"
+
+# Colorize `grep` output
+alias grep="grep --color=auto"
+
+# Get the week number
+alias week="date +%V"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
+
+# Print public key to screen
+alias pubkey="cat ~/.ssh/id_rsa.pub"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+###### Exports
 
 # Local binaries. First should already be added
 export PATH="/usr/local/bin:$PATH"
@@ -43,15 +85,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Make vim default editor
 export EDITOR='vim'
 
-# Functions
-
-# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
-# the `.git` directory, listing directories first. The output gets piped into
-# `less` with options to preserve color and line numbers, unless the output is
-# small enough for one screen.
-function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
-}
+###### Functions
 
 # Timestamp function
 timestamp () {
