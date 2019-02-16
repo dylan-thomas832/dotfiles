@@ -1,6 +1,7 @@
 # Local binaries. First should already be added
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # Add Anaconda to path
 export PATH="$HOME/anaconda3/bin:$PATH"
@@ -27,6 +28,9 @@ export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 # Python startup file
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8';
+
 # Useful for X11 forwarding
 export DISPLAY=:0
 
@@ -38,6 +42,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL='en_US.UTF-8';
 
 # ssh keys
 export SSH_KEY_PATH="~/.ssh/rsa_id"

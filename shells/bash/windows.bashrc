@@ -7,21 +7,6 @@ if [[ $- != *i* ]] ; then
   return
 fi
 
-# Add useful aliases
-alias g="git"
-alias reload="source ~/.bashrc"
-
-# Adds git completions
-source ~/.git-completion.bash
-
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-        export TERM='xterm-256color'
-else
-        export TERM='xterm-color'
-fi
-
-export PYTHONSTARTUP="$HOME/.pythonrc"
-
 # Source machine-specific bashrc file
 if [ -f ~/.bashrc_local ]; then
   source ~/.bashrc_local
