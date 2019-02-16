@@ -6,3 +6,5 @@
     ~/.config/flake8: development/python/flake8.ini
     ~/.config/mypy/config: development/python/mypy.ini
 
+- shell:
+    - [python3 -m pip install --user -U -r "./development/python/req.linux.txt", Installing pip python packages]

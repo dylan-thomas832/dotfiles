@@ -1,6 +1,7 @@
 # Basic requirements file for python
 
 # Packages able to install with Conda which is my standard Python distribution. Left here for posterity
+pip
 cython
 flake8
 pylint
