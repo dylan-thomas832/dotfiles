@@ -1,55 +1,61 @@
 [core]
 
-  # Use vim
-  editor = vim
-  # crlf are bad most of the time
-  autocrlf = false
-  # Exclude everything!
-  excludesfile = ~/.gitignore_global
-  # Treat spaces before tabs and all kinds of trailing whitespace as an error
-  # [default] trailing-space: looks for spaces at the end of a line
-  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-  whitespace = -indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
+    # Use vim
+    editor = vim
 
-  # Speed up commands involving untracked files such as `git status`.
-  # https://git-scm.com/docs/git-update-index#_untracked_cache
-  untrackedCache = true
+    # crlf are bad most of the time
+    autocrlf = false
+
+    # Exclude everything!
+    excludesfile = ~/.gitignore_global
+
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: looks for spaces at the end of a line
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+    whitespace = -indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
+
+    # Speed up commands involving untracked files such as `git status`.
+    # https://git-scm.com/docs/git-update-index#_untracked_cache
+    untrackedCache = true
 
 [color]
 
-  # Color output to terminal, but not pipes
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
-  ui = auto
+    # Color output to terminal, but not pipes
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+    ui = auto
 
 [push]
 
-  # https://git-scm.com/docs/git-config#git-config-pushdefault
-  default = simple
+    # https://git-scm.com/docs/git-config#git-config-pushdefault
+    default = simple
 
 [diff]
 
-  # Controls which diff tool is used
-  tool = vimdiff
-  # Auto-detect copies as well as renames
-  renames = copies
+    # Controls which diff tool is used
+    tool = vimdiff
+
+    # Auto-detect copies as well as renames
+    renames = copies
 
 [merge]
 
-  # Controls which merge tool is used
-  tool = vimdiff
-  # Include summaries of merged commits in newly created merge commit messages
-  log = true
+    # Controls which merge tool is used
+    tool = vimdiff
+
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
 
 [filter "spacify"]
-  clean = 'expand --tabs=4 --initial'
+    clean = 'expand --tabs=4 --initial'
 
 [include]
 
-  # Allows you to augment this with your own gitconfig in your home directory
-  # This way, you can keep this global version clean, and have another private version
-  path = ~/.gitconfig_local
-  # Allows for copying of aliases without copying gitconfig settings. Good for long alias lists too
-  path = ~/.gitconfig.aliases
+    # Allows you to augment this with your own gitconfig in your home directory
+    # This way, you can keep this global version clean, and have another private version
+    path = ~/.gitconfig_local
+
+    # Allows for copying of aliases without copying gitconfig settings. Good for long alias lists too
+    path = ~/.gitconfig.aliases

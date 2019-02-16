@@ -1,25 +1,82 @@
 [alias]
 
-  # These are super useful for better log output
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola = log --graph --decorate --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all --date=relative
-  # Show files ignored by git:
-  ign = ls-files -o -i --exclude-standard
-  sofetch = fetch --all
-  # I'm super lazy
-  st = status
-  stb = status -sb
-  ci = commit
-  cm = commit -m
-  cma = commit -a -m
-  br = branch -v
-  remote = remote -v
-  co = checkout
-  df = diff
-  mg = merge
-  ph = push -u
-  # Helpful as well
-  unstage = reset HEAD --
-  uncommit = reset --soft HEAD^
-  last = log -1 HEAD
-  cp = cherry-pick -x
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    # Longer version git l
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+
+    # Super version of git log
+    lola = log --graph --decorate --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all --date=relative
+
+    # Show the last commit
+    last = log -1 HEAD
+
+    # Show files ignored by git:
+    ign = ls-files -o -i --exclude-standard
+
+    # Short and regular status
+    s = status -sb
+    stb = status -sb
+    st = status
+
+    # Quicker commit options
+    ci = commit
+    cm = commit -m
+    cma = commit -a -m
+
+    # Easier amending
+    amend = commit --amend --reuse-message=HEAD
+
+    # Checkout/cherry-pick takes forever to type.
+    co = checkout
+    nb = checkout -b
+    cp = cherry-pick -x
+
+    # Easy diffs!
+    df = diff
+    df = diff --staged
+
+    # Show the diff between the latest commit and the current state
+    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+    # Show list of files in conflcit state
+    conflicts = !git diff --name-only --diff-filter=U
+
+    # Verbose is better here
+    br = branch -av
+    rem = remote -vv
+    tags = tag -l
+
+    # Fetch all remotes
+    sofetch = fetch --all
+
+    # Quicker pulls and pushes
+    pu = pull
+    ph = push
+    phu = push -u
+
+    # I always forget the real commands: Undo commit, remove file from staging area, discard changes to a file, 
+    unstage = reset HEAD --
+    uncommit = reset --soft HEAD^
+    discard = checkout -
+
+    # Edit global config file
+    ec = config --global -e
+
+    # Find files
+    find = "!git ls-files | grep -i"
+
+    # List aliases
+    aliases = config --get-regexp alias
+
+    # Interactive rebase with the given number of latest commits
+    reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+    # Find branches containing commit, commits by source code, or commits by message
+    fb = "!f() { git branch -a --contains $1; }; f"
+    fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+    # List contributors with number of commits
+    contributors = shortlog --summary --numbered

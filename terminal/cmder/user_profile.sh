@@ -51,6 +51,9 @@ alias pubkey="cat ~/.ssh/id_rsa.pub"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
+# Open git repo in browser
+alias gh="explorer \`git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\/\//' -e's/\.git$//' | sed -E 's/(\/\/[^:]*):/\1\//'\`"
+
 ###### Exports
 
 # Local binaries. First should already be added
@@ -60,9 +63,9 @@ export PATH="$HOME/bin:$PATH"
 
 # Set terminal appropriately
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-        export TERM='xterm-256color'
+	export TERM='xterm-256color'
 else
-        export TERM='xterm-color'
+	export TERM='xterm-color'
 fi
 
 # Save python config & allow symlinks
@@ -94,7 +97,7 @@ timestamp () {
 
 # Create a new directory and enter it
 function mkd() {
-	mkdir -p "$@" && cd "$_";
+    mkdir -p "$@" && cd "$_";
 }
 
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
