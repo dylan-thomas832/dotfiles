@@ -1,5 +1,6 @@
 
 - link:
     ~/.gitconfig: development/git/gitconfig
+    ~/.gitconfig.aliases: development/git/gitconfig.aliases
     ~/.gitconfig_local: development/git/gitconfig_local
     ~/.gitignore_global: development/git/gitignore_global

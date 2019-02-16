@@ -1,0 +1,25 @@
+[alias]
+
+  # These are super useful for better log output
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all --date=relative
+  # Show files ignored by git:
+  ign = ls-files -o -i --exclude-standard
+  sofetch = fetch --all
+  # I'm super lazy
+  st = status
+  stb = status -sb
+  ci = commit
+  cm = commit -m
+  cma = commit -a -m
+  br = branch -v
+  remote = remote -v
+  co = checkout
+  df = diff
+  mg = merge
+  ph = push -u
+  # Helpful as well
+  unstage = reset HEAD --
+  uncommit = reset --soft HEAD^
+  last = log -1 HEAD
+  cp = cherry-pick -x
