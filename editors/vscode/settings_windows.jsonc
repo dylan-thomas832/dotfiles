@@ -20,7 +20,6 @@
     "workbench.iconTheme": "vscode-icons",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "readme",
-    "vsicons.dontShowNewVersionMessage": true,
     // Window behavior
     "window.newWindowDimensions": "inherit",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
@@ -76,7 +75,6 @@
     "breadcrumbs.enabled": true,
     "breadcrumbs.filePath": "last",
     // Standard Python settings. 
-    "python.autoComplete.addBrackets": true,
     "python.autoComplete.extraPaths": [],
     // Path to default Python version & ctags exectuable
     "python.pythonPath": "python", // Uncomment to set manually. Useful to put directly in path rather than here. Add python environments for specific projects
@@ -150,6 +148,8 @@
     "markdown.extension.orderedList.marker": "one",
     "markdown.extension.preview.autoShowPreviewToSide": false,
     "markdown.extension.toc.githubCompatibility": true,
+    // Auto-docstring Google style
+    "autoDocstring.docstringFormat": "google",
     // Code spell-checker settings
     "cSpell.spellCheckDelayMs": 20,
     "cSpell.userWords": [
@@ -164,11 +164,13 @@
         "Transductive",
         "Uncomment",
         "Vallado",
+        "asarray",
         "assimulo",
         "covariances",
         "cventry",
         "linalg",
         "mdhms",
+        "ndarray",
         "nonsingular",
         "noqa",
         "numba",
