@@ -50,6 +50,7 @@
 
 [filter "spacify"]
     clean = 'expand --tabs=4 --initial'
+    smudge = expand --tabs=4 --initial
 
 [include]
 
