@@ -7,7 +7,7 @@ apt update
 apt upgrade -y
 
 # Pretty basic setup
-apt install -y build-essential gfortran cmake cmake-curses-gui 
+apt install -y build-essential gfortran cmake cmake-curses-gui
 
 # Python stuff
 apt install -y python3-dev python3-pip python3-tk
@@ -26,6 +26,10 @@ apt install -y ack-grep silversearcher-ag
 
 # Remove unneeded packages
 apt autoremove -y
+
+# Install fuzzy finder
+git clone --depth 1 git@github.com:junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 # Change to zsh
 chsh -s $(/bin/zsh)
