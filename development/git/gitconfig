@@ -48,10 +48,6 @@
     # Include summaries of merged commits in newly created merge commit messages
     log = true
 
-[filter "spacify"]
-    clean = 'expand --tabs=4 --initial'
-    smudge = expand --tabs=4 --initial
-
 [include]
 
     # Allows you to augment this with your own gitconfig in your home directory

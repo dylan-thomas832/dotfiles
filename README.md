@@ -82,7 +82,32 @@ List of required & recommended external programs that haven't been automated.
 
 ## WSL Installation
 
-TBD
+1. Install apt packages
+    ```bash
+    sudo ./bin/apt-install-wsl.sh
+    ```
+1. Install zplug plugin manager
+    ```bash
+    curl -sL --proto-redir -all, https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    ```
+1. Install fuzzy finder
+    ```bash
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+    ```
+1. Change shell to zsh
+    ```bash
+    chsh -s $(which zsh)
+    ```
+1. Perform dotfile install
+    ```bash
+    ./install-profile wsl
+    ```
+1. Optional: if you get warning to say run compaudit, and running the command shows all __~/.zplug__  directories
+    ```bash
+    sudo chmod -R 755 ~/.zplug
+    ```
+
 
 ## Linux Installation
 

@@ -1,21 +1,21 @@
 [submodule "dotbot"]
-	path = meta/dotbot
-	url = https://github.com/anishathalye/dotbot
+    path = meta/dotbot
+    url = https://github.com/anishathalye/dotbot
 [submodule "terminal/fonts"]
-	path = terminal/fonts
-	url = https://github.com/powerline/fonts
+    path = terminal/fonts
+    url = https://github.com/powerline/fonts
 [submodule "terminal/base16-shell"]
-	path = terminal/colors/base16-shell
-	url = https://github.com/chriskempson/base16-shell
+    path = terminal/colors/base16-shell
+    url = https://github.com/chriskempson/base16-shell
 [submodule "terminal/base16-putty"]
-	path = terminal/colors/base16-putty
-	url = https://github.com/benjojo/base-16-putty
+    path = terminal/colors/base16-putty
+    url = https://github.com/benjojo/base-16-putty
 [submodule "terminal/colors/conemu-themes"]
-	path = terminal/colors/conemu-themes
-	url = git@github.com:joonro/ConEmu-Color-Themes.git
+    path = terminal/colors/conemu-themes
+    url = git@github.com:joonro/ConEmu-Color-Themes.git
 [submodule ".tmux"]
-	path = terminal/tmux
-	url = git@github.com:gpakosz/.tmux.git
+    path = terminal/tmux
+    url = git@github.com:gpakosz/.tmux.git
 [submodule "shells/zsh/pure"]
-	path = shells/zsh/pure
-	url = https://github.com/sindresorhus/pure
+    path = shells/zsh/pure
+    url = https://github.com/sindresorhus/pure

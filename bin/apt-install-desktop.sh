@@ -27,12 +27,4 @@ apt install -y ack-grep silversearcher-ag
 # Remove unneeded packages
 apt autoremove -y
 
-# Install fuzzy finder
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-
-# Change to zsh
-chsh -s $(/bin/zsh)
-
 echo "Finished apt-get installs!"
-
