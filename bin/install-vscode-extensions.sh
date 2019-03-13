@@ -17,7 +17,7 @@ code --install-extension njpwerner.autodocstring                    # Auto-docst
 code --install-extension christian-kohler.path-intellisense         # Intellisense for paths
 
 # Themes & icons
-code --install-extension zhuangtongfa.material-theme                # One Dark Pro theme
+code --install-extension markskelton.one-dark-pro-italic            # One Dark Pro theme
 code --install-extension robertohuertasm.vscode-icons               # Better icons
 
 # Utility extensions

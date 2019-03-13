@@ -4,7 +4,7 @@
     editor = vim
 
     # crlf are bad most of the time
-    autocrlf = false
+	autocrlf = false
 
     # Exclude everything!
     excludesfile = ~/.gitignore_global

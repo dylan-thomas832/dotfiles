@@ -15,7 +15,7 @@
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "indent",
     // Workbench settings
-    "workbench.colorTheme": "One Dark Pro",
+    "workbench.colorTheme": "One Dark Pro (Italic)",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.iconTheme": "vscode-icons",
     "workbench.settings.editor": "json",
@@ -168,6 +168,7 @@
         "assimulo",
         "covariances",
         "cventry",
+        "dispy",
         "docstring",
         "linalg",
         "mdhms",
