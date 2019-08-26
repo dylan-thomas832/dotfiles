@@ -1,23 +1,9 @@
 # Local binaries. First should already be added
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
 
 # Add Anaconda to path
 export PATH="$HOME/anaconda3/bin:$PATH"
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '~/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "~/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "~/anaconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    fi
-fi
-unset __conda_setup
-# <<< conda init <<<
 
 # pip should only run if there is a virtualenv currently activated
 # export PIP_REQUIRE_VIRTUALENV=true
@@ -35,7 +21,7 @@ export PYTHONIOENCODING='UTF-8';
 export DISPLAY=:0
 
 # Shared library path
-export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib
+export LD_LIBRARY_PATH="/usr/lib:/usr/local/lib:~/.local/lib$LD_LIBRARY_PATH"
 
 # Path to manpages
 export MANPATH="/usr/local/man:$MANPATH"
@@ -55,9 +41,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 # Ensure we use zsh
 export SHELL=zsh
-
-# Vi mode in shell
-bindkey -v
 
 # Colors
 eval $(dircolors -b ${HOME}/.dircolors)

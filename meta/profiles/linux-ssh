@@ -1,9 +1,9 @@
 dev
 linux
-git.linux
+git
 vim
 python.linux
 sh.linux
 bash.linux
-zsh
+zsh-ssh
 terminal.linux
