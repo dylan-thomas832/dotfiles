@@ -13,7 +13,12 @@ if [[ $- != *i* ]] ; then
   return
 fi
 
-# load all files from /bashrc.d directory
+# load zsh init
 if [ -f ~/.zshrc ]; then
   source ~/.zshrc
+fi
+
+# Load local bashrc instance, mainly for conda
+if [-f ~/.bashrc_local_after]; then
+  source ~/.bashrc_local_after
 fi
