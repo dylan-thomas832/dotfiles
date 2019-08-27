@@ -1,6 +1,6 @@
 # Load autocompletion, colors, and vcs info
 
-autoload -U compinit colors vcs_info
+autoload -U compinit colors vcs_info zcalc
 colors
 compinit
 
