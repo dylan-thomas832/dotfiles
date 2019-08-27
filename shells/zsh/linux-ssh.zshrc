@@ -4,7 +4,7 @@ if [ -f ~/.zshrc_local_before ]; then
 fi
 
 # External plugins (initialized before)
-# source ~/.zshrc.d/plugins_before.zsh
+source ~/.zshrc.d/plugins_before_ssh.zsh
 
 # Load contained custom functions
 source ~/.zshrc.d/functions.zsh
@@ -13,10 +13,10 @@ source ~/.zshrc.d/functions.zsh
 source ~/.zshrc.d/environment.zsh
 
 # Aliases
-source ~/.zshrc.d/aliases-ssh.zsh
+source ~/.zshrc.d/aliases_ssh.zsh
 
 # Custom prompt
-source ~/.zshrc.d/prompt.zsh
+source ~/.zshrc.d/prompt_ssh.zsh
 
 # # Syntax highlighting
 # source ~/.zshrc.d/syntax.zsh

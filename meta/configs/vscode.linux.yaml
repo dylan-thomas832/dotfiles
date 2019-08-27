@@ -1,5 +1,2 @@
 - link:
     ~/.config/Code/User/settings.json: editors/vscode/settings_linux.jsonc
-
-- shell:
-  - [./bin/install_vscode_extensions.sh, Installing Visual Studio Code Extensions]

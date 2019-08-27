@@ -1,6 +1,5 @@
 # Local binaries. First should already be added
-export PATH="/usr/local/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 
 # Add Anaconda to path
 export PATH="$HOME/anaconda3/bin:$PATH"
@@ -21,7 +20,7 @@ export PYTHONIOENCODING='UTF-8';
 export DISPLAY=:0
 
 # Shared library path
-export LD_LIBRARY_PATH="/usr/lib:/usr/local/lib:~/.local/lib$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/lib:/usr/local/lib:~/.local/lib:$LD_LIBRARY_PATH"
 
 # Path to manpages
 export MANPATH="/usr/local/man:$MANPATH"

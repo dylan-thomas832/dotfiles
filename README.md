@@ -111,7 +111,21 @@ List of required & recommended external programs that haven't been automated.
 
 ## Linux Installation
 
-TBD
+### Pre-Installation
+
+1. Ensure *zsh* is installed:
+    ```bash
+    $ which zsh
+    $ zsh --version
+    ```
+1. If not installed, install via:
+    ```bash
+    $ sudo apt install zsh
+    ```
+1. Make *zsh* the default shell
+    ```bash
+    $ chsh -s $(which zsh)
+    ```
 
 ## Updating
 
