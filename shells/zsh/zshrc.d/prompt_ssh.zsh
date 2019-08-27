@@ -6,8 +6,9 @@ zstyle ':vcs_info:git*' formats "%F{blue}%b%f %u%c"
 _setup_ps1() {
   vcs_info
   GLYPH="▲"
+  CONDA_CURR_ENV=$(basename "$CONDA_DEFAULT_ENV")
   [ "x$KEYMAP" = "xvicmd" ] && GLYPH="▼"
-  PS1=" %(?.%F{blue}.%F{red})$GLYPH%f %(1j.%F{cyan}[%j]%f .)%F{blue}%~%f %(!.%F{red}#%f .)"
+  PS1="$CONDA_CURR_ENV %(?.%F{blue}.%F{red})$GLYPH%f %(1j.%F{cyan}[%j]%f .)%F{blue}%~%f %(!.%F{red}#%f .)"
   RPROMPT="$vcs_info_msg_0_"
 }
 _setup_ps1
