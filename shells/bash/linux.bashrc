@@ -15,10 +15,13 @@ fi
 
 # load zsh init
 if [ -f ~/.zshrc ]; then
-  source ~/.zshrc
+  exec zsh
 fi
 
 # Load local bashrc instance, mainly for conda
 if [-f ~/.bashrc_local_after]; then
   source ~/.bashrc_local_after
 fi
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
