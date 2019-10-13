@@ -1,0 +1,204 @@
+
+// To view the default settings, hold "alt" while clicking on the "Settings" button.
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+
+    "initialCols": 160,
+    "initialRows": 50,
+
+    "requestedTheme": "dark",
+
+    "profiles":
+    [
+        {
+            // Make changes here to the powershell.exe profile
+            "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+            "name": "Windows PowerShell",
+            "commandline": "powershell.exe",
+            "hidden": true
+        },
+        {
+            // Make changes here to the cmd.exe profile
+            "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+            "name": "cmd",
+            "commandline": "cmd.exe",
+            "hidden": false
+        },
+        {
+            "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+            "hidden": false,
+            "name": "Ubuntu",
+            "commandline": "wsl ~",
+            "fontFace": "DejaVu Sans Mono for Powerline",
+            "closeOnExit": false,
+            "snapOnInput": true,
+            "colorScheme": "SpaceGray",
+            "historySize": 9001,
+            "useAcrylic": true,
+            "acrylicOpacity": 0.95
+        },
+        {
+            "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+            "hidden": true,
+            "name": "Azure Cloud Shell",
+            "source": "Windows.Terminal.Azure"
+        }
+    ],
+
+    // Add custom color schemes to this array
+    "schemes": [
+        {
+            "name": "OceanicMaterial",
+            "black": "#000000",
+            "red": "#ee2b2a",
+            "green": "#40a33f",
+            "yellow": "#ffea2e",
+            "blue": "#1e80f0",
+            "purple": "#8800a0",
+            "cyan": "#16afca",
+            "white": "#a4a4a4",
+            "brightBlack": "#777777",
+            "brightRed": "#dc5c60",
+            "brightGreen": "#70be71",
+            "brightYellow": "#fff163",
+            "brightBlue": "#54a4f3",
+            "brightPurple": "#aa4dbc",
+            "brightCyan": "#42c7da",
+            "brightWhite": "#ffffff",
+            "background": "#1c262b",
+            "foreground": "#c2c8d7"
+        },
+        {
+            "name": "OneHalfDark",
+            "black": "#282c34",
+            "red": "#e06c75",
+            "green": "#98c379",
+            "yellow": "#e5c07b",
+            "blue": "#61afef",
+            "purple": "#c678dd",
+            "cyan": "#56b6c2",
+            "white": "#dcdfe4",
+            "brightBlack": "#282c34",
+            "brightRed": "#e06c75",
+            "brightGreen": "#98c379",
+            "brightYellow": "#e5c07b",
+            "brightBlue": "#61afef",
+            "brightPurple": "#c678dd",
+            "brightCyan": "#56b6c2",
+            "brightWhite": "#dcdfe4",
+            "background": "#282c34",
+            "foreground": "#dcdfe4"
+        },
+        {
+            "name": "MaterialDark",
+            "black": "#212121",
+            "red": "#b7141f",
+            "green": "#457b24",
+            "yellow": "#f6981e",
+            "blue": "#134eb2",
+            "purple": "#560088",
+            "cyan": "#0e717c",
+            "white": "#efefef",
+            "brightBlack": "#424242",
+            "brightRed": "#e83b3f",
+            "brightGreen": "#7aba3a",
+            "brightYellow": "#ffea2e",
+            "brightBlue": "#54a4f3",
+            "brightPurple": "#aa4dbc",
+            "brightCyan": "#26bbd1",
+            "brightWhite": "#d9d9d9",
+            "background": "#232322",
+            "foreground": "#e5e5e5"
+        },
+        {
+            "name": "Dracula",
+            "black": "#000000",
+            "red": "#ff5555",
+            "green": "#50fa7b",
+            "yellow": "#f1fa8c",
+            "blue": "#bd93f9",
+            "purple": "#ff79c6",
+            "cyan": "#8be9fd",
+            "white": "#bbbbbb",
+            "brightBlack": "#555555",
+            "brightRed": "#ff5555",
+            "brightGreen": "#50fa7b",
+            "brightYellow": "#f1fa8c",
+            "brightBlue": "#bd93f9",
+            "brightPurple": "#ff79c6",
+            "brightCyan": "#8be9fd",
+            "brightWhite": "#ffffff",
+            "background": "#1e1f29",
+            "foreground": "#f8f8f2"
+        },
+        {
+            "name": "Solarized Dark - Patched",
+            "black": "#002831",
+            "red": "#d11c24",
+            "green": "#738a05",
+            "yellow": "#a57706",
+            "blue": "#2176c7",
+            "purple": "#c61c6f",
+            "cyan": "#259286",
+            "white": "#eae3cb",
+            "brightBlack": "#475b62",
+            "brightRed": "#bd3613",
+            "brightGreen": "#475b62",
+            "brightYellow": "#536870",
+            "brightBlue": "#708284",
+            "brightPurple": "#5956ba",
+            "brightCyan": "#819090",
+            "brightWhite": "#fcf4dc",
+            "background": "#001e27",
+            "foreground": "#708284"
+        },
+        {
+            "name": "SpaceGray",
+            "black": "#000000",
+            "red": "#b04b57",
+            "green": "#87b379",
+            "yellow": "#e5c179",
+            "blue": "#7d8fa4",
+            "purple": "#a47996",
+            "cyan": "#85a7a5",
+            "white": "#b3b8c3",
+            "brightBlack": "#000000",
+            "brightRed": "#b04b57",
+            "brightGreen": "#87b379",
+            "brightYellow": "#e5c179",
+            "brightBlue": "#7d8fa4",
+            "brightPurple": "#a47996",
+            "brightCyan": "#85a7a5",
+            "brightWhite": "#ffffff",
+            "background": "#20242d",
+            "foreground": "#b3b8c3"
+        }
+    ],
+
+    // Add any keybinding overrides to this array.
+    // To unbind a default keybinding, set the command to "unbound"
+    "keybindings": [
+        {
+            "command": "copy",
+            "keys": [
+                "ctrl+shift+c"
+            ]
+        },
+        {
+            "command": "paste",
+            "keys": [
+                "ctrl+shift+v"
+            ]
+        },
+        {
+            "command": "closePane",
+            "keys": [
+                "ctrl+shift+w"
+            ]
+        }
+    ]
+}
