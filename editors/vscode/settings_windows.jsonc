@@ -14,8 +14,7 @@
     "editor.showFoldingControls": "always",
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "indent",
-    // Workbench settings
-    "workbench.colorTheme": "One Dark Pro (Italic)",
+    "workbench.colorTheme": "One Dark",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.iconTheme": "vscode-icons",
     "workbench.settings.editor": "json",
@@ -75,9 +74,7 @@
     "breadcrumbs.enabled": true,
     "breadcrumbs.filePath": "last",
     // Standard Python settings. 
-    "python.autoComplete.extraPaths": [],
-    // Path to default Python version & ctags exectuable
-    "python.pythonPath": "python", // Uncomment to set manually. Useful to put directly in path rather than here. Add python environments for specific projects
+    "python.autoComplete.extraPaths": [], // Uncomment to set manually. Useful to put directly in path rather than here. Add python environments for specific projects
     "python.workspaceSymbols.ctagsPath": "C:/ctags58/ctags.exe", // Uncomment to set manually
     // Pylint settings (style/code linting)
     "python.linting.pylintEnabled": true,
@@ -87,7 +84,6 @@
     "latex-workshop.chktex.enabled": true,
     "latex-workshop.chktex.path": "chktex",
     "latex-workshop.intellisense.package.enabled": true,
-    "latex-workshop.latex.clean.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.recipes": [
         {
@@ -163,6 +159,7 @@
         "Matlab",
         "Transductive",
         "Uncomment",
+        "VERNER",
         "Vallado",
         "asarray",
         "assimulo",
@@ -186,4 +183,8 @@
         "xlabel",
         "ylabel"
     ],
+    "vsicons.dontShowNewVersionMessage": true,
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "todo-tree.tree.showScanModeButton": false,
+    "python.defaultInterpreterPath": "python",
 }

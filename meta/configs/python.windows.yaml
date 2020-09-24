@@ -3,6 +3,3 @@
     ~/.pythonrc: development/python/pythonrc.py
     ~/.pylintrc: development/python/pylintrc.ini
     ~/.flake8: development/python/flake8.ini
-
-- shell:
-    - [conda update -y conda, Updating conda]
