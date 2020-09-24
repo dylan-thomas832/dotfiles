@@ -33,13 +33,13 @@
         "**/.DS_Store": true,
         "**/__pycache__": true,
         "**/**/**/*.pyc": true,
-        "**/.mypy_cache": true,
+        "**/.mypy_cache": true
     },
     // Helps with syntax highlighting
     "files.associations": {
         "*gitconfig*": "properties",
         "*ignore*": "ignore",
-        "*pythonrc*": "python",
+        "*pythonrc*": "python"
     },
     "files.eol": "\n", // /r/n is bad!
     // Default configuration overrides for html, markdown, & python languages
