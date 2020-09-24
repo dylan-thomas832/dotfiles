@@ -11,13 +11,16 @@ List of required & recommended external programs that haven't been automated.
 **Note**:  Make sure you set your git settings to "autocrlf=false" first
 
 - Required:
+  - **Miniconda**, for setting up Python
   - **VSCode**, for a GUI text editor
   - **Cmder**, for Linux-esque terminal emulation
 
 - Possible pre-requirements:
-  - **Ctags**, for better Vim navigation
-  - **Chocolatey**, for improving Vim searching
   - **Texlive**, for writing LaTeX documents
+
+#### [miniconda](https://docs.conda.io/en/latest/miniconda.html)
+1. Download and install the 64-bit version
+1. Add installation folder to path, so `python` command is recognized
 
 #### [vscode](https://code.visualstudio.com/)
 
@@ -33,20 +36,6 @@ List of required & recommended external programs that haven't been automated.
 1. From *cmd.exe*, run 
     ```powershell
     cmder.exe /register USER
-    ```
-
-#### [ctags](http://ctags.sourceforge.net/)
-
-1. Download and extract 
-1. I put them at __C:/ctags58/__
-    - Add this to your environment path
-  
-#### [chocolatey](https://chocolatey.org/install)
-
-1. Download and install  (requires elevation)
-1. Once installed, from *cmd.exe* (elevated), run
-    ```powershell
-    ./bin/choco-install.cmd
     ```
 
 #### [texlive](https://tug.org/texlive/acquire-netinstall.html)
@@ -74,13 +63,13 @@ List of required & recommended external programs that haven't been automated.
     ```powershell
     sh ./install-profile windows
     ```
-    - You can edit the configurations included by alterin __meta/profiles/windows__
-1. In the Cmder bash shell, to setup Visual Studio Code extensions, run:
-    ```bash
-    ./bin/install-vscode-extensions
-    ```
+    - You can edit the configurations included by altering __meta/profiles/windows__
+1. To install Windows Terminal settings, open the app, and copy over the settings from __terminal/windows/profiles.json__
+1. Install vscode extensions that you want
 
 ## WSL Installation
+
+**NOTE**: Currently annoyingly broken...., 
 
 1. Install apt packages
     ```bash
@@ -111,8 +100,10 @@ List of required & recommended external programs that haven't been automated.
 
 ## Linux Installation
 
-### Pre-Installation
-
+1. Install apt packages
+    ```bash
+    sudo ./bin/apt-install-wsl.sh
+    ```
 1. Ensure *zsh* is installed:
     ```bash
     $ which zsh
@@ -125,6 +116,10 @@ List of required & recommended external programs that haven't been automated.
 1. Make *zsh* the default shell
     ```bash
     $ chsh -s $(which zsh)
+    ```
+1. Perform dotfile install
+    ```bash
+    ./install-profile linux-ssh
     ```
 
 ## Updating
