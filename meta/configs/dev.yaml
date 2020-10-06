@@ -1,7 +1,0 @@
-
-- link:
-    ~/.agignore: development/agignore
-
-- shell:
-    - [git config --global core.autocrlf false]
-

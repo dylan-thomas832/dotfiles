@@ -1,5 +1,0 @@
-
-- link:
-    ~/.zshrc: shells/zsh/linux-ssh.zshrc
-    ~/.zlogin: shells/zsh/linux.zlogin
-    ~/.zshrc.d: shells/zsh/zshrc.d
