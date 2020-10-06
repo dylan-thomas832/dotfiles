@@ -7,6 +7,9 @@ alias .....="cd ../../../.."
 # Ensure VIM
 alias vi=vim
 
+# Git laziness
+alias g=git
+
 # List files colorized in long format
 alias l="ls -lF --color --show-control-chars"
 alias ls="ls -lF --color --show-control-chars"

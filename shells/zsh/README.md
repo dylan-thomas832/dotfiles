@@ -1,7 +1,5 @@
 # Zsh configurations
 
-Setup for using a Z shell. Assumes that [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/) is installed.
-
 ## Features
 
 Note: any `*.sh` files in `~/.login.d/` **will** get sourced

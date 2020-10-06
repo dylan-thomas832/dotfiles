@@ -3,5 +3,3 @@
     ~/.zshrc: shells/zsh/linux.zshrc
     ~/.zlogin: shells/zsh/linux.zlogin
     ~/.zshrc.d: shells/zsh/zshrc.d
-    ~/.zfunctions/prompt_pure_setup: shells/zsh/pure/pure.zsh
-    ~/.zfunctions/async: shells/zsh/pure/async.zsh

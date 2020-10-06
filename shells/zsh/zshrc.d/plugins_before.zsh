@@ -1,38 +1,26 @@
-# Check if zplug is installed
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update --self
-fi
+# Load autocompletion, colors, and vcs info
 
-# Essential
-source ~/.zplug/init.zsh
+autoload -U compinit colors vcs_info zcalc
+colors
+compinit
 
-# Make sure to use double quotes to prevent shell expansion
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "trapd00r/zsh-syntax-highlighting-filetypes"
-zplug "zdharma/history-search-multi-word"
-zplug "chrissicool/zsh-256color"
-zplug "ael-code/zsh-colored-man-pages"
-zplug "mdumitru/git-aliases"
-zplug "supercrabtree/k"
-zplug "voronkovich/project.plugin.zsh"
-zplug "eendroroy/zed-zsh"
-zplug "denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme"
-zplug "laurenkt/zsh-vimto"
-# Other prompt theme
-# zplug mafredri/zsh-async, from:github
-# zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
-
-# Install packages that have not been installed yet
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
-    fi
-fi
-
-# load plugins
-zplug load
+# Report command running time if it is more than 3 seconds
+REPORTTIME=3
+# Keep a lot of history
+HISTFILE=~/.zhistory
+HISTSIZE=5000
+SAVEHIST=5000
+# Add commands to history as they are entered, don't wait for shell to exit
+setopt INC_APPEND_HISTORY
+# Also remember command start time and duration
+setopt EXTENDED_HISTORY
+# Do not keep duplicate commands in history
+setopt HIST_IGNORE_ALL_DUPS
+# Do not remember commands that start with a whitespace
+setopt HIST_IGNORE_SPACE
+# Correct spelling of all arguments in the command line
+setopt CORRECT_ALL
+# Enable autocompletion
+zstyle ':completion:*' completer _complete _correct _approximate 
+# Enable incremental search
+bindkey '^R' history-incremental-search-backward
