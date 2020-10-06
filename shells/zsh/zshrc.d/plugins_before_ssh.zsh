@@ -22,3 +22,5 @@ setopt HIST_IGNORE_SPACE
 setopt CORRECT_ALL
 # Enable autocompletion
 zstyle ':completion:*' completer _complete _correct _approximate 
+
+bindkey '^R' history-incremental-search-backward
