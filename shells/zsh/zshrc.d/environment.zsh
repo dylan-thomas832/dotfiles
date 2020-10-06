@@ -1,9 +1,6 @@
 # Local binaries. First should already be added
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 
-# Add Anaconda to path
-export PATH="$HOME/anaconda3/bin:$PATH"
-
 # pip should only run if there is a virtualenv currently activated
 # export PIP_REQUIRE_VIRTUALENV=true
 
