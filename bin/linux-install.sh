@@ -27,4 +27,4 @@ apt install -y ack-grep silversearcher-ag
 # Remove unneeded packages
 apt autoremove -y
 
-echo "Finished apt-get installs!"
+echo "Finished apt installs!"

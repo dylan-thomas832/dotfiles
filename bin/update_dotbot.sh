@@ -3,4 +3,4 @@
 set -e
 
 # Update dotbot
-git submodule update --remote dotbot
+git submodule update --remote meta/dotbot
