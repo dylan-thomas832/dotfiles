@@ -23,6 +23,7 @@
     // Each one of them will appear in the 'New Tab' dropdown,
     //   and can be invoked from the commandline with `wt.exe -p xxx`
     // To learn more about profiles, visit https://aka.ms/terminal-profile-settings
+    "theme": "dark",
     "profiles":
     {
         "defaults":
@@ -45,18 +46,10 @@
                 // "source": "Windows.Terminal.Wsl",
                 "commandline": "wsl ~",
                 "fontFace": "DejaVu Sans Mono for Powerline",
-                "closeOnExit": false,
+                "closeOnExit": true,
                 "snapOnInput": true,
-                "colorScheme": "SpaceGray",
-                "historySize": 9001,
-                "useAcrylic": true,
-                "acrylicOpacity": 0.95
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": true,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
+                "colorScheme": "Solarized Dark - Patched",
+                "historySize": 9001
             },
             {
                 // Make changes here to the powershell.exe profile.
@@ -67,9 +60,15 @@
             },
             {
                 "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Ubuntu-18.04",
                 "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": true,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
             }
         ]
     },
