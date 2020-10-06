@@ -6,6 +6,8 @@
     "editor.autoIndent": "advanced",
     "editor.cursorBlinking": "expand",
     "editor.fontFamily": "'DejaVu Sans Mono', 'DejaVu Sans Mono for Powerline', Consolas, monospace, 'Droid Sans'",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "normal",
     "editor.mouseWheelScrollSensitivity": 2,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.parameterHints.cycle": true,
@@ -20,6 +22,7 @@
     "workbench.iconTheme": "vscode-icons",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "readme",
+    "vsicons.dontShowNewVersionMessage": true,
     // Window behavior
     "window.newWindowDimensions": "inherit",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
@@ -34,7 +37,7 @@
         "**/.DS_Store": true,
         "**/__pycache__": true,
         "**/**/**/*.pyc": true,
-        "**/.mypy_cache": true,
+        "**/.mypy_cache": true
     },
     // Helps with syntax highlighting
     "files.associations": {
@@ -71,17 +74,17 @@
     "breadcrumbs.filePath": "last",
     // Standard Python settings. 
     "python.autoComplete.extraPaths": [],
-    // Path to default Python version & ctags exectuable
-    "python.pythonPath": "~/anaconda3/bin/python3", // Uncomment to set manually.
+    // // Path to default Python version & ctags exectuable
+    // "python.pythonPath": "~/miniconda3/bin/python3", // Uncomment to set manually.
     // Pylint settings (style/code linting)
     "python.linting.pylintEnabled": true,
     "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": true,
+    "python.linting.mypyEnabled": false,
     // Latex Workshop settings
     "latex-workshop.chktex.enabled": true,
     "latex-workshop.chktex.path": "chktex",
     "latex-workshop.intellisense.package.enabled": true,
-    "latex-workshop.latex.clean.enabled": true,
+    "latex-workshop.latex.autoClean.run": "onBuilt",
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.recipes": [
         {
@@ -155,13 +158,22 @@
         "Matlab",
         "Transductive",
         "Uncomment",
+        "VERNER",
+        "Vallado",
+        "asarray",
         "assimulo",
         "covariances",
         "cventry",
+        "dispy",
+        "docstring",
         "linalg",
+        "mdhms",
+        "ndarray",
         "nonsingular",
+        "noqa",
         "numba",
         "numpy",
+        "pycache",
         "pylint",
         "pyplot",
         "remediate",
