@@ -27,8 +27,7 @@ I have three profiles currently setup: Linux for Ubuntu desktop, Windows for use
 ```
 meta/profiles/
 ├── windows
-├── linux
-└── wsl 
+└── linux 
 ```
 ### Dotbot configurations
 
