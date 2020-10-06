@@ -24,7 +24,6 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug '~/.fzf'
 
 if g:has_async
   " Plugins require async
