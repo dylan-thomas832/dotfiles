@@ -74,6 +74,11 @@
     ],
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorStyle": "line",
+    // Remote VSCode settings
+    "remote.SSH.remotePlatform": {
+        "aosl-ml-1": "linux",
+        "aosl-ml-2": "linux",
+    },
     // Breadcrumbs are a useful navigation tool. Use Ctrl+Shift+. to focus.
     "breadcrumbs.enabled": true,
     "breadcrumbs.filePath": "last",
