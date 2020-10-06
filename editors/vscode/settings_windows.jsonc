@@ -140,7 +140,7 @@
     // Git & Git Lens settings
     "git.autofetch": true,
     // Relies on setting a CMDER_ROOT environment variable! Set manually if not using Cmder
-    "git.path": "%CMDER_ROOT%/vendor/git-for-windows/cmd/git.exe",
+    "git.path": "C:\\Users\\Dylan\\cmder\\vendor\\git-for-windows\\cmd\\git.exe",
     "gitlens.currentLine.format": "${authorAgoOrDate} • ${id}",
     "gitlens.defaultGravatarsStyle": "retro",
     "gitlens.keymap": "alternate", // Allows alt+b to toggle Git Blame
