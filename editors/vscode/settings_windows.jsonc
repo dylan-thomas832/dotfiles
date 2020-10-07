@@ -43,7 +43,7 @@
     "files.associations": {
         "*gitconfig*": "properties",
         "*ignore*": "ignore",
-        "*pythonrc*": "python",
+        "*pythonrc*": "python"
     },
     "files.eol": "\n", // /r/n is bad!
     // Default configuration overrides for html, markdown, & python languages
@@ -77,8 +77,18 @@
     // Remote VSCode settings
     "remote.SSH.remotePlatform": {
         "aosl-ml-1": "linux",
-        "aosl-ml-2": "linux",
+        "aosl-ml-2": "linux"
     },
+    "remote.SSH.defaultExtensions": [
+    "eamodio.gitlens",
+    "mutantdino.resourcemonitor",
+    "ms-vscode.cpptools",
+    "james-yu.latex-workshop",
+    "yzhang.markdown-all-in-one",
+    "ms-python.python",
+    "njpwerner.autodocstring",
+    "streetsidesoftware.code-spell-checker"
+    ],
     // Breadcrumbs are a useful navigation tool. Use Ctrl+Shift+. to focus.
     "breadcrumbs.enabled": true,
     "breadcrumbs.filePath": "last",
@@ -191,5 +201,5 @@
         "undeformed",
         "xlabel",
         "ylabel"
-    ],
+    ]
 }
