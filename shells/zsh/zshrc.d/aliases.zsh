@@ -12,6 +12,7 @@ alias g=git
 
 # List files colorized in long format
 alias l="ls -lF --color --show-control-chars"
+alias ll='ls -l'
 alias ls="ls -lF --color --show-control-chars"
 # List all files colorized in long formation
 alias la="ls -lAF --color --show-control-chars"

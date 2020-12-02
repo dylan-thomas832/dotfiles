@@ -22,7 +22,7 @@ source ~/.zshrc.d/prompt.zsh
 # source ~/.zshrc.d/syntax.zsh
 
 # # External plugins (initialized after)
-# source ~/.zshrc.d/plugins_after.zsh
+source ~/.zshrc.d/plugins_after.zsh
 
 # Allow local customizations in the ~/.zshrc_local_after file
 if [ -f ~/.zshrc_local_after ]; then

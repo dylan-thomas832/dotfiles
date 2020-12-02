@@ -1,8 +1,6 @@
 # Load autocompletion, colors, and vcs info
-
 autoload -U compinit colors vcs_info zcalc
 colors
-compinit
 
 # Report command running time if it is more than 3 seconds
 REPORTTIME=3
@@ -21,6 +19,9 @@ setopt HIST_IGNORE_SPACE
 # Correct spelling of all arguments in the command line
 setopt CORRECT_ALL
 # Enable autocompletion
-zstyle ':completion:*' completer _complete _correct _approximate 
-# Enable incremental search
-bindkey '^R' history-incremental-search-backward
+zstyle ':completion:*' completer _complete _correct _approximate
+zmodload zsh/complist
+
+# Initialize completions
+compinit
+_comp_options+=(globdots)               # Include hidden files.

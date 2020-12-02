@@ -16,3 +16,9 @@
 [submodule ".tmux"]
     path = terminal/tmux
     url = git@github.com:gpakosz/.tmux.git
+[submodule "shells/zsh/zshrc.d/plugins/zsh-history-substring-search"]
+	path = shells/zsh/zshrc.d/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule "shells/zsh/zshrc.d/plugins/zsh-syntax-highlighting"]
+	path = shells/zsh/zshrc.d/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
