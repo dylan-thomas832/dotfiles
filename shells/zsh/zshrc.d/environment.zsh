@@ -13,9 +13,6 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 
-# Useful for X11 forwarding
-export DISPLAY=localhost:0.0
-
 # Shared library path
 export LD_LIBRARY_PATH="/usr/lib:/usr/local/lib:~/.local/lib:$LD_LIBRARY_PATH"
 
