@@ -1,4 +1,3 @@
-# First source bashrc file first
-if [ -f ~/.bashrc ]; then
-  source ~/.bashrc
-fi
+# Source other bash files first
+source "${HOME}/.profile"
+source "${HOME}/.bashrc"

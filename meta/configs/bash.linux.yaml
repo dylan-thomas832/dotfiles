@@ -2,3 +2,4 @@
 - link:
     ~/.bash_profile: shells/bash/linux.bash_profile
     ~/.bashrc: shells/bash/linux.bashrc
+    ~/.bash_logout: shells/bash/linux.bash_logout
