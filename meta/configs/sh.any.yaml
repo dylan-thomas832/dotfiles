@@ -2,5 +2,5 @@
 # inputrc: Common settings for all programs editing/reading command line
 - link:
     ~/.config/sh: shells/sh/.config/sh
-    ~/.profile: shells/bash/linux.profile
+    ~/.profile: shells/sh/linux.profile
     ~/.inputrc: shells/.inputrc
