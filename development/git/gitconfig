@@ -7,7 +7,7 @@
 	autocrlf = false
 
     # Exclude everything!
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/.config/git/ignore
 
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
@@ -55,4 +55,4 @@
     path = ~/.gitconfig_local
 
     # Allows for copying of aliases without copying gitconfig settings. Good for long alias lists too
-    path = ~/.gitconfig.aliases
+    path = ~/.config/git/aliases

@@ -1,6 +1,6 @@
 
 - link:
-    ~/.gitconfig: development/git/gitconfig
-    ~/.gitconfig.aliases: development/git/gitconfig.aliases
+    ~/.config/git/config: development/git/gitconfig
+    ~/.config/git/aliases: development/git/gitconfig.aliases
     ~/.gitconfig_local: development/git/gitconfig_local
-    ~/.gitignore_global: development/git/gitignore_global
+    ~/.config/git/ignore: development/git/gitignore_global
