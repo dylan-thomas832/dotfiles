@@ -1,5 +1,5 @@
 - link:
-    ~/.agignore: development/agignore
+    ~/.config/agignore: development/agignore
 
 - shell:
     - [zsh --version, Checking zsh version]
