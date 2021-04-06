@@ -1,8 +1,8 @@
 # Setup VIM configuration
 - link:
     ~/.vim:           editors/vim
-    ~/.vimrc:         editors/vim/vimrc.vim
-    ~/.vimrc.bundles: editors/vim/vimrc.bundles.vim
+    ~/.vim/vimrc:         editors/vim/vimrc.vim
+    ~/.vim/vimrc.bundles: editors/vim/vimrc.bundles.vim
 
 - shell:
     - [vim -c 'PlugInstall' +qall || true, Installing vim plugins]

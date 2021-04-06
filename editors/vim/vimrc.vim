@@ -24,8 +24,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 " Source the file that holds our plugins
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.vim/vimrc.bundles"))
+  source ~/.vim/vimrc.bundles
 endif
 
 let mapleader =","              " set leader for key combos
@@ -65,12 +65,10 @@ syntax on
 " vim can autodetect this based on $TERM (e.g. 'xterm-256color')
 " but it can be set to force 256 colors
 
-set t_Co=256
-" set background=dark
-" colorscheme solarized
-" colorscheme tbd
-" colorscheme base16-zenburn
-" or
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 "-------------------
 " Indentation & Text
