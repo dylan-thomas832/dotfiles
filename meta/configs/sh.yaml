@@ -1,0 +1,4 @@
+
+- link:
+    ~/.config/sh: shells/sh/.config/sh
+    ~/.profile: shells/bash/linux.profile
