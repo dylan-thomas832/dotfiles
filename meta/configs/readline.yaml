@@ -1,4 +1,0 @@
-# Setup dotfile for readline Linux program.
-# Common settings for all programs editing/reading command line
-- link:
-    ~/.inputrc: shells/.inputrc
