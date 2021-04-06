@@ -1,4 +1,6 @@
 
 - link:
-    ~/.bashrc: shells/bash/windows.bashrc
-    ~/.git-completion.bash: shells/bash/git-completion.bash
+    ~/.bash_profile: shells/bash/linux.bash_profile
+    ~/.bashrc: shells/bash/linux.bashrc
+    ~/.bash_logout: shells/bash/linux.bash_logout
+    ~/.config/git/git-completion.bash: shells/bash/git-completion.bash
