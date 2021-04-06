@@ -56,7 +56,7 @@
     # I always forget the real commands: Undo commit, remove file from staging area, discard changes to a file, 
     unstage = reset HEAD --
     uncommit = reset --soft HEAD^
-    discard = checkout -
+    discard = checkout --
 
     # Edit global config file
     ec = config --global -e
