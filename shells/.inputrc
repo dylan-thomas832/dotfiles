@@ -1,0 +1,79 @@
+# Custom readline config for all programs editing command line
+
+# Ensure vi editing style
+set editing-mode vi
+
+# Set block shaped cursos in cmd mode, and pip in insert mode
+$if term=linux
+    set vi-ins-mode-string \1\e[?0c\2
+    set vi-cmd-mode-string \1\e[?8c\2
+$else
+    set vi-ins-mode-string \1\e[6 q\2
+    set vi-cmd-mode-string \1\e[2 q\2
+$endif
+
+# Cycle through completions with Tab
+TAB: menu-complete
+
+# Navigate by word using CTRL + Left/Right
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
+
+# Home, End, Delete keys
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+bindkey "^[[3~" delete-char
+
+# Enable history search in both cmd and insert mode
+set editing-mode vi
+$if mode=vi
+    set keymap vi-command
+    # these are for vi-command mode
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+    j: history-search-forward
+    k: history-search-backward
+    set keymap vi-insert
+    # these are for vi-insert mode
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+$endif
+
+# Color files by types
+# Note that this may cause completion text blink in some terminals (e.g. xterm).
+set colored-stats On
+# Append char to indicate type
+set visible-stats On
+# Mark symlinked directories
+set mark-symlinked-directories On
+# Color the common prefix
+set colored-completion-prefix On
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
+
+# - when performing completion in the middle of a word, do not insert characters
+# from the completion that match characters after point in the word being
+# completed
+set skip-completed-text on
+
+# Expands tilde to home
+set expand-tilde on
+
+# Set the history size
+set history-size 5000
+set history-preserve-point on
+
+# Remove echoing CTRL + C
+set echo-control-characters off
+
+# Terminal bell visibly rings, not audibly
+set bell-style visible
+
+# Briefly move cursor to matching paren when closing paren inserted
+set blink-matching-paren on
+
+# Show character for filetype based on stat(2) in completions
+set visible-stats on
+
+# Prevents weird stuff from happening
+$include /etc/inputrc
