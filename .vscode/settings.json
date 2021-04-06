@@ -2,6 +2,7 @@
     "files.associations": {
         "install-profile": "shellscript",
         "install-standalone": "shellscript",
+        "vimrc*": "viml"
     },
     "cSpell.words": [
         "Conda",
