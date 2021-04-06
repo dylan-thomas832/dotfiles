@@ -16,9 +16,9 @@ channels:
 show_channel_urls: True
 
 # Define where conda should store environments
-env_dirs:
+envs_dirs:
   - ~/.config/conda/envs
 
 # Define where conda should store packages
-pkg_dirs:
+pkgs_dirs:
   - ~/.config/conda/pkgs
