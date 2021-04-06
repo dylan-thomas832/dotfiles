@@ -4,3 +4,4 @@
     ~/.config/ipython/profile_default/ipython_config.py: development/python/ipython_config.linux.py
     ~/.config/pylintrc: development/python/pylintrc.ini
     ~/.flake8: development/python/flake8.ini
+    ~/.config/conda/condarc: development/python/condarc.yaml
