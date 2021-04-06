@@ -1,7 +1,7 @@
-git
+git.any
 bash.windows
-sh
-vim
+sh.any
+vim.any
 python.windows
 terminal.windows
 vscode.windows

@@ -1,9 +1,9 @@
-linux
-git
+general.linux
+git.any
 bash.linux
-sh
-zsh
-vim
+sh.any
+zsh.linux
+vim.any
 python.linux
 terminal.linux
 vscode.linux
