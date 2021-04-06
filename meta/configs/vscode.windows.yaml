@@ -1,2 +1,3 @@
+# Setup VS Code User settings on Windows
 - link:
     "%USERPROFILE%/AppData/Roaming/Code/User/settings.json": editors/vscode/settings_windows.jsonc

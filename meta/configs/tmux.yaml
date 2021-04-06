@@ -1,0 +1,4 @@
+# Setup tmux config on Linux
+- link:
+    ~/.tmux.conf: terminal/tmux/.tmux.conf
+    ~/.tmux.conf.local: terminal/tmux.conf.local

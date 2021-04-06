@@ -1,4 +1,4 @@
-
+# Setup dotfiles for bash shell on Linux
 - link:
     ~/.bash_profile: shells/bash/linux.bash_profile
     ~/.bashrc: shells/bash/linux.bashrc

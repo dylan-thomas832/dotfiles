@@ -1,3 +1,4 @@
+# Setup generic Linux dotfiles and check ZSH version
 - link:
     ~/.config/agignore: development/agignore
 

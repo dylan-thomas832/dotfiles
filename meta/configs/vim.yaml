@@ -1,4 +1,4 @@
-
+# Setup VIM configuration
 - link:
     ~/.vim:           editors/vim
     ~/.vimrc:         editors/vim/vimrc.vim

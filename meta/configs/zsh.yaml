@@ -1,4 +1,4 @@
-
+# Setup dotfiles for ZSH shell
 - link:
     ~/.zshrc: shells/zsh/linux.zshrc
     ~/.zlogin: shells/zsh/linux.zlogin

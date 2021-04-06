@@ -1,4 +1,4 @@
-
+# Setup terminal-specific settings on Linux
 - link:
     '%APPDATA%/wsltty/themes': terminal/mintty/themes
     '%APPDATA%/wsltty/config': terminal/mintty/config
