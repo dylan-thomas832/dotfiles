@@ -1,28 +1,33 @@
+# Source additional sh configs
+for config in "${HOME}"/.config/sh/*.sh ; do
+    source "${config}"
+done
+
 # Allow local customizations in the ~/.zshrc_local_before file
 if [ -f ~/.zshrc_local_before ]; then
     source ~/.zshrc_local_before
 fi
 
 # External plugins (initialized before)
-source ~/.zshrc.d/plugins_before.zsh
+source ~/.config/zsh/plugins_before.zsh
 
 # Load contained custom functions
-source ~/.zshrc.d/functions.zsh
+source ~/.config/zsh/functions.zsh
 
 # Set environment variables
-source ~/.zshrc.d/environment.zsh
+source ~/.config/zsh/environment.zsh
 
 # Aliases
-source ~/.zshrc.d/aliases.zsh
+source ~/.config/zsh/aliases.zsh
 
 # Custom prompt
-source ~/.zshrc.d/prompt.zsh
+source ~/.config/zsh/prompt.zsh
 
 # # Syntax highlighting
-# source ~/.zshrc.d/syntax.zsh
+# source ~/.config/zsh/syntax.zsh
 
 # External plugins (initialized after)
-source ~/.zshrc.d/plugins_after.zsh
+source ~/.config/zsh/plugins_after.zsh
 
 # Allow local customizations in the ~/.zshrc_local_after file
 # Note: This is where conda sourcing goes & Display export for WSL

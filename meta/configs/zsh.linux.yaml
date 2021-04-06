@@ -1,5 +1,6 @@
 # Setup dotfiles for ZSH shell
 - link:
     ~/.zshrc: shells/zsh/linux.zshrc
-    ~/.zlogin: shells/zsh/linux.zlogin
-    ~/.zshrc.d: shells/zsh/zshrc.d
+    ~/.zshenv: shells/zsh/linux.zshenv
+    ~/.zprofile: shells/zsh/linux.zprofile
+    ~/.config/zsh: shells/zsh/.config/zsh
