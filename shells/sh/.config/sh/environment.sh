@@ -2,18 +2,10 @@
 export EDITOR=vim
 export VISUAL=vim
 
-# XDG Base Directories
-if [[ -z "${XDG_CONFIG_HOME}" ]] ;then
-        export XDG_CONFIG_HOME="$HOME/.config"
-fi
-
-if [[ -z "${XDG_CACHE_HOME}" ]] ;then
-        export XDG_CACHE_HOME="$HOME/.cache"
-fi
-
-if [[ -z "${XDG_DATA_HOME}" ]] ;then
-        export XDG_DATA_HOME="${HOME}/.local/share"
-fi
+# Set XDG Base Directories
+[[ -z "${XDG_CONFIG_HOME}" ]] && export XDG_CONFIG_HOME="$HOME/.config"
+[[ -z "${XDG_CACHE_HOME}" ]] && export XDG_CACHE_HOME="$HOME/.cache"
+[[ -z "${XDG_DATA_HOME}" ]] && export XDG_DATA_HOME="${HOME}/.local/share"
 
 # Cache pip-installed packages to avoid re-downloading
 export PIP_DOWNLOAD_CACHE="${XDG_CACHE_HOME}/pip"
@@ -49,12 +41,9 @@ export LANG=en_US.UTF-8
 export LC_ALL='en_US.UTF-8';
 
 # Add ~/.local/bin to PATH if exists
-if [ -d ~/.local/bin ] ; then
-    export PATH=~/.local/bin:${PATH}
-fi
+[ -d ~/.local/bin ] && export PATH=~/.local/bin:${PATH}
 
+# Set lib PATH
 export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib
 # Add ~/.local/lib to Lib PATH if exists
-if [ -d ~/.local/lib ] ; then
-    LD_LIBRARY_PATH=~/.local/lib:${LD_LIBRARY_PATH}
-fi
+[ -d ~/.local/lib ] && export LD_LIBRARY_PATH=~/.local/lib:${LD_LIBRARY_PATH}
