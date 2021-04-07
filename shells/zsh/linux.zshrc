@@ -14,9 +14,6 @@ source ~/.config/zsh/plugins_before.zsh
 # Load contained custom functions
 source ~/.config/zsh/functions.zsh
 
-# Set environment variables
-source ~/.config/zsh/environment.zsh
-
 # Aliases
 source ~/.config/zsh/aliases.zsh
 
