@@ -18,8 +18,8 @@ apt install -y libopenblas-dev libatlas-base-dev liblapack-dev
 # Esnure we have basics
 apt install -y git wget curl vim ctags
 
-# Get zsh,tmux, & fonts
-apt install -y zsh tmux fonts-powerline
+# Get zsh
+apt install -y zsh
 
 # Get Ack & Ag
 apt install -y ack-grep silversearcher-ag
