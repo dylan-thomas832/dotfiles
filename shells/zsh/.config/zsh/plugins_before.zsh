@@ -4,6 +4,8 @@ source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 # Extra completions
 fpath=(~/.config/zsh/plugins/zsh-completions/zsh-completions/src $fpath)
+# Auto suggestions (pre-typed)
+source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Load autocompletion, colors, and vcs info
 autoload -Uz colors vcs_info zcalc
