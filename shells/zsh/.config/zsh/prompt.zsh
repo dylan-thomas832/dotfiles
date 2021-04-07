@@ -1,11 +1,13 @@
 # Load VCS plugin
 autoload -Uz vcs_info
 
+# Set colors for git info
 zstyle ':vcs_info:*' stagedstr '%F{green}●%f '
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%f '
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git*' formats "%F{blue}%b%f %u%c"
 
+# Called before command
 precmd() {
     # As always first run the system so everything is setup correctly.
     # And then just set PS1, RPS1 and whatever you want to. This $PS1
@@ -15,6 +17,9 @@ precmd() {
     _setup_ps1
 }
 
+# Actually set the prompt variables ('PS1' & 'RPROMPT') by calling `vcs_info`
+# which inserts info into `vcs_info_msg_0`
+# This also includes a conda prefix for the current environment
 _setup_ps1() {
   vcs_info
   GLYPH="▲"

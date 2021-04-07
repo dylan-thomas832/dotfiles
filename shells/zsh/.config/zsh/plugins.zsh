@@ -1,0 +1,32 @@
+### ZSH Plugins Pre-loaded ###
+# Author: Dylan Thomas
+
+## ZSH Script plugins
+
+# Syntax highlighting from zsh-users
+source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Substring search from zsh-users
+source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+# Auto suggestions (pre-typed)
+source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+## ZSH function plugins
+
+# Extra completions
+fpath+=~/.config/zsh/plugins/zsh-completions/zsh-completions/src
+# Conda completion
+fpath+=~/.config/zsh/plugins/conda-zsh-completion
+
+## Custom ZSH plugins
+
+# ZSH completion for pip
+# Retrieved via: `pip completion --zsh`
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
+}
+compctl -K _pip_completion python -m pip
