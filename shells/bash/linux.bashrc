@@ -110,7 +110,5 @@ if [ -f ~/.bashrc_local_after ]; then
   source ~/.bashrc_local_after
 fi
 
-# Source fzf if it exists
-if [ -f ~/.fzf.bash ]; then
-  source ~/.fzf.bash
-fi
+# Source fzf
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
