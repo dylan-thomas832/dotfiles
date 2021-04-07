@@ -2,6 +2,8 @@
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Substring search from zsh-users
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+# Extra completions
+fpath=(~/.config/zsh/plugins/zsh-completions/zsh-completions/src $fpath)
 
 # Load autocompletion, colors, and vcs info
 autoload -Uz colors vcs_info zcalc
