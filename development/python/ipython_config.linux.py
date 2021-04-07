@@ -17,13 +17,6 @@ if getattr(ip, 'pt_app', None):
                         filter=(HasFocus(DEFAULT_BUFFER)
                                  & ViInsertMode()))(switch_to_navigation_mode)
 
-
-# Powerline config
-from powerline.bindings.ipython.since_5 import PowerlinePrompts
-c = get_config()
-c.TerminalInteractiveShell.simple_prompt = False
-c.TerminalInteractiveShell.prompts_class = PowerlinePrompts
-
 # Extra configs
 c.InteractiveShellApp.exec_lines = [
     'import numpy',
