@@ -13,9 +13,9 @@ source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ## ZSH function plugins
 
 # Extra completions
-fpath+=~/.config/zsh/plugins/zsh-completions/zsh-completions/src
+source ~/.config/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 # Conda completion
-fpath+=~/.config/zsh/plugins/conda-zsh-completion
+fpath=(~/.config/zsh/plugins/conda-zsh-completion $fpath)
 
 ## Custom ZSH plugins
 
@@ -30,3 +30,6 @@ function _pip_completion {
              PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
 }
 compctl -K _pip_completion python -m pip
+
+# FZF
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
