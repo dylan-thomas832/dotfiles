@@ -35,18 +35,20 @@
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "name": "cmd",
                 "commandline": "cmd.exe",
+                "fontFace": "DejaVu Sans Mono for Powerline",
+                "colorScheme": "SpaceGray",
                 "hidden": false
             },
             {
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
                 "name": "Ubuntu",
-                "icon": "%USERPROFILE%\\tux.ico",
+                "icon": "%USERPROFILE%/tux.ico",
                 "commandline": "wsl ~",
                 "fontFace": "DejaVu Sans Mono for Powerline",
+                "colorScheme": "SpaceGray",
                 "closeOnExit": true,
                 "snapOnInput": true,
-                "colorScheme": "Solarized Dark - Patched",
                 "historySize": 9001
             },
             {
