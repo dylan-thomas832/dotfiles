@@ -17,26 +17,15 @@ bindkey "^[[1;5C" forward-word
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
+# Change cursor depending on vi mode
+zle-line-init zle-keymap-select () {
+  case ${KEYMAP} in
+    vicmd)		echo -ne '\e[1 q' ;;
+    viins|main)	echo -ne '\e[5 q' ;;
+  esac
 }
 zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
 zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Makes CTRL+Z into a toggle switch
 ctrlz() {
@@ -49,8 +38,10 @@ ctrlz() {
 zle -N ctrlz
 bindkey '^Z' ctrlz
 
+# Additional options
+setopt EXTENDED_GLOB NOMATCH GLOB_STAR_SHORT MENU_COMPLETE
 # Remove terminal beep
-unsetopt beep
+unsetopt BEEP CORRECT CORRECT_ALL
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
