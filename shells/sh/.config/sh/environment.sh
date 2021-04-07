@@ -2,13 +2,21 @@
 export EDITOR=vim
 export VISUAL=vim
 
-# Cache pip-installed packages to avoid re-downloading
-export PIP_DOWNLOAD_CACHE="$HOME/.cache/pip"
+# XDG Base Directories
+if [[ -z "${XDG_CONFIG_HOME}" ]] ;then
+        export XDG_CONFIG_HOME="$HOME/.config"
+fi
 
-# XDG Base Directory
-export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_CACHE_HOME="${HOME}/.cache"
-export XDG_DATA_HOME="${HOME}/.local/share"
+if [[ -z "${XDG_CACHE_HOME}" ]] ;then
+        export XDG_CACHE_HOME="$HOME/.cache"
+fi
+
+if [[ -z "${XDG_DATA_HOME}" ]] ;then
+        export XDG_DATA_HOME="${HOME}/.local/share"
+fi
+
+# Cache pip-installed packages to avoid re-downloading
+export PIP_DOWNLOAD_CACHE="${XDG_CACHE_HOME}/pip"
 
 # Change history directories for bash and less
 export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
@@ -19,19 +27,19 @@ export SQLITE_HISTORY="${XDG_CACHE_HOME}/sqlite/history"
 export REDISCLI_HISTFILE="${XDG_CACHE_HOME}/redis/history"
 
 # Python startup file
-export PYTHONSTARTUP="$HOME/.config/python/pythonrc.py"
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc.py"
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 
 # Set conda config file location
-export CONDARC="$HOME/.config/conda/condarc"
+export CONDARC="${XDG_CONFIG_HOME}/conda/condarc"
 
 # Set IPython directory
-export IPYTHONDIR="$HOME/.config/ipython"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 
 # Set pylint home
-export PYLINTHOME="${XDG_DATA_HOME}/pylint"
+export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
 
 # Path to manpages
 export MANPATH="/usr/local/man:$MANPATH"
@@ -45,17 +53,8 @@ if [ -d ~/.local/bin ] ; then
     export PATH=~/.local/bin:${PATH}
 fi
 
-# Add ~/.local/lib to PATH if exists
+export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib
+# Add ~/.local/lib to Lib PATH if exists
 if [ -d ~/.local/lib ] ; then
-    export LD_LIBRARY_PATH=~/.local/lib:${LD_LIBRARY_PATH}
-fi
-
-# Add /usr/local/lib to PATH if exists
-if [ -d /usr/local/lib ] ; then
-    export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
-fi
-
-# Add /usr/lib to PATH if exists
-if [ -d /usr/lib ] ; then
-    export LD_LIBRARY_PATH=/usr/lib:${LD_LIBRARY_PATH}
+    LD_LIBRARY_PATH=~/.local/lib:${LD_LIBRARY_PATH}
 fi
