@@ -3,6 +3,7 @@ git.any
 bash.linux
 sh.any
 zsh.linux
+tools.linux
 vim.any
 python.linux
 terminal.linux
