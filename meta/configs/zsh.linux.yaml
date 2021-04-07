@@ -4,3 +4,6 @@
     ~/.zshenv: shells/zsh/linux.zshenv
     ~/.zprofile: shells/zsh/linux.zprofile
     ~/.config/zsh: shells/zsh/.config/zsh
+# Make ZSH cache directory
+- shell:
+    - [mkdir -p ~/.cache/zsh]
