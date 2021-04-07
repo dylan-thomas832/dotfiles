@@ -1,5 +1,6 @@
 # vi mode
 bindkey -v
+export KEYTIMEOUT=40
 
 # Enable incremental search
 bindkey "^R" history-incremental-search-backward
@@ -12,6 +13,15 @@ bindkey "^[[3~" delete-char
 # CTRL + Left/Right
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+# Use 'jk' to go to command mode
+bindkey -M viins 'jk' vi-cmd-mode  # @todo - THIS DOES NOT WORK?
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
