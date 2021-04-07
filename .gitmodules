@@ -28,3 +28,6 @@
 [submodule "shells/zsh/.config/zsh/plugins/zsh-autosuggestions"]
 	path = shells/zsh/.config/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "shells/zsh/.config/zsh/plugins/conda-zsh-completion"]
+	path = shells/zsh/.config/zsh/plugins/conda-zsh-completion
+	url = https://github.com/esc/conda-zsh-completion

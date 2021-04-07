@@ -1,14 +1,19 @@
+## ZSH Script plugins
 # Syntax highlighting from zsh-users
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Substring search from zsh-users
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-# Extra completions
-fpath=(~/.config/zsh/plugins/zsh-completions/zsh-completions/src $fpath)
 # Auto suggestions (pre-typed)
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+## ZSH function plugins
+# Extra completions
+fpath+=~/.config/zsh/plugins/zsh-completions/zsh-completions/src
+# Conda completion
+fpath+=~/.config/zsh/plugins/conda-zsh-completion
+
 # Load autocompletion, colors, and vcs info
-autoload -Uz colors vcs_info zcalc
+autoload -U colors zcalc
 colors
 
 # Report command running time if it is more than 3 seconds
