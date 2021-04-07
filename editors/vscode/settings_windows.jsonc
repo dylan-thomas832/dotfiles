@@ -43,7 +43,8 @@
     "files.associations": {
         "*gitconfig*": "properties",
         "*ignore*": "ignore",
-        "*pythonrc*": "python"
+        "*pythonrc*": "python",
+        ".pylintrc": "properties"
     },
     "files.eol": "\n", // /r/n is bad!
     // Default configuration overrides for html, markdown, & python languages
@@ -66,11 +67,10 @@
         "editor.autoIndent": "advanced"
     },
     // Terminal settings
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
-    // Setup to call Cmder terminal emulator! Uncomment to use
-    // Relies on setting a CMDER_ROOT environment variable!
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\wsl.exe",
     "terminal.integrated.shellArgs.windows": [
-        "/k", "%CMDER_ROOT%\\vendor\\init.bat"
+        "-d",
+        "Ubuntu-18.04"
     ],
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorStyle": "line",

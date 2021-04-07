@@ -43,7 +43,8 @@
     "files.associations": {
         "*gitconfig*": "properties",
         "*ignore*": "ignore",
-        "*pythonrc*": "python"
+        "*pythonrc*": "python",
+        ".pylintrc": "properties"
     },
     "files.eol": "\n", // /r/n is bad!
     // Default configuration overrides for html, markdown, & python languages
