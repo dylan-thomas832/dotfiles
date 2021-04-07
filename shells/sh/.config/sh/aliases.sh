@@ -1,7 +1,7 @@
 # Easier navigation: .., ..., ...., ....., ~ and -
-alias ...="../.."
-alias ....="../../.."
-alias .....="../../../.."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 # Ensure VIM
 alias vi=vim
