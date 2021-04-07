@@ -39,3 +39,23 @@ export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL='en_US.UTF-8';
+
+# Add ~/.local/bin to PATH if exists
+if [ -d ~/.local/bin ] ; then
+    export PATH=~/.local/bin:${PATH}
+fi
+
+# Add ~/.local/lib to PATH if exists
+if [ -d ~/.local/lib ] ; then
+    export LD_LIBRARY_PATH=~/.local/lib:${LD_LIBRARY_PATH}
+fi
+
+# Add /usr/local/lib to PATH if exists
+if [ -d /usr/local/lib ] ; then
+    export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
+fi
+
+# Add /usr/lib to PATH if exists
+if [ -d /usr/lib ] ; then
+    export LD_LIBRARY_PATH=/usr/lib:${LD_LIBRARY_PATH}
+fi
