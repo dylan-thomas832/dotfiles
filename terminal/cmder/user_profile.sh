@@ -7,7 +7,7 @@
 # . "${CMDER_ROOT}/vendor/lib/start-ssh-agent.sh"
 
 # Adds git completions
-source ~/.config/git-completion.bash
+source ~/.config/git/git-completion.bash
 
 # Source standard linux bashrc for common configurations
 source ~/.bashrc

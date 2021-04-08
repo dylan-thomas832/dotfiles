@@ -6,6 +6,7 @@
     '%USERPROFILE%/cmder/config/user_profile.cmd': terminal/cmder/user_profile.cmd
     '%USERPROFILE%/cmder/config/user_profile.sh': terminal/cmder/user_profile.sh
     '%USERPROFILE%/tux.ico': terminal/windows/tux.ico
+    ~/.dircolors: terminal/colors/.dircolors
 
 - shell:
     - [powershell -ExecutionPolicy Bypass "& ./terminal/fonts/install.ps1 DejaVuSansMono", Installing powerline fonts - DejaVuSansMono]
