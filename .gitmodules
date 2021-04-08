@@ -17,17 +17,17 @@
     path = terminal/tmux
     url = git@github.com:gpakosz/.tmux.git
 [submodule "shells/zsh/zshrc.d/plugins/zsh-history-substring-search"]
-	path = shells/zsh/plugins/plugins/zsh-history-substring-search
+	path = shells/zsh/vendor/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
 [submodule "shells/zsh/zshrc.d/plugins/zsh-syntax-highlighting"]
-	path = shells/zsh/plugins/plugins/zsh-syntax-highlighting
+	path = shells/zsh/vendor/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
 [submodule "shells/zsh/.config/zsh/plugins/zsh-completions"]
-	path = shells/zsh/plugins/plugins/zsh-completions
+	path = shells/zsh/vendor/zsh-completions
 	url = git://github.com/zsh-users/zsh-completions.git
 [submodule "shells/zsh/.config/zsh/plugins/zsh-autosuggestions"]
-	path = shells/zsh/plugins/plugins/zsh-autosuggestions
+	path = shells/zsh/vendor/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "shells/zsh/.config/zsh/plugins/conda-zsh-completion"]
-	path = shells/zsh/plugins/plugins/conda-zsh-completion
+	path = shells/zsh/vendor/conda-zsh-completion
 	url = https://github.com/esc/conda-zsh-completion

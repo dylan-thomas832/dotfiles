@@ -4,18 +4,18 @@
 ## ZSH Script plugins
 
 # Syntax highlighting from zsh-users
-source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Substring search from zsh-users
-source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.config/zsh/vendor/zsh-history-substring-search/zsh-history-substring-search.zsh
 # Auto suggestions (pre-typed)
-source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/vendor/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ## ZSH function plugins
 
 # Extra completions
-source ~/.config/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
+source ~/.config/zsh/vendor/zsh-completions/zsh-completions.plugin.zsh
 # Conda completion
-fpath=(~/.config/zsh/plugins/conda-zsh-completion $fpath)
+fpath=(~/.config/zsh/vendor/conda-zsh-completion $fpath)
 
 ## Custom ZSH plugins
 
