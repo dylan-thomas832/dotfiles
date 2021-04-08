@@ -4,4 +4,9 @@
       create: true
       relink: true
 
-- clean: ['~']
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      force: true
+      recursive: true
