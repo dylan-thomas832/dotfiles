@@ -2,6 +2,9 @@ source "${HOME}/.config/sh/environment.sh"
 
 # Set environment variables here.
 
+# Force set shell
+export SHELL=$(which zsh)
+
 # Set the ZSH directory
 [[ -d "${XDG_CONFIG_HOME}/zsh" ]] && export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
