@@ -1,12 +1,12 @@
 source "${HOME}/.config/sh/environment.sh"
 
+# Skip over global `compinit` call, since we do it anyways
+skip_global_compinit=1
+
 # Set environment variables here.
 
 # Force set shell
 export SHELL=$(which zsh)
-
-# Set the ZSH directory
-[[ -d "${XDG_CONFIG_HOME}/zsh" ]] && export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 # Set the ZSH cache directory
 [[ -d "${XDG_CACHE_HOME}/zsh" ]] && export ZCACHEDIR="${XDG_CACHE_HOME}/zsh"

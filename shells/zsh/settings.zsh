@@ -41,9 +41,6 @@ setopt inc_append_history extended_history hist_ignore_all_dups hist_ignore_spac
 
 ## Completion Settings
 
-# Enable autocompletion
-autoload -Uz compinit
-
 # Add completers....
 zstyle ':completion:*' completer _complete _correct _approximate
 # Allows dircolors to be used in completion menu
@@ -68,7 +65,8 @@ zstyle '*' single-ignored show
 zmodload -i zsh/complist
 
 # Initialize completions
-compinit -d "${ZCACHEDIR}/zcompdump-${ZSH_VERSION}"
+autoload -Uz compinit
+compinit -C -d "${ZCACHEDIR}/zcompdump-${HOST/.*/}-${ZSH_VERSION}"
 _comp_options+=(globdots)  # Include hidden files.
 
 # Automatically load bash completion functions
