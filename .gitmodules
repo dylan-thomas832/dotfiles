@@ -1,33 +1,44 @@
 [submodule "dotbot"]
     path = meta/dotbot
     url = https://github.com/anishathalye/dotbot
+    ignore = dirty
 [submodule "terminal/fonts"]
     path = terminal/fonts
     url = https://github.com/powerline/fonts
+    ignore = dirty
 [submodule "terminal/base16-shell"]
     path = terminal/colors/base16-shell
     url = https://github.com/chriskempson/base16-shell
+    ignore = dirty
 [submodule "terminal/base16-putty"]
     path = terminal/colors/base16-putty
     url = https://github.com/benjojo/base-16-putty
+    ignore = dirty
 [submodule "terminal/colors/conemu-themes"]
     path = terminal/colors/conemu-themes
     url = git@github.com:joonro/ConEmu-Color-Themes.git
+    ignore = dirty
 [submodule ".tmux"]
     path = terminal/tmux
     url = git@github.com:gpakosz/.tmux.git
+    ignore = dirty
 [submodule "shells/zsh/zshrc.d/plugins/zsh-history-substring-search"]
-	path = shells/zsh/vendor/zsh-history-substring-search
-	url = https://github.com/zsh-users/zsh-history-substring-search
+    path = shells/zsh/vendor/zsh-history-substring-search
+    url = https://github.com/zsh-users/zsh-history-substring-search
+    ignore = dirty
 [submodule "shells/zsh/zshrc.d/plugins/zsh-syntax-highlighting"]
-	path = shells/zsh/vendor/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting
+    path = shells/zsh/vendor/zsh-syntax-highlighting
+    url = https://github.com/zsh-users/zsh-syntax-highlighting
+    ignore = dirty
 [submodule "shells/zsh/.config/zsh/plugins/zsh-completions"]
-	path = shells/zsh/vendor/zsh-completions
-	url = git://github.com/zsh-users/zsh-completions.git
+    path = shells/zsh/vendor/zsh-completions
+    url = git://github.com/zsh-users/zsh-completions.git
+    ignore = dirty
 [submodule "shells/zsh/.config/zsh/plugins/zsh-autosuggestions"]
-	path = shells/zsh/vendor/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
+    path = shells/zsh/vendor/zsh-autosuggestions
+    url = https://github.com/zsh-users/zsh-autosuggestions
+    ignore = dirty
 [submodule "shells/zsh/.config/zsh/plugins/conda-zsh-completion"]
-	path = shells/zsh/vendor/conda-zsh-completion
-	url = https://github.com/esc/conda-zsh-completion
+    path = shells/zsh/vendor/conda-zsh-completion
+    url = https://github.com/esc/conda-zsh-completion
+    ignore = dirty
