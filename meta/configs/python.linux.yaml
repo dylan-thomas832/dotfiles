@@ -6,7 +6,10 @@
     ~/.config/flake8: development/python/flake8.ini
     ~/.config/conda/condarc: development/python/condarc.yaml
 
+# Create python cache directory
+- create:
+    - ~/.cache/python
+
 # Run a command to create an empty python history file
 - shell:
-    - [mkdir -p ~/.cache/python]
     - [touch ~/.cache/python/history]

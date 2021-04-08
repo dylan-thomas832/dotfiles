@@ -1,4 +1,4 @@
 # Install tools for Linux that aren't done through `apt` or `pip`
 - shell:
-    - [git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf, Cloning fzf]
+    - eval $([[ ! -d ~/.fzf ]] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf)
     - [~/.fzf/install --all --xdg --no-update-rc, Installing fzf]

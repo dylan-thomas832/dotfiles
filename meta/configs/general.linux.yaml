@@ -4,3 +4,9 @@
 
 - shell:
     - [zsh --version, Checking zsh version]
+
+- create:
+    - ~/repos
+    - ~/projects
+    - ~/data
+    - ~/docs

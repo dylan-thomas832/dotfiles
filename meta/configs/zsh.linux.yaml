@@ -5,5 +5,5 @@
     ~/.zprofile: shells/zsh/.zprofile
     ~/.zshenv: shells/zsh/.zshenv
 # Make ZSH cache directory
-- shell:
-    - [mkdir -p ~/.cache/zsh]
+- create:
+    - ~/.cache/zsh
