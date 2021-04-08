@@ -17,7 +17,7 @@
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "indent",
     // Workbench settings
-    "workbench.colorTheme": "One Dark Pro (Italic)",
+    "workbench.colorTheme": "One Dark Pro",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.iconTheme": "vscode-icons",
     "workbench.settings.editor": "json",
@@ -37,13 +37,16 @@
         "**/.DS_Store": true,
         "**/__pycache__": true,
         "**/**/**/*.pyc": true,
-        "**/.mypy_cache": true
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true
     },
     // Helps with syntax highlighting
     "files.associations": {
         "*gitconfig*": "properties",
+        "*.config": "properties",
         "*ignore*": "ignore",
         "*pythonrc*": "python",
+        "development.txt": "pip-requirements",
         ".pylintrc": "properties"
     },
     "files.eol": "\n", // /r/n is bad!
@@ -76,14 +79,14 @@
         "aosl-ml-2": "linux"
     },
     "remote.SSH.defaultExtensions": [
-    "eamodio.gitlens",
-    "mutantdino.resourcemonitor",
-    "ms-vscode.cpptools",
-    "james-yu.latex-workshop",
-    "yzhang.markdown-all-in-one",
-    "ms-python.python",
-    "njpwerner.autodocstring",
-    "streetsidesoftware.code-spell-checker"
+        "eamodio.gitlens",
+        "mutantdino.resourcemonitor",
+        "ms-vscode.cpptools",
+        "james-yu.latex-workshop",
+        "yzhang.markdown-all-in-one",
+        "ms-python.python",
+        "njpwerner.autodocstring",
+        "streetsidesoftware.code-spell-checker"
     ],
     // Breadcrumbs are a useful navigation tool. Use Ctrl+Shift+. to focus.
     "breadcrumbs.enabled": true,
@@ -158,7 +161,6 @@
     "markdown.extension.list.indentationSize": "inherit",
     "markdown.extension.orderedList.marker": "one",
     "markdown.extension.preview.autoShowPreviewToSide": false,
-    "markdown.extension.toc.githubCompatibility": true,
     // Auto-docstring Google style
     "autoDocstring.docstringFormat": "google",
     // Code spell-checker settings
@@ -197,5 +199,15 @@
         "undeformed",
         "xlabel",
         "ylabel"
-    ]
+    ],
+    "python.dataScience.sendSelectionToInteractiveWindow": false,
+    "sqltools.useNodeRuntime": true,
+    "latex-workshop.message.update.show": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "python.formatting.provider": "yapf"
 }
