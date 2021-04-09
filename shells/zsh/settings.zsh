@@ -42,7 +42,12 @@ SAVEHIST=10000
 # hist_ignore_all_dups:   Do not keep duplicate commands in history
 # hist_ignore_space:      Do not remember commands that start with a whitespace
 # hist_expire_dups_first: Delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt inc_append_history extended_history hist_ignore_all_dups hist_ignore_space hist_expire_dups_first
+# share_history:          Share history across multiple zsh sessions
+# append_history:         Append to history
+# hist_reduce_blanks:     Remove blank lines from history
+# hist_repair:            Don't auto run commands on history substitution
+setopt inc_append_history extended_history hist_ignore_all_dups hist_ignore_space
+setopt hist_expire_dups_first share_history append_history hist_reduce_blanks hist_verify
 
 ## Completion Settings
 
@@ -67,6 +72,10 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
         usbmux uucp vcsa wwwrun xfs '_*'
 # ... unless we really want to.
 zstyle '*' single-ignored show
+# Allow partial completion of paths
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
+# Load completion list
 zmodload -i zsh/complist
 
 # Initialize completions
