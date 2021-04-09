@@ -385,7 +385,7 @@ class ImprovedConsole(InteractiveConsole):
         sys.ps2 = red('... ', readline_workaround=True)
         # - if we are over a remote connection, modify the ps1
         if os.getenv('SSH_CONNECTION'):
-            _, _, this_host, _ = os.getenv('SSH_CONNECTION').split()
+            _, _, this_host, _ = os.getenv('HOST').split()
             sys.ps1 = prompt_color(f'[{this_host}]>>> ', readline_workaround=True)
             sys.ps2 = red(f'[{this_host}]... ', readline_workaround=True)
 
