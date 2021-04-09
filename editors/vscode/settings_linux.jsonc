@@ -5,9 +5,9 @@
     // Editor settings
     "editor.autoIndent": "advanced",
     "editor.cursorBlinking": "expand",
-    "editor.fontFamily": "'DejaVu Sans Mono', 'DejaVu Sans Mono for Powerline', Consolas, monospace, 'Droid Sans'",
-    "editor.fontLigatures": true,
-    "editor.fontWeight": "normal",
+    "editor.fontFamily": "'Fira Mono', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss05', ",
+    "editor.fontWeight": "300"
     "editor.mouseWheelScrollSensitivity": 2,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.parameterHints.cycle": true,
