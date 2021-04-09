@@ -114,11 +114,15 @@ bindkey -M viins 'jk' vi-cmd-mode
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# Change cursor depending on vi mode
+# Change cursor & glyph depending on vi mode
 zle-line-init zle-keymap-select () {
+  # Setup and reset prompt on mode switch
+  _setup_ps1
+  zle reset-prompt
+  # Switch cursor
   case ${KEYMAP} in
-    vicmd)		echo -ne '\e[1 q' ;;
-    viins|main)	echo -ne '\e[5 q' ;;
+    vicmd)      echo -ne '\e[1 q' ;;
+    viins|main) echo -ne '\e[5 q' ;;
   esac
 }
 zle -N zle-keymap-select
