@@ -39,9 +39,13 @@ octave-workspace
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
-__pycache__/
+__pycache__
 *.py[cod]
 *$py.class
+
+# Anaconda directories
+anaconda3
+miniconda3
 
 # C extensions
 
