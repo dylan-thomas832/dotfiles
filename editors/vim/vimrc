@@ -314,7 +314,7 @@ if executable('ag')
   " Set Ack to use Ag
   let g:ackprg = 'ag --vimgrep --smart-case'
   " Remap command for searching
-    nnoremap <leader>a :Ack
+    nnoremap <leader>a :Ack<SPACE>
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
