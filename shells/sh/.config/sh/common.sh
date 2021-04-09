@@ -81,5 +81,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-# Colors
-eval $(dircolors -b ${HOME}/.dircolors)
+# Configure dircolors
+test -e ~/.dircolors && \
+   eval `dircolors -b ~/.dircolors`
