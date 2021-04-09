@@ -9,6 +9,9 @@ alias sudo='sudo '
 # Force ag to use ignore file and not ignore hidden files by default
 alias ag='ag --hidden --path-to-ignore ~/.config/agignore'
 
+# Suffix aliases -> applied to end of the line
+alias -s log="tail -f"
+
 # Global aliases -> directly replaced on line
 alias -g ...='../..'
 alias -g ....='../../..'
