@@ -56,3 +56,8 @@
 
     # Allows for copying of aliases without copying gitconfig settings. Good for long alias lists too
     path = ~/.config/git/aliases
+
+[user]
+    # My default username and email. This can be overwritten
+    name = Dylan Thomas
+    email = dylan.thomas@vt.edu
