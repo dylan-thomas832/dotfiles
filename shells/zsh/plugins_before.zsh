@@ -1,16 +1,10 @@
-### ZSH Plugins Pre-loaded ###
+### ZSH Plugins loaded before compinit ###
 # Author: Dylan Thomas
 
-## ZSH Script plugins
-
-# Syntax highlighting from zsh-users
-source ~/.config/zsh/vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Substring search from zsh-users
-source ~/.config/zsh/vendor/zsh-history-substring-search/zsh-history-substring-search.zsh
-# Auto suggestions (pre-typed)
-source ~/.config/zsh/vendor/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 ## ZSH function plugins
+
+# NOTE: I believe it is best practice to source completion plugins before compinit
+#   see https://github.com/zsh-users/zsh-completions#manual-installation
 
 # Extra completions
 source ~/.config/zsh/vendor/zsh-completions/zsh-completions.plugin.zsh
@@ -45,5 +39,3 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--reverse --preview 'cat {}' --color=bg+:#293739,bg:#1B1D1E,border:#808080,spinner:#E6DB74,hl:#7E8E91,fg:#F8F8F2,header:#7E8E91,info:#A6E22E,pointer:#A6E22E,marker:#F92672,fg+:#F8F8F2,prompt:#F92672,hl+:#F92672"
 
-# For running pfetch if interested
-export PF_INFO="ascii title os host kernel de shell uptime pkgs memory palette"

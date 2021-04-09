@@ -9,7 +9,7 @@ done
 [[ -f ~/.zshrc_local_before ]] && source ~/.zshrc_local_before
 
 # External plugins (initialized before general settings)
-[[ -f $ZDOTDIR/plugins.zsh ]] && source $ZDOTDIR/plugins.zsh
+[[ -f $ZDOTDIR/plugins_before.zsh ]] && source $ZDOTDIR/plugins_before.zsh
 
 # General ZSH settings
 [[ -f $ZDOTDIR/settings.zsh ]] && source $ZDOTDIR/settings.zsh
@@ -19,6 +19,9 @@ done
 
 # Custom prompt config
 [[ -f $ZDOTDIR/prompt.zsh ]] && source $ZDOTDIR/prompt.zsh
+
+# External plugins (initialized after general settings)
+[[ -f $ZDOTDIR/plugins_after.zsh ]] && source $ZDOTDIR/plugins_after.zsh
 
 # Allow local customizations in the ~/.zshrc_local_after file
 # Note: This is where conda sourcing goes & Display export for WSL
