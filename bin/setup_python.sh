@@ -2,7 +2,7 @@
 
 set -e
 
-if [ ! -x  ~/anaconda3/condabin/conda ] && [ ! -x ~/minconda3/condabin/conda ]; then
+if [ ! -x  ~/anaconda3/condabin/conda ] && [ ! -x ~/miniconda3/condabin/conda ]; then
     echo "Please install conda before proceeding"
     exit 2
 fi
