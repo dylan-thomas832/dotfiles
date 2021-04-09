@@ -1,8 +1,8 @@
 # Setup dotfiles for ZSH shell
 - link:
-    ~/.config/zsh: shells/zsh/
-    ~/.zshrc: shells/zsh/.zshrc
-    ~/.zprofile: shells/zsh/.zprofile
+    ~/.config/zsh: shells/zsh/*.zsh
+    ~/.config/zsh/.zshrc: shells/zsh/.zshrc
+    ~/.config/zsh/.zprofile: shells/zsh/.zprofile
     ~/.zshenv: shells/zsh/.zshenv
 # Make ZSH cache directory
 - create:
