@@ -2,5 +2,4 @@
 - link:
     ~/.config/git/config: development/git/gitconfig
     ~/.config/git/aliases: development/git/gitconfig.aliases
-    ~/.gitconfig_local: development/git/gitconfig_local
     ~/.config/git/ignore: development/git/gitignore_global
