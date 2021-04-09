@@ -6,15 +6,20 @@
 autoload -Uz colors zcalc
 colors
 
-# Set various options
+# Set globbing options
 # extended_glob:          Improved filename generation on CLI
 # nomatch:                Print error is globbing has no matches
 # glob_star_short:        Shorthand '**' for '**/*'
-# interactivecomments:    Allow comments on CLI
+# no_case_glob:           Case insensitive globbing
+setopt extended_glob nomatch glob_star_short no_case_glob
+
+# Set various options
+# interactivecomments:    Allow comments in interactive shell
 # always_to_end:          Moves cursor to end of word on completion
 # auto_pushd:             Make cd push the old directory onto the directory stack
 # pushd_ignore_dups:      Don’t push multiple copies of the same directory onto the directory stack
-setopt extended_glob nomatch glob_star_short interactivecomments always_to_end auto_pushd pushd_ignore_dups
+setopt interactivecomments always_to_end auto_pushd pushd_ignore_dups
+
 # Unset various options
 # beep:                   Remove terminal beep
 # correct:                Stop zsh command spell correction
@@ -28,8 +33,8 @@ REPORTTIME=3
 ## ZSH History Settings
 # History File Settings
 HISTFILE="${ZCACHEDIR}/history"
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Various history options
 # inc_append_history:     Add commands to history as they are entered, don't wait for shell to exit
@@ -127,3 +132,8 @@ zle-line-init zle-keymap-select () {
 }
 zle -N zle-keymap-select
 zle -N zle-line-init
+
+# Watching other users
+#WATCHFMT="%n %a %l from %m at %t."
+watch=(notme)         # Report login/logout events for everybody except ourself.
+LOGCHECK=60           # Time (seconds) between checks for login/logout activity.
