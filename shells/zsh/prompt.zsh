@@ -27,8 +27,9 @@ _setup_ps1() {
   CONDA_CURR_ENV=$(basename "$CONDA_DEFAULT_ENV")
   # Flips the glyph if in vi command mode
   [ "x$KEYMAP" = "xvicmd" ] && GLYPH="▼"
-  # Sets the glyph for vi-mode (up/down) and previous command exit code (color)
-  local glyph="%(?.%F{blue}.%F{red}%? )$GLYPH%f"
+  # Sets the glyph direction for vi-mode and color for the previous command exit code
+  # Add `"%? "` in between `}` and `)` to print the exit code directly
+  local glyph="%(?.%F{blue}.%F{red})$GLYPH%f"
   # Sets the symbol used for user prompt
   local prompt_symbol="%(!.%F{red}#%f .)"
   # Includes the hostname if logged in using SSH
