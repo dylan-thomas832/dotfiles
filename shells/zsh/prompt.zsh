@@ -1,23 +1,26 @@
 # Load VCS plugin
 autoload -Uz vcs_info
 
-# Set colors for git info
-zstyle ':vcs_info:*' stagedstr '%F{green}●%f '
-zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%f '
+# Set colors for git staged/unstaged info
+zstyle ':vcs_info:git:*' stagedstr '%F{green}●%f '
+zstyle ':vcs_info:git:*' unstagedstr '%F{yellow}●%f '
+# Auto check for staged/unstaged
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git*' formats "%F{blue}%b%f %u%c"
+# Set format for VCS info msg on regular check
+zstyle ':vcs_info:git:*' formats "%F{blue}%b%f %u%c"
+# Set format for VCS info msg when doing rebase/merge/cherry pick, etc.
+# zstyle ':vcs_info:git:*' formats "%F{red}%a%f|%F{blue}%b%f %u%c"
+# Only enable git
+zstyle ':vcs_info:*' enable git
 
-# Called before command
+# Called before prompt generated
 precmd() {
     # As always first run the system so everything is setup correctly.
-    # And then just set PS1, RPS1 and whatever you want to. This $PS1
-    # is (as with the other examples above too) just an example of a very
-    # basic single-line prompt. See "man zshmisc" for details on how to
-    # make this less readable. :-)
+    # And then just set PROMPT/PS1, RPROMPT/RPS1 to whatever you want to.
     _setup_ps1
 }
 
-# Actually set the prompt variables ('PS1' & 'RPROMPT') by calling `vcs_info`
+# Actually set the prompt variables ('PROMPT' & 'RPROMPT') by calling `vcs_info`
 # which inserts info into `vcs_info_msg_0`
 # This also includes a conda prefix for the current environment
 _setup_ps1() {
