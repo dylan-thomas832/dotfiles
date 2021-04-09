@@ -66,8 +66,8 @@ set history-preserve-point on
 # Remove echoing CTRL + C
 set echo-control-characters off
 
-# Terminal bell visibly rings, not audibly
-set bell-style visible
+# Terminal bell turned off please
+set bell-style off
 
 # Briefly move cursor to matching paren when closing paren inserted
 set blink-matching-paren on
