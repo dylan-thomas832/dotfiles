@@ -36,6 +36,9 @@ export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 # Set pylint home
 export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
 
+# Set jupyter config home
+export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
+
 # Path to manpages
 export MANPATH="/usr/local/man:$MANPATH"
 
