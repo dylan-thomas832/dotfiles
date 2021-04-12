@@ -16,11 +16,11 @@
     ignore = dirty
 [submodule "terminal/colors/conemu-themes"]
     path = terminal/colors/conemu-themes
-    url = git@github.com:joonro/ConEmu-Color-Themes.git
+    url = https://github.com/joonro/ConEmu-Color-Themes.git
     ignore = dirty
 [submodule ".tmux"]
     path = terminal/tmux
-    url = git@github.com:gpakosz/.tmux.git
+    url = https://github.com/gpakosz/.tmux.git
     ignore = dirty
 [submodule "shells/zsh/zshrc.d/plugins/zsh-history-substring-search"]
     path = shells/zsh/vendor/zsh-history-substring-search
@@ -32,7 +32,7 @@
     ignore = dirty
 [submodule "shells/zsh/.config/zsh/plugins/zsh-completions"]
     path = shells/zsh/vendor/zsh-completions
-    url = git://github.com/zsh-users/zsh-completions.git
+    url = https://github.com/zsh-users/zsh-completions.git
     ignore = dirty
 [submodule "shells/zsh/.config/zsh/plugins/zsh-autosuggestions"]
     path = shells/zsh/vendor/zsh-autosuggestions
