@@ -84,3 +84,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # Configure dircolors
 test -e ~/.dircolors && \
    eval `dircolors -b ~/.dircolors`
+
+# Source Rust build/compiler stuff
+[[ -d "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
