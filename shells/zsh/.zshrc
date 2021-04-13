@@ -9,25 +9,25 @@ done
 [[ -f ~/.zshrc_local_before ]] && source ~/.zshrc_local_before
 
 # External plugins (initialized before general settings)
-[[ -f $ZDOTDIR/plugins_before.zsh ]] && source $ZDOTDIR/plugins_before.zsh
+[[ -f $ZDOTDIR/plugins_before.zsh ]] && source $ZDOTDIR/custom/plugins_before.zsh
 
 # General ZSH settings
-[[ -f $ZDOTDIR/settings.zsh ]] && source $ZDOTDIR/settings.zsh
+[[ -f $ZDOTDIR/settings.zsh ]] && source $ZDOTDIR/custom/settings.zsh
 
 # Aliases explicitly for ZSH
-[[ -f $ZDOTDIR/aliases.zsh ]] && source $ZDOTDIR/aliases.zsh
+[[ -f $ZDOTDIR/aliases.zsh ]] && source $ZDOTDIR/custom/aliases.zsh
 
 # Custom prompt config
-[[ -f $ZDOTDIR/prompt.zsh ]] && source $ZDOTDIR/prompt.zsh
+[[ -f $ZDOTDIR/prompt.zsh ]] && source $ZDOTDIR/custom/prompt.zsh
 
 # Load completion settings
-[[ -f $ZDOTDIR/completions.zsh ]] && source $ZDOTDIR/completions.zsh
+[[ -f $ZDOTDIR/completions.zsh ]] && source $ZDOTDIR/custom/completions.zsh
 
 # Load keybindings
-[[ -f $ZDOTDIR/keybinds.zsh ]] && source $ZDOTDIR/keybinds.zsh
+[[ -f $ZDOTDIR/keybinds.zsh ]] && source $ZDOTDIR/custom/keybinds.zsh
 
 # External plugins (initialized after general settings)
-[[ -f $ZDOTDIR/plugins_after.zsh ]] && source $ZDOTDIR/plugins_after.zsh
+[[ -f $ZDOTDIR/plugins_after.zsh ]] && source $ZDOTDIR/custom/plugins_after.zsh
 
 # Allow local customizations in the ~/.zshrc_local_after file
 # Note: This is where conda sourcing goes & Display export for WSL
