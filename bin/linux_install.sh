@@ -3,8 +3,7 @@
 set -e
 
 # Update/upgrade package
-apt update
-apt upgrade -y
+apt update && apt upgrade -y
 
 # Pretty basic setup
 apt install -y build-essential gfortran cmake cmake-curses-gui
@@ -22,7 +21,7 @@ apt install -y git wget curl vim ctags
 apt install -y zsh
 
 # Get Ack & Ag
-apt install -y ack-grep silversearcher-ag
+apt install -y ack-grep silversearcher-ag ripgrep fd-find
 
 # Remove unneeded packages
 apt autoremove -y
