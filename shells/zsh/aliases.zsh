@@ -7,8 +7,8 @@ alias gh="xdg-open \`git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' 
 alias sudo='sudo '
 
 # Force ag to use ignore file and not ignore hidden files by default
-alias ag='ag --hidden --path-to-ignore ~/.config/agignore'
-alias rg='rg --hidden --path-to-ignore ~/.config/agignore'
+alias ag="ag --hidden --ignore '.git'"
+alias rg="rg --hidden --glob '!.git'"
 
 # Suffix aliases -> applied to end of the line
 alias -s log="tail -f"
