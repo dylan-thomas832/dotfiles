@@ -1,0 +1,4 @@
+# Setup Qtile config directory, and xsession
+- link:
+    ~/.config/qtile: terminal/qtile
+    ~/.xsession: terminal/xsession.sh
