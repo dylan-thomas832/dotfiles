@@ -30,6 +30,9 @@ compctl -K _pip_completion python -m pip
 # FZF sourcing
 [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
+# Force FZF to use rg
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --ignore-file ~/.config/agignore'
+
 # Force FZF to use ag. -g "" allow ag to search filenames and pipe to fzf
 # export FZF_DEFAULT_COMMAND='ag --hidden --path-to-ignore ~/.config/agignore -g ""'
 
