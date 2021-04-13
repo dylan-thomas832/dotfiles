@@ -18,6 +18,11 @@ alias la="ls -lAFh --color --show-control-chars  --group-directories-first"
 # List only directories
 alias lsd="ls -lFh --color | grep --color=never '^d'"
 
+# Safer copy, move, remove
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
 # Colorize dir
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
@@ -36,10 +41,7 @@ alias week="date +%V"
 alias map="xargs -n1"
 
 # Reload the shell (i.e. invoke as a login shell)
-alias reload="exec ${SHELL} -l"
-
-# Always point ag to global ignore file
-alias ag='ag --path-to-ignore ~/.config/agignore'
+alias reload="exec ${SHELL}"
 
 # Easy clipboard command
 alias clipboard='xclip -selection clipboard'
