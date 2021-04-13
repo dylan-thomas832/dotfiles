@@ -1,0 +1,8 @@
+- shell:
+  - [apt install xrdp, Installing xrdp]
+  - [cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak, Backing up xrdp config]
+  - [cp /etc/xrdp/sesman.ini /etc/xrdp/sesman.ini.bak,Backing up sesman config]
+  - [ln -s /dev/null ~/.xsession-errors, Redirect xsession-errors output]
+
+- link:
+  /etc/xrdp: terminal/xrdp
