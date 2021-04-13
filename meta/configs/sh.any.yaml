@@ -1,6 +1,6 @@
 # Setup common sh dotfiles
 # inputrc: Common settings for all programs editing/reading command line
 - link:
-    ~/.config/sh: shells/sh/.config/sh
-    ~/.profile: shells/sh/linux.profile
+    ~/.config/sh: shells/sh/
+    ~/.profile: shells/sh/.profile
     ~/.config/readline/inputrc: shells/.inputrc
