@@ -9,3 +9,4 @@ python.linux
 terminal.linux
 qtile.linux
 vscode.linux
+xrdp-sudo
