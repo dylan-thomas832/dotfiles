@@ -7,9 +7,11 @@
 #   see https://github.com/zsh-users/zsh-completions#manual-installation
 
 # Extra completions
-source ~/.config/zsh/vendor/zsh-completions/zsh-completions.plugin.zsh
+fpath+=$ZDOTDIR/vendor/zsh-completions/src
 # Conda completion
-fpath=(~/.config/zsh/vendor/conda-zsh-completion $fpath)
+fpath+=$ZDOTDIR/vendor/conda-zsh-completion
+# Custom completion functions included in dotfiles
+fpath+=$ZDOTDIR/zfuncs
 
 ## Custom ZSH plugins
 
