@@ -21,7 +21,10 @@ apt install -y git wget curl vim ctags
 apt install -y zsh
 
 # Get Ack & Ag
-apt install -y ack-grep silversearcher-ag ripgrep fd-find
+apt install -y ack-grep silversearcher-ag fd-find tree
+# Work around for bat and ripgrep package discrepancies
+# From: https://github.com/sharkdp/bat/issues/938#issuecomment-646745610
+sudo apt install -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
 # Remove unneeded packages
 apt autoremove -y
