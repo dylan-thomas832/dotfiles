@@ -3,4 +3,4 @@
 - link:
     ~/.config/sh: shells/sh/.config/sh
     ~/.profile: shells/sh/linux.profile
-    ~/.inputrc: shells/.inputrc
+    ~/.config/readline/inputrc: shells/.inputrc

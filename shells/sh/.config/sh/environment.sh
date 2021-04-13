@@ -39,6 +39,9 @@ export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
 # Set jupyter config home
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
 
+# Set the readline config file
+export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
+
 # Path to manpages
 export MANPATH="/usr/local/man:$MANPATH"
 
