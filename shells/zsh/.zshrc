@@ -20,6 +20,12 @@ done
 # Custom prompt config
 [[ -f $ZDOTDIR/prompt.zsh ]] && source $ZDOTDIR/prompt.zsh
 
+# Load completion settings
+[[ -f $ZDOTDIR/completions.zsh ]] && source $ZDOTDIR/completions.zsh
+
+# Load keybindings
+[[ -f $ZDOTDIR/keybinds.zsh ]] && source $ZDOTDIR/keybinds.zsh
+
 # External plugins (initialized after general settings)
 [[ -f $ZDOTDIR/plugins_after.zsh ]] && source $ZDOTDIR/plugins_after.zsh
 
