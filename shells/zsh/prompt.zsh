@@ -2,14 +2,14 @@
 autoload -Uz vcs_info
 
 # Set colors for git staged/unstaged info
-zstyle ':vcs_info:git:*' stagedstr '%F{green}●%f '
+zstyle ':vcs_info:git:*' stagedstr '%F{green}●%f'
 zstyle ':vcs_info:git:*' unstagedstr '%F{yellow}●%f '
 # Auto check for staged/unstaged
 zstyle ':vcs_info:git:*' check-for-changes true
 # Set format for VCS info msg on regular check
 zstyle ':vcs_info:git:*' formats "%F{blue}%b%f %u%c"
 # Set format for VCS info msg when doing rebase/merge/cherry pick, etc.
-# zstyle ':vcs_info:git:*' formats "%F{red}%a%f|%F{blue}%b%f %u%c"
+zstyle ':vcs_info:git:*' actionformats "%F{red}%a%f|%F{blue}%b%f %u%c"
 # Only enable git
 zstyle ':vcs_info:*' enable git
 
