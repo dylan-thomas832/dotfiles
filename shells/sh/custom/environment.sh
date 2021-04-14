@@ -64,8 +64,17 @@ export LC_ALL='en_US.UTF-8';
 export LOCAL_BIN="$HOME/.local/bin"
 export LOCAL_LIB="$HOME/.local/lib"
 
+## Path Manipulation. Allows adding to paths in POSIX shell without duplication.
+## See: https://unix.stackexchange.com/a/124447
+prepend_path() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; }
+append_path() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$PATH:$1" ;; esac; }
+
 # Add LOCAL_BIN to PATH if exists
-[ -d "$LOCAL_BIN" ] && PATH="$LOCAL_BIN${PATH:+":$PATH"}"
+[ -d "$LOCAL_BIN" ] && prepend_path "$LOCAL_BIN"
 
 # Set lib PATH, and add LOCAL_LIB if it exists
-[ -z $LD_LIBRARY_PATH ] && export LD_LIBRARY_PATH="$HOME/.local/lib:/usr/lib:/usr/local/lib"
+[ -z "$LD_LIBRARY_PATH" ] && export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib"
+case ":${LD_LIBRARY_PATH:=$LOCAL_LIB}:" in
+    *:"$LOCAL_LIB":*)  ;;
+    *) LD_LIBRARY_PATH="$LOCAL_LIB:$LD_LIBRARY_PATH"  ;;
+esac
