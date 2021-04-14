@@ -7,7 +7,7 @@
     "editor.cursorBlinking": "expand",
     "editor.fontFamily": "'Fira Mono', Consolas, 'Courier New', monospace",
     "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss05', ",
-    "editor.fontWeight": "300"
+    "editor.fontWeight": "300",
     "editor.mouseWheelScrollSensitivity": 2,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.parameterHints.cycle": true,
@@ -162,6 +162,8 @@
     "gitlens.currentLine.format": "${authorAgoOrDate} • ${id}",
     "gitlens.defaultGravatarsStyle": "retro",
     "gitlens.keymap": "alternate", // Allows alt+b to toggle Git Blame
+    "git.detectSubmodules": false, // Auto ignore submodules
+    "git.ignoreSubmodules": true,
     // Markdown extension settings
     "markdown.extension.list.indentationSize": "inherit",
     "markdown.extension.orderedList.marker": "one",
