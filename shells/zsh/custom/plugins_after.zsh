@@ -37,11 +37,16 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --color=auto --smart-case --foll
 # export FZF_DEFAULT_COMMAND="fdfind --type f --hidden --ignore-file ~/.config/agignore"
 
 # Default FZF options
-export FZF_DEFAULT_OPTS="--reverse --color=bg+:#293739,bg:#1B1D1E,border:#808080,spinner:#E6DB74,hl:#7E8E91,fg:#F8F8F2,header:#7E8E91,info:#A6E22E,pointer:#A6E22E,marker:#F92672,fg+:#F8F8F2,prompt:#F92672,hl+:#F92672"
+FZF_DEFAULT_OPTS="--reverse"
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+--color=dark
+--color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+--color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+'
 
 # CTRL+T uses default fzf command with toggle-able, colorized file preview
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--reverse --preview 'bat --style=numbers --color=always --line-range :500 {}' --bind '?:toggle-preview'"
+export FZF_CTRL_T_OPTS="--reverse --preview 'bat --style=numbers --color=always --theme=Dracula --line-range :500 {}' --bind '?:toggle-preview'"
 
 # CTRL+R uses echo for toggle-able command preview under
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
@@ -49,6 +54,9 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 # ALT+C uses fd with toggle-able directory tree preview
 export FZF_ALT_C_COMMAND="fdfind -t d . "
 export FZF_ALT_C_OPTS="--reverse --preview 'tree -adC {} | head -200' --bind '?:toggle-preview'"
+
+# Use bat as the manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Conda setup
 

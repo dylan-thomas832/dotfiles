@@ -1,6 +1,7 @@
 # Setup generic Linux dotfiles and check ZSH version
 - link:
     ~/.config/agignore: development/agignore
+    ~/.gitconfig_local: development/git/linux.gitconfig
 
 - shell:
     - [zsh --version, Checking zsh version]
