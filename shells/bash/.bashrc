@@ -14,9 +14,12 @@ if [[ $- != *i* ]] ; then
 fi
 
 # Source additional sh configs
-for config in "${HOME}"/.config/sh/*.sh ; do
+for config in "${HOME}"/.config/sh/custom/*.sh ; do
   source "${config}"
 done
+
+# Allow local customizations in the ~/.bashrc_local_before file
+[[ -f ~/.bashrc_local_before ]] && source ~/.bashrc_local_before
 
 # History settings
 HISTCONTROL=ignoreboth
@@ -70,9 +73,7 @@ _pip_completion()
 complete -o default -F _pip_completion python -m pip
 # pip bash completion end
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[ -f ~/.config/bash/custom/aliases.bash ] && source ~/.config/bash/custom/aliases.bash
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -85,10 +86,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Load local bashrc instance, mainly for conda
-if [ -f ~/.bashrc_local_after ]; then
-  source ~/.bashrc_local_after
-fi
-
 # Source fzf
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+
+# Allow local customizations in the ~/.bashrc_local_after file
+# Note: This is where conda sourcing goes & Display export for WSL
+[[ -f ~/.bashrc_local_after ]] && source ~/.bashrc_local_after
