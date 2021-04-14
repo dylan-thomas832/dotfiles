@@ -1,4 +1,4 @@
-### Local bash settings to be sourced last for WSL1
+### Local zsh settings to be sourced last for WSL1
 
 # WSL1-specific display settings.
 export DISPLAY=:0.0
