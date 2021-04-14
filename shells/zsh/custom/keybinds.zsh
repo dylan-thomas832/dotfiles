@@ -128,8 +128,8 @@ bindkey '^e' edit-command-line
 # Change cursor & glyph depending on vi mode
 zle-line-init zle-keymap-select () {
     # Setup and reset prompt on mode switch
-    _setup_ps1
-    zle reset-prompt
+    # [NOTE]: This must be done to properly configure the prompt
+    _dt_setup_prompt && zle reset-prompt
     # Switch cursor
     case ${KEYMAP} in
         vicmd)      echo -ne '\e[1 q' ;;
