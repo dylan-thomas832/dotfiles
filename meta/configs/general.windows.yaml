@@ -1,0 +1,3 @@
+# Setup Windows-specific settings
+- link:
+    ~/.config/git/git-completion.bash: development/git/git-completion.bash
