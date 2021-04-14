@@ -1,0 +1,4 @@
+# Setup gui-specific settings on Linux
+- link:
+    ~/.config/rofi: gui/rofi
+

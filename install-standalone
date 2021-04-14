@@ -17,8 +17,6 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASE_DIR}"
 git submodule update --init --recursive
 
-shift
-
 for config in ${CONFIGS} ${@}; do
     echo -e "\nConfigure $config"
     # create temporary file
