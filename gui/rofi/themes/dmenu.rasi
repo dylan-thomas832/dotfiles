@@ -19,15 +19,15 @@
     selected-normal-foreground: #ffffff;
 }
 #window {
-    anchor: north;
-    location: north;
-    width: 100%;
-    padding: 0px;
-    children: [ horibox ];
+    anchor:     north;
+    location:   north;
+    width:      100%;
+    padding:    4px;
+    children:   [ horibox ];
 }
 #horibox {
-    orientation: horizontal;
-    children: [ prompt, entry, listview ];
+    orientation:    horizontal;
+    children:       [ prompt, entry, listview ];
 }
 #prompt {
     padding:          @prompt-padding;
@@ -36,13 +36,14 @@
     font:             @prompt-font;
 }
 #listview {
-    layout: horizontal;
-    lines: 100;
+    layout:     horizontal;
+    lines:      100;
+    spacing:    5px;
 }
 #entry {
-    padding: 2px;
-    expand: false;
-    width: 10em;
+    padding:    2px;
+    expand:     false;
+    width:      10em;
 }
 #element {
     padding: 2px 8px;

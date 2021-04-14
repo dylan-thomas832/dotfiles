@@ -56,7 +56,7 @@ keys = [
         # lazy.spawncmd(),
         # lazy.spawn("rofi -show drun")
         # lazy.spawn("dmenu_run -p 'Run: '"),
-        lazy.spawn("rofi -show drun -config ~/.config/rofi/themes/dmenu.rasi -display-drun \"Run: \" -drun-display-format \"{name}\""),
+        lazy.spawn("rofi -show drun -config ~/.config/rofi/themes/center.rasi -display-drun \"Run: \" -drun-display-format \"{name}\""),
         desc='Run Launcher'
     ),
     Key(
