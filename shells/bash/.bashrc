@@ -9,13 +9,13 @@
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
 if [[ $- != *i* ]] ; then
-  # shell is non-interactive. be done now!
-  return
+    # shell is non-interactive. be done now!
+    return
 fi
 
 # Source additional sh configs
 for config in "${HOME}"/.config/sh/custom/*.sh ; do
-  source "${config}"
+    source "${config}"
 done
 
 # Allow local customizations in the ~/.bashrc_local_before file
@@ -30,17 +30,17 @@ shopt -s histappend
 shopt -s checkwinsize globstar autocd
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    source /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        source /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        source /etc/bash_completion
+    fi
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -73,21 +73,10 @@ _pip_completion()
 complete -o default -F _pip_completion python -m pip
 # pip bash completion end
 
-[ -f ~/.config/bash/custom/aliases.bash ] && source ~/.config/bash/custom/aliases.bash
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+[[ -f ~/.config/bash/custom/aliases.bash ]] && source ~/.config/bash/custom/aliases.bash
 
 # Source fzf
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
 
 # Allow local customizations in the ~/.bashrc_local_after file
 # Note: This is where conda sourcing goes & Display export for WSL
