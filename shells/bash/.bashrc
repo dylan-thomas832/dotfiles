@@ -18,65 +18,29 @@ for config in "${HOME}"/.config/sh/custom/*.sh ; do
     source "${config}"
 done
 
+# For easy variable expansion
+bash_dir="$XDG_CONFIG_HOME/bash/custom"
+
 # Allow local customizations in the ~/.bashrc_local_before file
 [[ -f ~/.bashrc_local_before ]] && source ~/.bashrc_local_before
 
-# History settings
-HISTCONTROL=ignoreboth
-HISTSIZE= HISTFILESIZE=2000
-shopt -s histappend
+# External plugins (initialized before general settings)
+[[ -f "$bash_dir/plugins_before.bash" ]] && source "$bash_dir/plugins_before.bash"
 
-# Additional options
-shopt -s checkwinsize globstar autocd
+# General bash settings
+[[ -f "$bash_dir/settings.bash" ]] && source "$bash_dir/settings.bash"
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
+# Aliases explicitly for bash
+[[ -f "$bash_dir/aliases.bash" ]] && source "$bash_dir/aliases.bash"
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-    if [ -f /usr/share/bash-completion/bash_completion ]; then
-        source /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
-        source /etc/bash_completion
-    fi
-fi
+# Custom prompt config
+[[ -f "$bash_dir/prompt.bash" ]] && source "$bash_dir/prompt.bash"
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
+# Load completion settings
+[[ -f "$bash_dir/completions.bash" ]] && source "$bash_dir/completions.bash"
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Configure git prompt
-PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
-
-# pip bash completion start
-_pip_completion()
-{
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-                   COMP_CWORD=$COMP_CWORD \
-                   PIP_AUTO_COMPLETE=1 $1 2>/dev/null ) )
-}
-complete -o default -F _pip_completion python -m pip
-# pip bash completion end
-
-[[ -f ~/.config/bash/custom/aliases.bash ]] && source ~/.config/bash/custom/aliases.bash
-
-# Source fzf
-[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+# External plugins (initialized after general settings)
+[[ -f "$bash_dir/plugins_after.bash" ]] && source "$bash_dir/plugins_after.bash"
 
 # Allow local customizations in the ~/.bashrc_local_after file
 # Note: This is where conda sourcing goes & Display export for WSL
