@@ -8,4 +8,4 @@ if [ ! -x  ~/anaconda3/condabin/conda ] && [ ! -x ~/miniconda3/condabin/conda ];
 fi
 
 # Conda install these to the base environment. I use these all the time, so that's fine
-conda install numpy matplotlib scipy flake8 pylint ipython jupyter
+conda install numpy matplotlib scipy flake8 pylint ipython jupyter yapf

@@ -22,6 +22,12 @@
     "workbench.iconTheme": "vscode-icons",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "readme",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
     "vsicons.dontShowNewVersionMessage": true,
     // Window behavior
     "window.newWindowDimensions": "inherit",
@@ -99,7 +105,10 @@
     "python.linting.pylintEnabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.mypyEnabled": false,
+    "python.formatting.provider": "yapf",
+    "python.dataScience.sendSelectionToInteractiveWindow": false,
     // Latex Workshop settings
+    "latex-workshop.message.update.show": false,
     "latex-workshop.chktex.enabled": true,
     "latex-workshop.chktex.path": "chktex",
     "latex-workshop.intellisense.package.enabled": true,
@@ -202,14 +211,5 @@
         "xlabel",
         "ylabel"
     ],
-    "python.dataScience.sendSelectionToInteractiveWindow": false,
-    "sqltools.useNodeRuntime": true,
-    "latex-workshop.message.update.show": false,
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
-    "python.formatting.provider": "yapf"
+    "sqltools.useNodeRuntime": true
 }

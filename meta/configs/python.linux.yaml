@@ -5,6 +5,7 @@
     ~/.config/pylintrc: development/python/pylintrc.ini
     ~/.config/flake8: development/python/flake8.ini
     ~/.config/conda/condarc: development/python/condarc.yaml
+    ~/.config/yapf/style: development/python/yapf.ini
 
 # Create python cache directory
 - create:
