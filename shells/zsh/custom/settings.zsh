@@ -11,7 +11,7 @@ autoload -Uz zcalc
 # nomatch:                Print error is globbing has no matches
 # glob_star_short:        Shorthand '**' for '**/*'
 # no_case_glob:           Case insensitive globbing
-setopt extended_glob nomatch glob_star_short no_case_glob
+setopt extended_glob nomatch glob_star_short no_case_glob AUTO_REMOVE_SLASH 
 
 # Set various options
 # interactivecomments:    Allow comments in interactive shell
@@ -25,7 +25,7 @@ setopt interactivecomments always_to_end auto_pushd pushd_ignore_dups
 # correct:                Stop zsh command spell correction
 # correct_all:            Stop zsh argument spell correction
 # menu_complete:          Don't autoselect the first completion entry
-unsetopt beep correct correct_all menu_complete
+unsetopt beep correct correct_all menu_complete AUTO_PARAM_SLASH 
 
 # Report command running time if it is more than 3 seconds
 REPORTTIME=3
