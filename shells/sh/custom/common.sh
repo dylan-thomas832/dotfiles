@@ -1,4 +1,4 @@
-_sh=$(basename $SHELL)
+### General functions and settings for all interactive shells to source
 
 # Timestamp function
 timestamp () {
@@ -75,6 +75,27 @@ function fs() {
     fi;
 }
 
+# Prepend string(s) to PATH
+pathprepend() {
+  for ((i=$#; i>0; i--)); 
+  do
+    ARG=${!i}
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="$ARG${PATH:+":$PATH"}"
+    fi
+  done
+}
+
+# Append string(s) to PATH
+pathappend() {
+  for ARG in "$@"
+  do
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$ARG"
+    fi
+  done
+}
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
@@ -86,4 +107,4 @@ test -e ~/.dircolors && \
    eval `dircolors -b ~/.dircolors`
 
 # Source Rust build/compiler stuff
-[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+[[ -f "$HOME/.local/share/cargo/env" ]] && source "$HOME/.local/share/cargo/env"
