@@ -5,3 +5,6 @@ skip_global_compinit=1
 
 # Force set shell
 export SHELL=$(which zsh)
+
+# Setup common environment variables
+source "${HOME}/.config/sh/custom/environment.sh"
