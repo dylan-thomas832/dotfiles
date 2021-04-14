@@ -7,6 +7,7 @@
     '%USERPROFILE%/cmder/config/user_profile.sh': terminal/cmder/user_profile.sh
     '%USERPROFILE%/tux.ico': terminal/windows/tux.ico
     '%APPDATA%/alacritty/alacritty.yml': terminal/alacritty/windows.yml
+    ~/.config/alacritty/themes.yml: terminal/alacritty/themes.yml
     ~/.dircolors: terminal/colors/.dircolors
 
 - shell:

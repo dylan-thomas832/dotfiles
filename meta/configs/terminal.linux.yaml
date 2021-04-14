@@ -3,6 +3,7 @@
     ~/.config/base16-shell: terminal/colors/base16-shell
     ~/.dircolors: terminal/colors/.dircolors
     ~/.config/alacritty/alacritty.yml: terminal/alacritty/linux.yml
+    ~/.config/alacritty/themes.yml: terminal/alacritty/themes.yml
 
 - shell:
     - [./terminal/fonts/install.sh DejaVuSansMono, Installing powerline fonts - DejaVuSansMono]
