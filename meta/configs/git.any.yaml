@@ -3,4 +3,4 @@
     ~/.config/git/config: development/git/gitconfig
     ~/.config/git/aliases: development/git/gitconfig.aliases
     ~/.config/git/ignore: development/git/gitignore_global
-    ~/.config/git/git-prompt.sh: development/git-prompt.sh
+    ~/.config/git/git-prompt.sh: development/git/git-prompt.sh
