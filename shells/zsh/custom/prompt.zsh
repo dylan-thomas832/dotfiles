@@ -8,6 +8,8 @@ autoload -Uz add-zsh-hook
 setopt prompt_subst
 
 _dt_prompt_preexec () {
+    # TOOD: Investigate fc -l -1
+
     # printf '%-*s' $COLUMNS "Output:"
     # # Removes/eats previous prompt
     # print

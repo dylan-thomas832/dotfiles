@@ -23,7 +23,7 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 key[Control-Left]="${terminfo[kLFT5]}"
 key[Control-Right]="${terminfo[kRIT5]}"
 
-# Start typing + [Up-Arrow] - fuzzy find history forward
+# Start typing + [Up-Arrow] - Search history backwards
 if [[ -n "${key[Up]}" ]]; then
     # Makes searching history go to the end of the line
     autoload -Uz history-beginning-search-backward-end history-search-end
@@ -32,7 +32,7 @@ if [[ -n "${key[Up]}" ]]; then
     bindkey -M viins "${key[Up]}" history-beginning-search-backward-end
     bindkey -M vicmd "${key[Up]}" history-beginning-search-backward-end
 fi
-# Start typing + [Down-Arrow] - fuzzy find history backward
+# Start typing + [Down-Arrow] - Search history forwards
 if [[ -n "${key[Down]}" ]]; then
     # Makes searching history go to the end of the line
     autoload -Uz history-beginning-search-forward-end history-search-end
