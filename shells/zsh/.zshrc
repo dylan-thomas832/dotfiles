@@ -11,6 +11,9 @@ zsh_dir="$ZDOTDIR/custom"
 [[ -f ~/.zshrc_local_before ]] && source ~/.zshrc_local_before
 
 # External plugins (initialized before general settings)
+[[ -f $zsh_dir/init.zsh ]] && source $zsh_dir/init.zsh
+
+# External plugins (initialized before general settings)
 [[ -f $zsh_dir/plugins_before.zsh ]] && source $zsh_dir/plugins_before.zsh
 
 # General ZSH settings
@@ -18,6 +21,9 @@ zsh_dir="$ZDOTDIR/custom"
 
 # Aliases explicitly for ZSH
 [[ -f $zsh_dir/aliases.zsh ]] && source $zsh_dir/aliases.zsh
+
+# Custom prompt config
+[[ -f $zsh_dir/vcs.zsh ]] && source $zsh_dir/vcs.zsh
 
 # Custom prompt config
 [[ -f $zsh_dir/prompt.zsh ]] && source $zsh_dir/prompt.zsh

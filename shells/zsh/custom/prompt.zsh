@@ -1,119 +1,157 @@
 ### Dylan's ZSH prompt. 
-# Idea for how to use async.zsh from: https://vincent.bernat.ch/en/blog/2019-zsh-async-vcs-info
+# Structure pulled from: https://github.com/vincentbernat/zshrc/blob/master/rc/prompt.zsh
 
-# Encapsulate in check for root user. Don't do git if root
-[[ $USERNAME != "root" ]] && {
+# Autoload ZSH add hook function
+autoload -Uz add-zsh-hook
 
-    ## Helper functions for async
+# Turn on prompt substitution
+setopt prompt_subst
 
-    ## Initialize asynchronous prompt
-    # Define async worker "vcs_info" & set callback to "_dt_vcs_info_done"
-    _dt_vcs_async_start() {
-        async_start_worker vcs_info
-        async_register_callback vcs_info _dt_vcs_info_done
-    }
-
-    ## Run asynchronously by "vcs_info"
-    # CD into directory, call `vcs_info`, print output to stdout
-    _dt_vcs_info() {
-        cd -q $1
-        vcs_info
-        print ${vcs_info_msg_0_}
-    }
-
-    ## Asynchronous callback for when "vcs_info" completes it's job
-    # Restars if bad return code. Set VCS variable. Resets prompt if no is done.
-    _dt_vcs_info_done() {
-        local job=$1
-        local return_code=$2
-        local stdout=$3
-        local more=$6
-        if [[ $job == '[async]' ]]; then
-            if [[ $return_code -eq 2 ]]; then
-                # Need to restart the worker. Stolen from
-                # https://github.com/mengelbrecht/slimline/blob/master/lib/async.zsh
-                _dt_vcs_async_start
-                return
-            fi
-        fi
-        vcs_info_msg_0_=$stdout
-        [[ $more == 1 ]] || _dt_setup_prompt && zle reset-prompt
-    }
-
-    ## ZSH Hook: run when initially changing directory
-    # Sets VCS variable to empty
-    _dt_vcs_chpwd() {
-        vcs_info_msg_0_=
-    }
-
-    ## ZSH hook: run before prompt
-    # Flushes jobs from "vcs_info", and assigns it "_dt_vcs_info"
-    _dt_vcs_precmd() {
-        async_flush_jobs vcs_info
-        async_job vcs_info _dt_vcs_info $PWD
-    }
-
-    # Load VCS plugin
-    autoload -Uz vcs_info
-
-    # Only enable git
-    zstyle ':vcs_info:*' enable git
-    # Anonymous function that is called immediately
-    # Allows scoping variables
-    () {
-        # Define formats here
-        local format="%F{blue}%b%f %u%c"
-        local action_format="%F{red}%a%f|%F{blue}%b%f %u%c"
-        # Auto check for staged/unstaged
-        zstyle ':vcs_info:git:*' check-for-changes true
-        # Set format for VCS info msg on regular check
-        zstyle ':vcs_info:git:*' formats $format
-        # Set format for VCS info msg when doing rebase/merge/cherry pick, etc.
-        zstyle ':vcs_info:git:*' actionformats $action_format
-        # Set color & symbol for git staged/unstaged info
-        zstyle ':vcs_info:git:*' stagedstr '%F{green}●%f'
-        zstyle ':vcs_info:git:*' unstagedstr '%F{yellow}●%f'
-    }
-
-    # Load async zsh plugin
-    source ~/.config/zsh/vendor/zsh-async/async.zsh
-
-    # Initialize async plugin and create async worker
-    async_init
-    _dt_vcs_async_start
-
-    # Add ZSH hooks
-    autoload -Uz add-zsh-hook
-    add-zsh-hook precmd _dt_vcs_precmd
-    add-zsh-hook chpwd _dt_vcs_chpwd
-
-    # Actually set the prompt variables ('PROMPT' & 'RPROMPT') by calling `vcs_info`
-    # which inserts info into `vcs_info_msg_0`
-    # This also includes a conda prefix for the current environment
-    _dt_setup_prompt() {
-        # setopt prompt_subst
-        GLYPH="▲"
-        # Grabs last bit of path in $CONDA_DEFAULT_ENV. This is updated when `conda activate` is called
-        CONDA_CURR_ENV=$(basename "$CONDA_DEFAULT_ENV")
-        # Flips the glyph if in vi command mode
-        [ "x$KEYMAP" = "xvicmd" ] && GLYPH="▼"
-        # Sets the glyph direction for vi-mode and color for the previous command exit code
-        # Add `"%? "` in between `}` and `)` to print the exit code directly
-        local glyph="%(?.%F{blue}.%F{red})$GLYPH%f"
-        # Sets the symbol used for user prompt
-        local prompt_symbol="%(!.%F{red}#%f .)"
-        # Includes the hostname if logged in using SSH
-        local ssh_hostname=""
-        [[ ! -z "${SSH_CONNECTION}" ]] && ssh_hostname="%m "
-        # Includes the number of background jobs currently running if > 0
-        local background_jobs="%(1j.%F{cyan}[%j]%f .)"
-        # Includes the cwd and 3 trailing components.
-        # If the current working directory starts with $HOME, that part is replaced by a ‘~’
-        local cwd=%F{blue}%3~%f
-        PROMPT="$CONDA_CURR_ENV $glyph $ssh_hostname$background_jobs$cwd $prompt_symbol"
-        RPROMPT="$vcs_info_msg_0_"
-    }
-
-    # Call initial prompt setup
-    _dt_setup_prompt
+_dt_prompt_preexec () {
+    # printf '%-*s' $COLUMNS "Output:"
+    # # Removes/eats previous prompt
+    # print
+    printf "\033[2A\033[2K"
+    # # print $1
+    # # print $2
+    # # print $3
+    # # printf "\033[2A\033[2K"
+    # # not sure
+    0="${1//\\/\\\\\\\\}"
+    0="${0//\\n/\\\\n}"
+    0="${0//\$/\\\\$}"
+    0="${0//\`/\\\\\`}"
+    0="${0//\%/%%}"
+    formatted_cmd="%* %(!.%F{red}#%f.%F{magenta}${PRCH[prompt]}%f) ${0//\\/\\\\}"
+    # middle bit is last line of final prompt with %1~
+    # print -P -- "%* %B%F{blue}%1~%f%f%b %F{magenta}${PRCH[prompt]}%f"" ${0//\\/\\\\}"
+    print -P -- $formatted_cmd
+    # [[ -z $1 ]] && printf "\033[2A\033[2K"
+    # print -P -- "%* %F{magenta}${PRCH[prompt]}%f ${0//\\/\\\\}"
+    # read -sdR $'pos_before?\e[6n'
+    # print moved us down a line
+    printf "\033[2K"
+    # oldcmd=$1
+    # [[ -n $1 ]] && printf "\033[2K"
 }
+
+_dt_prompt_precmd () {
+    # # Removes/eats previous prompt
+    # print
+    # printf "\033[2K"
+    # # not sure
+    # printf "\033[2A\033[2K"
+    # read -sdR $'pos_after?\e[6n'
+    # [[ $pos_after != $pos_before ]] || printf '\r'
+    # 0="${1//\\/\\\\\\\\}"
+    # 0="${0//\\n/\\\\n}"
+    # 0="${0//\$/\\\\$}"
+    # 0="${0//\`/\\\\\`}"
+    # 0="${0//\%/%%}"
+    # middle bit is last line of final prompt with %1~
+    # print -P -- "%* %B%F{blue}%1~%f%f%b %F{magenta}${PRCH[prompt]}%f"" ${0//\\/\\\\}"
+    [[ -z $formatted_cmd ]] && printf "\033[2A\033[2K" && print -P -- "%* %(!.%F{red}#%f.%F{magenta}${PRCH[prompt]}%f) "
+    unset formatted_cmd
+    # printf "\033[2K"
+    # print moved us down a line
+    # print
+}
+
+# Segment handling
+_dt_prompt_segment() {
+  local b f
+  [[ -n $1 ]] && b="%K{$1}" || b="%k"
+  [[ -n $2 ]] && f="%F{$2}" || f="%f"
+  [[ -n $3 ]] || return
+  if [[ -n $CURRENT_BG && $1 != $CURRENT_BG ]]; then
+      print -n " %b$b%F{$CURRENT_BG}${PRCH[end]}$f "
+  elif [[ $1 == $CURRENT_BG ]]; then
+      print -n " %b$b$f${PRCH[sep]} "
+  else
+      print -n "%b$b$f "
+  fi
+  CURRENT_BG=$1
+  print -n ${3# *}
+}
+
+# Final prompt piece
+_dt_prompt_end() {
+  if [[ -n $CURRENT_BG ]]; then
+    print -n "%b%k%F{$CURRENT_BG}${PRCH[end]}"
+  fi
+  print -n "%b%k%f"
+  unset CURRENT_BG
+}
+
+# Fancy cwd prompt portion
+_dt_prompt_cwd() {
+    local -a segs
+    local remaining=$(($COLUMNS - ${#${(%):-%n@%M}} - 7))
+    local pwd=${(%):-%~}
+    # When splitting, we will loose the leading /, keep it if needed
+    local leading=${pwd[1]}
+    [[ $leading == / ]] || leading=
+    segs=(${(s./.)pwd})
+    # We try to shorten middle segments if needed (but not the first, not the last)
+    case ${#segs} in
+        0) print -n "%F{blue}/%f" ;;
+        1) print -n "%F{blue}${leading}%B${segs[1]} %b%f " ;;
+        *)
+            local i=2
+            local current
+            while true; do
+                current=${leading}${(j./.)${segs[1,-2]}}/%B${segs[-1]}
+                (( i < ${#segs} )) || break
+                (( ${#current} < remaining )) && break
+                segs[i]=${segs[i][1]}
+                ((i++))
+            done
+            print -n "%F{blue}${(%):-%${remaining}<${PRCH[ellipsis]}<$current}%b%f"
+            ;;
+    esac
+}
+
+# Actually set the prompt variables ('PROMPT' & 'RPROMPT') by calling `vcs_info`
+# which inserts info into `vcs_info_msg_0`
+# This also includes a conda prefix for the current environment
+_dt_simple_prompt() {
+    # Grabs last bit of path in $CONDA_DEFAULT_ENV. This is updated when `conda activate` is called
+    CONDA_CURR_ENV=$(basename "$CONDA_DEFAULT_ENV")
+    # Flips the glyph if in vi command mode
+    [ "x$KEYMAP" = "xvicmd" ] && local glyph=${PRCH[down]} || local glyph=${PRCH[up]}
+    # Sets the glyph direction for vi-mode and color for the previous command exit code
+    # Add `"%? "` in between `}` and `)` to print the exit code directly
+    local mode="%(?.%F{blue}.%F{red})$glyph%f"
+    # Sets the symbol used for user prompt
+    local prompt_symbol="%(!.%F{red}#%f.%F{magenta}${PRCH[prompt]}%f) "
+    # Includes the hostname if logged in using SSH
+    local ssh_hostname=""
+    [[ ! -z "${SSH_CONNECTION}" ]] && ssh_hostname="%n@%m "
+    # Includes the number of background jobs currently running if > 0
+    local background_jobs="%(1j.%F{cyan}[%j]%f .)"
+
+    # Includes the cwd and 3 trailing components.
+    # If the current working directory starts with $HOME, that part is replaced by a ‘~’
+    local cwd="%F{blue}%~%f"
+    # print $'${(r:$COLUMNS::\u2500:)}'
+    print -n "$ssh_hostname"
+    print "$cwd"
+    print -n "%F{green}$CONDA_CURR_ENV%f $mode $background_jobs$prompt_symbol"
+}
+
+_dt_setup_prompt () {
+    # export PS1=$'${(r:$COLUMNS::\u2500:)}''$(_dt_simple_prompt)'
+    # Exporting is required for overriding root prompt
+    export PS1="$(_dt_simple_prompt)"
+    PS2="%Scont'd%s %F{cyan}${PRCH[prompt]}%f"
+    PS3="$(_dt_prompt_segment cyan default "?"; _dt_prompt_end) "
+    PS4="$(_dt_prompt_segment white black "%N"; _dt_prompt_segment blue default "%i"; _dt_prompt_end) "
+    PROMPT_EOL_MARK="%B${PRCH[eol]}%b"
+    export RPROMPT="$vcs_info_msg_0_"
+}
+
+
+# Call initial prompt setup
+add-zsh-hook preexec _dt_prompt_preexec
+add-zsh-hook precmd _dt_prompt_precmd
+add-zsh-hook precmd _dt_setup_prompt

@@ -38,7 +38,7 @@
         fi
         vcs_info_msg_0_=$stdout
         # We shouldn't reset unless all jobs are done. Make sure to re-draw prompt
-        [[ $more == 1 ]] || _dt_setprompt && zle reset-prompt
+        [[ $more == 1 ]] || _dt_setup_prompt && zle reset-prompt
     }
 
     ## ZSH Hook: run when initially changing directory
