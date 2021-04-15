@@ -123,7 +123,7 @@ _dt_simple_prompt() {
     # Add `"%? "` in between `}` and `)` to print the exit code directly
     local mode="%(?.%F{blue}.%F{red})$glyph%f"
     # Sets the symbol used for user prompt
-    local prompt_symbol="%(!.%F{red}#%f.%F{magenta}${PRCH[prompt]}%f) "
+    local prompt_symbol="%(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) "
     # Includes the hostname if logged in using SSH
     local ssh_hostname=""
     [[ ! -z "${SSH_CONNECTION}" ]] && ssh_hostname="%n@%m "
@@ -132,21 +132,21 @@ _dt_simple_prompt() {
 
     # Includes the cwd and 3 trailing components.
     # If the current working directory starts with $HOME, that part is replaced by a ‘~’
-    local cwd="%F{blue}%~%f"
+    # local cwd="%F{blue}%~%f"
+    local cwd="$(_dt_prompt_cwd)"
     # print $'${(r:$COLUMNS::\u2500:)}'
-    print -n "$ssh_hostname"
-    print "$cwd"
-    print -n "%F{green}$CONDA_CURR_ENV%f $mode $background_jobs$prompt_symbol"
+    print "$ssh_hostname$cwd"
+    print -n "%F{green}%B$CONDA_CURR_ENV%b%f $mode $background_jobs$prompt_symbol"
 }
 
 _dt_setup_prompt () {
     # export PS1=$'${(r:$COLUMNS::\u2500:)}''$(_dt_simple_prompt)'
     # Exporting is required for overriding root prompt
     export PS1="$(_dt_simple_prompt)"
-    PS2="%Scont'd%s %F{cyan}${PRCH[prompt]}%f"
-    PS3="$(_dt_prompt_segment cyan default "?"; _dt_prompt_end) "
-    PS4="$(_dt_prompt_segment white black "%N"; _dt_prompt_segment blue default "%i"; _dt_prompt_end) "
-    PROMPT_EOL_MARK="%B${PRCH[eol]}%b"
+    export PS2="%Scont'd%s %F{cyan}${PRCH[prompt]}%f"
+    export PS3="$(_dt_prompt_segment cyan default "?"; _dt_prompt_end) "
+    export PS4="$(_dt_prompt_segment white black "%N"; _dt_prompt_segment blue default "%i"; _dt_prompt_end) "
+    export PROMPT_EOL_MARK="%B${PRCH[eol]}%b"
     export RPROMPT="$vcs_info_msg_0_"
 }
 

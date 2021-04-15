@@ -63,8 +63,8 @@
     # Allows scoping variables
     () {
         # Define formats here
-        local format='%F{blue}${PRCH[branch]} %b%f %u%c'
-        local action_format='%F{blue}${PRCH[branch]} %b%f|%F{red}%a%f %u%c'
+        local format='%F{blue}${PRCH[branch]} %B%b%%b%f %u%c'
+        local action_format='%F{blue}${PRCH[branch]} %B%b%F{white}|%%b%F{red}%a%f %u%c'
         # Auto check for staged/unstaged
         zstyle ':vcs_info:git:*' check-for-changes true
         # Set format for VCS info msg on regular check
@@ -81,7 +81,7 @@
     +vi-git-untracked () {
         if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
             git status --porcelain 2> /dev/null | grep -q '??' ; then
-            hook_com[staged]+='%F{black}${PRCH[circle]}%f'
+            hook_com[staged]+='%F{240}${PRCH[circle]}%f'
         fi
     }
 
