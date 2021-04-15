@@ -8,8 +8,10 @@
 #   see https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file
 #   see https://github.com/zsh-users/zsh-history-substring-search#usage
 
-# Syntax highlighting from zsh-users
-source ~/.config/zsh/vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Fast syntax highlighting from https://github.com/zdharma/fast-syntax-highlighting
+source ~/.config/zsh/vendor/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# Original syntax highlighting
+# source ~/.config/zsh/vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Substring search from zsh-users
 source ~/.config/zsh/vendor/zsh-history-substring-search/zsh-history-substring-search.zsh
