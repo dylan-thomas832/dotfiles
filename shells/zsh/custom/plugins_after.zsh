@@ -102,7 +102,7 @@ local 'fzf_alt_c_command'
 if (( $+commands[fdfind] )) ; then
     fzf_alt_c_command="fdfind -t d"
 else
-    fzf_alt_c_command="find -type d "
+    fzf_alt_c_command="find -type d"
 fi
 export FZF_ALT_C_COMMAND=$fzf_alt_c_command
 
@@ -114,20 +114,20 @@ fi
 # Use bat as the manpager, if it's available
 if (( $+commands[bat] )) ; then
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-else
+fi
 
 # Conda setup
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup=$("$HOME/miniconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)
+__conda_setup=$($HOME/miniconda3/bin/conda 'shell.zsh' 'hook' 2> /dev/null)
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+    eval $__conda_setup
 else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
+    if [ -f $HOME/miniconda3/etc/profile.d/conda.sh ]; then
+        . $HOME/miniconda3/etc/profile.d/conda.sh
     else
-        export PATH="$HOME/miniconda3/bin:$PATH"
+        export PATH=$HOME/miniconda3/bin:$PATH
     fi
 fi
 unset __conda_setup
