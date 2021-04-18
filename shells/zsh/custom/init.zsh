@@ -75,4 +75,7 @@ function xterm_title_preexec () {
 if [[ "$TERM" == (alacritty*|gnome*|konsole*|putty*|rxvt*|screen*|tmux*|xterm*) ]]; then
     add-zsh-hook -Uz precmd xterm_title_precmd
     add-zsh-hook -Uz preexec xterm_title_preexec
+
+    # Shift RPROMPT to right edge of terminal
+    export ZLE_RPROMPT_INDENT=0
 fi

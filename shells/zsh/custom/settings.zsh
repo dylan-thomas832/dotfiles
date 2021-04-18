@@ -15,7 +15,8 @@ setopt extended_glob nomatch glob_star_short no_case_glob
 # always_to_end:          Moves cursor to end of word on completion
 # auto_pushd:             Make cd push the old directory onto the directory stack
 # pushd_ignore_dups:      Don’t push multiple copies of the same directory onto the directory stack
-setopt interactivecomments always_to_end auto_pushd pushd_ignore_dups
+# cdable_vars:            If arg to `cd` is not a directory, try to expand it (aliases and bookmarks)
+setopt interactivecomments always_to_end auto_pushd pushd_ignore_dups cdable_vars
 
 # Limit directory stack size
 DIRSTACKSIZE=16
