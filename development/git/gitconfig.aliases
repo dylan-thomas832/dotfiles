@@ -27,6 +27,7 @@
 
     # Easier amending
     amend = commit --amend --reuse-message=HEAD
+    reword = commit --amend
 
     # Checkout/cherry-pick takes forever to type.
     co = checkout
