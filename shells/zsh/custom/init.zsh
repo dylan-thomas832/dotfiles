@@ -1,5 +1,9 @@
 ### ZSH Settings/Features that should be set first
 
+# Autoload common modules/functions
+autoload -Uz colors && colors
+autoload -Uz zcalc
+
 # Test for unicode support, 
 #   From: https://github.com/vincentbernat/zshrc/blob/master/rc/00-helpers.zsh
 _dt_can_do_unicode () {
@@ -53,3 +57,22 @@ fi
 
 # Initializes prompt to bottom of terminal
 # print ${(pl:$LINES::\n:):-}
+
+
+Title stuff
+autoload -Uz add-zsh-hook
+
+function xterm_title_precmd () {
+    print -Pn -- '\e]2;%m %~\a'
+    [[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
+}
+
+function xterm_title_preexec () {
+    print -Pn -- '\e]2;%m %~ %# ' && print -n -- "${(q)1}\a"
+    [[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
+}
+
+if [[ "$TERM" == (alacritty*|gnome*|konsole*|putty*|rxvt*|screen*|tmux*|xterm*) ]]; then
+    add-zsh-hook -Uz precmd xterm_title_precmd
+    add-zsh-hook -Uz preexec xterm_title_preexec
+fi
