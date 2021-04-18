@@ -59,7 +59,7 @@ fi
 # print ${(pl:$LINES::\n:):-}
 
 
-Title stuff
+# Title stuff
 autoload -Uz add-zsh-hook
 
 function xterm_title_precmd () {

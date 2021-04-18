@@ -2,7 +2,7 @@
 
 ## VIM Mode Settings ##
 bindkey -v              # vi mode
-export KEYTIMEOUT=40    # Helps with jk
+export KEYTIMEOUT=10    # Helps with jk
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -122,19 +122,19 @@ bindkey '^Z' ctrlz
 bindkey -M viins 'jk' vi-cmd-mode
 
 # Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
+autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # Change cursor & glyph depending on vi mode
 zle-line-init zle-keymap-select () {
     # Setup and reset prompt on mode switch
-    # [NOTE]: This must be done to properly configure the prompt
-    _dt_setup_prompt && zle reset-prompt
-    # Switch cursor
     case ${KEYMAP} in
-        vicmd)      echo -ne '\e[1 q' ;;
-        viins|main) echo -ne '\e[5 q' ;;
+        vicmd)      echo -ne '\e[1 q' ;; # Block cursor
+        viins|main) echo -ne '\e[5 q' ;; # Beam cursor
+        (*)         echo -ne '\e[3 q' ;; # Beam cursor
     esac
+    # [NOTE]: This must be done to properly re-configure the prompt
+    _dt_setup_prompt && zle reset-prompt
 }
 zle -N zle-keymap-select
 zle -N zle-line-init
@@ -148,3 +148,8 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
     add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
     add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
+
+# Make run-help binded to ALT-H
+(( $+aliases[run-help] )) && unalias run-help
+autoload -Uz run-help
+bindkey '^[h' run-help
