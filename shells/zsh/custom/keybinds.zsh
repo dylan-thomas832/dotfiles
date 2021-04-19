@@ -108,15 +108,15 @@ if [[ ! -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ]]; then
 fi
 
 # Makes CTRL+Z into a toggle switch
-ctrlz() {
+_dt_ctrlz_toggle_switch() {
     if [[ $#BUFFER == 0 ]]; then
         fg >/dev/null 2>&1 && zle redisplay
     else
         zle push-input
     fi
 }
-zle -N ctrlz
-bindkey '^Z' ctrlz
+zle -N _dt_ctrlz_toggle_switch
+bindkey '^Z' _dt_ctrlz_toggle_switch
 
 # Use 'jk' to go to command mode
 bindkey -M viins 'jk' vi-cmd-mode
@@ -126,7 +126,7 @@ autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # Change cursor & glyph depending on vi mode
-zle-line-init zle-keymap-select () {
+_dt_vimode_switch () {
     # Setup and reset prompt on mode switch
     case ${KEYMAP} in
         vicmd)      echo -ne '\e[1 q' ;; # Block cursor
@@ -136,17 +136,19 @@ zle-line-init zle-keymap-select () {
     # [NOTE]: This must be done to properly re-configure the prompt
     _dt_setup_prompt && zle reset-prompt
 }
-zle -N zle-keymap-select
-zle -N zle-line-init
+# Adds functions as hooks to zle widgets
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget -Uz zle-line-init _dt_vimode_switch
+add-zle-hook-widget -Uz zle-keymap-select _dt_vimode_switch
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
     autoload -Uz add-zle-hook-widget
-    function zle_application_mode_start { echoti smkx }
-    function zle_application_mode_stop { echoti rmkx }
-    add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-    add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+    function _dt_zle_application_mode_start { echoti smkx }
+    function _dt_zle_application_mode_stop { echoti rmkx }
+    add-zle-hook-widget -Uz zle-line-init _dt_zle_application_mode_start
+    add-zle-hook-widget -Uz zle-line-finish _dt_zle_application_mode_stop
 fi
 
 # Make run-help binded to ALT-H

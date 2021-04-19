@@ -56,20 +56,20 @@ else
 fi
 
 # Allows writing to VTE Title
-function xterm_title_precmd () {
+function _dt_xterm_title_precmd () {
     print -Pn -- '\e]2;%m %~\a'
     [[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
 }
 
-function xterm_title_preexec () {
+function _dt_xterm_title_preexec () {
     print -Pn -- '\e]2;%m %~ %# ' && print -n -- "${(q)1}\a"
     [[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
 if [[ "$TERM" == (alacritty*|gnome*|konsole*|putty*|rxvt*|screen*|tmux*|xterm*) ]]; then
     autoload -Uz add-zsh-hook
-    add-zsh-hook -Uz precmd xterm_title_precmd
-    add-zsh-hook -Uz preexec xterm_title_preexec
+    add-zsh-hook -Uz precmd _dt_xterm_title_precmd
+    add-zsh-hook -Uz preexec _dt_xterm_title_preexec
 
     # Shift RPROMPT to right edge of terminal
     export ZLE_RPROMPT_INDENT=0
