@@ -133,12 +133,11 @@ _dt_vimode_switch () {
         viins|main) echo -ne '\e[5 q' ;; # Beam cursor
         (*)         echo -ne '\e[3 q' ;; # Beam cursor
     esac
-    # [NOTE]: This must be done to properly re-configure the prompt
-    _dt_setup_prompt && zle reset-prompt
+    # [NOTE]: This must be done to properly re-configure the prompt up/down character
+    _dt_setup_prompt && zle .reset-prompt
 }
 # Adds functions as hooks to zle widgets
 autoload -Uz add-zle-hook-widget
-add-zle-hook-widget -Uz zle-line-init _dt_vimode_switch
 add-zle-hook-widget -Uz zle-keymap-select _dt_vimode_switch
 
 # Finally, make sure the terminal is in application mode, when zle is

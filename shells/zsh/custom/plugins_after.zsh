@@ -41,7 +41,9 @@
 [[ -d $ZVENDORDIR/zsh-autosuggestions ]] && {
     source $ZVENDORDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
     # Customize the auto-suggest foreground color
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=075'
+    # [NOTE]: This is removed because the suggestions aren't cleared on accepted prompt
+    #       if the color is changed
+    # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=075'
     # Use history first, then completion eng for suggestions
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     # Fetch suggestions asynchronously
