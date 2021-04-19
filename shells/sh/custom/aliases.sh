@@ -47,4 +47,4 @@ alias reload="exec ${SHELL}"
 alias clipboard='xclip -selection clipboard'
 
 # Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
+alias path_print='echo -e ${PATH//:/\\n}'
