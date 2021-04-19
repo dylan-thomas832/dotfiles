@@ -8,3 +8,11 @@ export SHELL=$(which zsh)
 
 # Setup common environment variables
 source "${HOME}/.config/sh/custom/environment.sh"
+
+# ZSH-specific environment variables
+
+# Set the ZSH cache directory
+[ -d "$XDG_CACHE_HOME/zsh" ] && export ZCACHEDIR="$XDG_CACHE_HOME/zsh"
+
+# Set the ZSH vendor directory
+[ -d "$ZDOTDIR/vendor" ] && export ZVENDORDIR="$ZDOTDIR/vendor"

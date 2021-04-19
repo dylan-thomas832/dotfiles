@@ -7,9 +7,6 @@ export VISUAL=vim
 [ -z "$XDG_CACHE_HOME" ] && export XDG_CACHE_HOME="$HOME/.cache"
 [ -z "$XDG_DATA_HOME" ] && export XDG_DATA_HOME="$HOME/.local/share"
 
-# Set the ZSH cache directory
-[ -d "$XDG_CACHE_HOME/zsh" ] && export ZCACHEDIR="$XDG_CACHE_HOME/zsh"
-
 # Cache pip-installed packages to avoid re-downloading
 export PIP_DOWNLOAD_CACHE="$XDG_CACHE_HOME/pip"
 
