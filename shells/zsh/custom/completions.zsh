@@ -1,6 +1,6 @@
 ### Completion Settings
 
-# Add completers....
+# Add completer styles
 zstyle ':completion:*' completer _complete _correct _approximate
 
 # Allows dircolors to be used in completion menu
@@ -43,11 +43,11 @@ zmodload -i zsh/complist
 #   see https://github.com/zsh-users/zsh-completions#manual-installation
 
 # Extra completions
-fpath+=$ZDOTDIR/vendor/zsh-completions/src
+[[ -d $ZVENDORDIR/zsh-completions ]] && fpath+=$ZVENDORDIR/zsh-completions
 # Conda completion
-fpath+=$ZDOTDIR/vendor/conda-zsh-completion
+[[ -d $ZVENDORDIR/conda-zsh-completion ]] && fpath+=$ZVENDORDIR/conda-zsh-completion
 # Custom completion functions included in dotfiles
-fpath+=$ZDOTDIR/zfuncs
+[[ -d $ZDOTDIR/zfuncs ]] && fpath+=$ZDOTDIR/zfuncs
 
 # Initialize completions
 autoload -Uz compinit
