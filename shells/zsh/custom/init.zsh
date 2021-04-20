@@ -4,7 +4,7 @@
 autoload -Uz colors && colors
 autoload -Uz zcalc
 
-# Test for unicode support, 
+# Test for unicode support.
 #   From: https://github.com/vincentbernat/zshrc/blob/master/rc/00-helpers.zsh
 _dt_can_do_unicode () {
     # We need:
@@ -55,22 +55,29 @@ else
     )
 fi
 
-# Allows writing to VTE Title
+### Terminal Title ###
+
+# Write hostname and CWD to to title. Called before prompt is drawn.
 function _dt_xterm_title_precmd () {
     print -Pn -- '\e]2;%m %~\a'
+    # Specific setting for "screen" terminal
     [[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
 }
 
+# Write hostname, CWD, & command to to title. Called after a command is accepted.
 function _dt_xterm_title_preexec () {
     print -Pn -- '\e]2;%m %~ %# ' && print -n -- "${(q)1}\a"
+    # Specific setting for "screen" terminal
     [[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
 if [[ "$TERM" == (alacritty*|gnome*|konsole*|putty*|rxvt*|screen*|tmux*|xterm*) ]]; then
+    # Hook title functions into precmd and prexec
     autoload -Uz add-zsh-hook
     add-zsh-hook -Uz precmd _dt_xterm_title_precmd
     add-zsh-hook -Uz preexec _dt_xterm_title_preexec
 
     # Shift RPROMPT to right edge of terminal
+    # [NOTE]: Put here because this might do weird things in non-VTEs
     export ZLE_RPROMPT_INDENT=0
 fi

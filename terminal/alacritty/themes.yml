@@ -1,4 +1,6 @@
-# File for saving alactritty color themes. Loaded
+# File for saving alacritty color themes.
+# Change the 'colors' value at the bottom to change themes.
+# The '*' allows referencing the themes defined above here
 themes:
   # Colors (Dracula)
   dracula_theme: &dracula
