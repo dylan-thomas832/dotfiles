@@ -1,65 +1,7 @@
 ### Dylan's ZSH prompt. 
 # Structure pulled from: https://github.com/vincentbernat/zshrc/blob/master/rc/prompt.zsh
 
-# Autoload ZSH add hook function
-autoload -Uz add-zsh-hook
-
-# Turn on prompt substitution
-setopt prompt_subst
-
-_dt_prompt_preexec () {
-    # TOOD: Investigate fc -l -1
-
-    # printf '%-*s' $COLUMNS "Output:"
-    # # Removes/eats previous prompt
-    # print
-    printf "\033[2A\033[2K"
-    # # print $1
-    # # print $2
-    # # print $3
-    # # printf "\033[2A\033[2K"
-    # # not sure
-    0="${1//\\/\\\\\\\\}"
-    0="${0//\\n/\\\\n}"
-    0="${0//\$/\\\\$}"
-    0="${0//\`/\\\\\`}"
-    0="${0//\%/%%}"
-    formatted_cmd="%* %(!.%F{red}#%f.%F{magenta}${PRCH[prompt]}%f) ${0//\\/\\\\}"
-    # middle bit is last line of final prompt with %1~
-    # print -P -- "%* %B%F{blue}%1~%f%f%b %F{magenta}${PRCH[prompt]}%f"" ${0//\\/\\\\}"
-    print -P -- $formatted_cmd
-    # [[ -z $1 ]] && printf "\033[2A\033[2K"
-    # print -P -- "%* %F{magenta}${PRCH[prompt]}%f ${0//\\/\\\\}"
-    # read -sdR $'pos_before?\e[6n'
-    # print moved us down a line
-    printf "\033[2K"
-    # oldcmd=$1
-    # [[ -n $1 ]] && printf "\033[2K"
-}
-
-_dt_prompt_precmd () {
-    # # Removes/eats previous prompt
-    # print
-    # printf "\033[2K"
-    # # not sure
-    # printf "\033[2A\033[2K"
-    # read -sdR $'pos_after?\e[6n'
-    # [[ $pos_after != $pos_before ]] || printf '\r'
-    # 0="${1//\\/\\\\\\\\}"
-    # 0="${0//\\n/\\\\n}"
-    # 0="${0//\$/\\\\$}"
-    # 0="${0//\`/\\\\\`}"
-    # 0="${0//\%/%%}"
-    # middle bit is last line of final prompt with %1~
-    # print -P -- "%* %B%F{blue}%1~%f%f%b %F{magenta}${PRCH[prompt]}%f"" ${0//\\/\\\\}"
-    [[ -z $formatted_cmd ]] && printf "\033[2A\033[2K" && print -P -- "%* %(!.%F{red}#%f.%F{magenta}${PRCH[prompt]}%f) "
-    unset formatted_cmd
-    # printf "\033[2K"
-    # print moved us down a line
-    # print
-}
-
-# Segment handling
+# Auto segment handling: for p10k prompt look
 _dt_prompt_segment() {
   local b f
   [[ -n $1 ]] && b="%K{$1}" || b="%k"
@@ -76,7 +18,7 @@ _dt_prompt_segment() {
   print -n ${3# *}
 }
 
-# Final prompt piece
+# Final prompt piece: for p10k prompt look
 _dt_prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     print -n "%b%k%F{$CURRENT_BG}${PRCH[end]}"
@@ -116,44 +58,99 @@ _dt_prompt_cwd() {
 # Actually set the prompt variables ('PROMPT' & 'RPROMPT') by calling `vcs_info`
 # which inserts info into `vcs_info_msg_0`
 # This also includes a conda prefix for the current environment
-_dt_simple_prompt() {
+_dt_full_prompt() {
+    # Empty line spacer. Not a big deal b/c we are using transient prompt
+    print
     # Grabs last bit of path in $CONDA_DEFAULT_ENV. This is updated when `conda activate` is called
-    CONDA_CURR_ENV=$(basename "$CONDA_DEFAULT_ENV")
+    local conda_env="%F{cyan}%B$(basename "$CONDA_DEFAULT_ENV")%b%f"
     # Flips the glyph if in vi command mode
-    [ "x$KEYMAP" = "xvicmd" ] && local glyph=${PRCH[down]} || local glyph=${PRCH[up]}
-    # Sets the glyph direction for vi-mode and color for the previous command exit code
-    # Add `"%? "` in between `}` and `)` to print the exit code directly
-    local mode="%(?.%F{blue}.%F{red})$glyph%f"
+    [ "$KEYMAP" = "vicmd" ] && local glyph='${PRCH[down]}' || local glyph='${PRCH[up]}'
+    glyph="%F{blue}$glyph%f"
+    # Sets the character based on the previous command exit code
+    # Add ' %?' in between `}` and `%f` at the end to print the exit code directly
+    local mode="%(?.%F{green}${PRCH[ok]}%f.%F{red}${PRCH[reta]}%f)"
     # Sets the symbol used for user prompt
     local prompt_symbol="%(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) "
     # Includes the hostname if logged in using SSH
     local ssh_hostname=""
     [[ ! -z "${SSH_CONNECTION}" ]] && ssh_hostname="%n@%m "
     # Includes the number of background jobs currently running if > 0
-    local background_jobs="%(1j.%F{cyan}[%j]%f .)"
+    local background_jobs="%(1j.%F{yellow}[%j]%f .)"
 
     # Includes the cwd and 3 trailing components.
     # If the current working directory starts with $HOME, that part is replaced by a ‘~’
-    # local cwd="%F{blue}%~%f"
+    # local cwd="%F{blue}%20<...<%~%f%<<"
     local cwd="$(_dt_prompt_cwd)"
     # print $'${(r:$COLUMNS::\u2500:)}'
     print "$ssh_hostname$cwd"
-    print -n "%F{green}%B$CONDA_CURR_ENV%b%f $mode $background_jobs$prompt_symbol"
+    print "$conda_env $mode $background_jobs$prompt_symbol"
 }
 
-_dt_setup_prompt () {
-    # export PS1=$'${(r:$COLUMNS::\u2500:)}''$(_dt_simple_prompt)'
+_dt_transient_prompt() {
+    # Print 24hr time
+    print -n "%F{cyan}%* %f"
+    # Print the prompt
+    print -n "%(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) "
+}
+
+# Transient prompt from: https://github.com/romkatv/powerlevel10k/issues/888#issuecomment-657969840
+_dt_setup_transient_prompt() {
+    # Localize options, patterns, and traps
+    emulate -L zsh
+
+    # Only continue if start of regular command/prompt
+    # e.g. Not in "cont", "select", "vared"
+    [[ $CONTEXT == start ]] || return 0
+
+    # Catch the return of recursive-edit
+    while true; do
+        # Call recursive-edit and save the return value
+        zle .recursive-edit
+        local -i ret=$?
+        # Don't break if return code is 0, and ??
+        [[ $ret == 0 && $KEYS == $'\4' ]] || break
+        # Properly catch EOF / CTRL+D
+        [[ -o ignore_eof ]] || exit 0
+    done
+
+    # Save current prompt to local variable
+    local saved_prompt=$PROMPT
+    local saved_rprompt=$RPROMPT
+    # Write the transient prompts, and reset prompt
+    PS1="%F{cyan}%*%f %(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) "
+    RPROMPT=''
+    zle .reset-prompt
+    # Reload saved prompt
+    PROMPT=$saved_prompt
+    RPROMPT=$saved_rprompt
+
+    # Nonzero return calls 'send-break' widget, otherwise command line is accepted
+    if (( ret )); then
+        zle .send-break
+    else
+        zle .accept-line
+    fi
+    return ret
+}
+
+_dt_setup_regular_prompt() {
+    setopt prompt_subst
     # Exporting is required for overriding root prompt
-    export PS1="$(_dt_simple_prompt)"
-    export PS2="%Scont'd%s %F{cyan}${PRCH[prompt]}%f"
-    export PS3="$(_dt_prompt_segment cyan default "?"; _dt_prompt_end) "
-    export PS4="$(_dt_prompt_segment white black "%N"; _dt_prompt_segment blue default "%i"; _dt_prompt_end) "
+    export PS1="$(_dt_full_prompt)"
+    export PS2="%F{cyan}%_ ${PRCH[prompt]}%f "
+    export PS3="%F{cyan}? ${PRCH[prompt]}%f "
+    export PS4="%F{cyan}%N | %i ${PRCH[prompt]}%f "
     export PROMPT_EOL_MARK="%B${PRCH[eol]}%b"
     export RPROMPT="$vcs_info_msg_0_"
 }
 
+[[ $USERNAME != "root" ]] && {
+    # Hook transient prompt to 'zle-line-init' widget
+    autoload -Uz add-zle-hook-widget
+    add-zle-hook-widget -Uz zle-line-init _dt_setup_transient_prompt
+    add-zle-hook-widget -Uz zle-line-init _dt_setup_regular_prompt
+}
 
-# Call initial prompt setup
-add-zsh-hook preexec _dt_prompt_preexec
-add-zsh-hook precmd _dt_prompt_precmd
-add-zsh-hook precmd _dt_setup_prompt
+# Hook prompt setup to 'precmd' function
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _dt_setup_regular_prompt
