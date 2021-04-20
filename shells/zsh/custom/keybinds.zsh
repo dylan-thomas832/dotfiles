@@ -110,7 +110,7 @@ fi
 # Makes CTRL+Z into a toggle switch
 _dt_ctrlz_toggle_switch() {
     if [[ $#BUFFER == 0 ]]; then
-        fg >/dev/null 2>&1 && zle redisplay
+        fg >/dev/null 2>&1 && zle redisplay && zle .reset-prompt
     else
         zle push-input
     fi
@@ -134,7 +134,7 @@ _dt_vimode_switch () {
         (*)         echo -ne '\e[3 q' ;; # Beam cursor
     esac
     # [NOTE]: This must be done to properly re-configure the prompt up/down character
-    _dt_setup_prompt && zle .reset-prompt
+    zle .reset-prompt
 }
 # Adds functions as hooks to zle widgets
 autoload -Uz add-zle-hook-widget
