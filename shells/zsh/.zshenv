@@ -24,6 +24,14 @@ export SHELL=$(which zsh)
 # Setup common environment variables
 source "${HOME}/.config/sh/custom/environment.sh"
 
+#####################
+### Ensure Unique ###
+#####################
+
+typeset -U path
+typeset -U manpath
+typeset -TU LD_LIBRARY_PATH ld_library_path
+
 #########################
 ### ZSH ENV Variables ###
 #########################

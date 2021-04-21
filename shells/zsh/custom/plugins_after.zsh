@@ -140,6 +140,9 @@
     export PF_INFO="ascii title os host kernel de shell uptime pkgs memory palette"
 }
 
+# Source Rust build/compiler stuff
+[ -f "$CARGO_HOME/env" ] && source "$CARGO_HOME/env"
+
 # Conda setup function. Slightly mondified from output of `conda init zsh`
 _dt_conda_setup () {
     local 'conda_dist'
