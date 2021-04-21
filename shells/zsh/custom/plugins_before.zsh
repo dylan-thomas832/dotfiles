@@ -11,7 +11,9 @@
 #####################
 ### ZSH Functions ###
 #####################
-# [TODO]: Autoload $ZDOTDIR/zfuncs?
+
+# Add custom ZSH functions
+[[ -n $ZFUNCSDIR ]] && fpath+=$ZFUNCSDIR
 
 ##########################
 ### Custom ZSH Plugins ###

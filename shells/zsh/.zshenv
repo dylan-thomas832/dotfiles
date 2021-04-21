@@ -10,7 +10,8 @@
 ### Global ZSH Settings ###
 ###########################
 
-# Skip over global `compinit` call, since we do it anyways
+# Skip over global `compinit` call since we do it anyways.
+# [NOTE]: This might be Ubuntu specific
 skip_global_compinit=1
 
 # Force set shell
@@ -32,3 +33,9 @@ source "${HOME}/.config/sh/custom/environment.sh"
 
 # Set the ZSH vendor directory
 [ -d "$ZDOTDIR/vendor" ] && export ZVENDORDIR="$ZDOTDIR/vendor"
+
+# Set the ZSH functions directory
+[ -d "$ZDOTDIR/zfuncs" ] && export ZFUNCSDIR="$ZDOTDIR/zfuncs"
+
+# Set the ZSH completions directory
+[ -d "$ZDOTDIR/completions" ] && export ZCOMPLETIONSDIR="$ZDOTDIR/completions"

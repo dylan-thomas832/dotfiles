@@ -53,12 +53,12 @@ zmodload -i zsh/complist
 # [NOTE]: I believe it is best practice to source completion plugins before compinit
 #   See https://github.com/zsh-users/zsh-completions#manual-installation
 
-# Extra completions
+# Extra completions from zsh-users git repo
 [[ -d $ZVENDORDIR/zsh-completions ]] && fpath+=$ZVENDORDIR/zsh-completions
 # Conda completion
 [[ -d $ZVENDORDIR/conda-zsh-completion ]] && fpath+=$ZVENDORDIR/conda-zsh-completion
 # Custom completion functions included in dotfiles
-[[ -d $ZDOTDIR/zfuncs ]] && fpath+=$ZDOTDIR/zfuncs
+[[ -n $ZCOMPLETIONSDIR ]] && fpath+=$ZCOMPLETIONSDIR
 
 ##############################
 ### Initialize Completions ###
