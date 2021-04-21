@@ -1,5 +1,10 @@
-### Local zsh settings to be sourced last for WSL1
+#################################
+#### WSL1 Local ZSH Settings ####
+#################################
+# Author: Dylan Thomas
 
-# WSL1-specific display settings.
+####################
+### WSL1 Display ###
+####################
 export DISPLAY=:0.0
 export LIBGL_ALWAYS_INDIRECT=1

@@ -1,7 +1,44 @@
-### Dylan's ZSH prompt. 
-# Structure pulled from: https://github.com/vincentbernat/zshrc/blob/master/rc/prompt.zsh
+####################
+#### ZSH Prompt ####
+####################
+# Author: Dylan Thomas
+# [NOTE]: Structure based on:
+#   https://github.com/vincentbernat/zshrc/blob/master/rc/prompt.zsh
 
-# Auto segment handling: for p10k prompt look
+# My custom prompt config, designed to be sort-of modular. It is designed to
+#   be used without any external dependencies. The exception is git
+#   integration which uses 'asynch.zsh' repo. However, if one doesn't source
+#   my 'vcs.zsh' file, it will default to used the built-in VCS module.
+
+#########################
+#### Prompt Features ####
+#########################
+
+## Line 1 ##
+# Left Prompt:
+#   - user@host (only if connected via SSH)
+#   - dynamically truncated directory
+
+## Line 2 ##
+# Left Prompt:
+#   - conda Python environment (if active)
+#   - character designating exit code of previous command (zero vs. nonzero)
+#   - number of background jobs (if > 0)
+#   - prompt symbol if regular user, red '#' if root
+# Right Prompt:
+#   - git information (via vcs_info_msg_0_) if in a repo
+
+## Sparse Prompt ##
+#   - empty line betweeen previous commands and prompt
+
+## Transient Prompt ##
+#   - simplified prompt showing previous commands
+
+##########################
+#### Modular Segments ####
+##########################
+
+# Auto segment handling: use for p10k prompt look
 _dt_prompt_segment() {
   local b f
   [[ -n $1 ]] && b="%K{$1}" || b="%k"
@@ -18,7 +55,7 @@ _dt_prompt_segment() {
   print -n ${3# *}
 }
 
-# Final prompt piece: for p10k prompt look
+# Final prompt piece: use for p10k prompt look
 _dt_prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     print -n "%b%k%F{$CURRENT_BG}${PRCH[end]}"
@@ -26,6 +63,10 @@ _dt_prompt_end() {
   print -n "%b%k%f"
   unset CURRENT_BG
 }
+
+#########################
+#### Custom Segments ####
+#########################
 
 # Fancy cwd prompt portion
 _dt_prompt_cwd() {
@@ -54,6 +95,10 @@ _dt_prompt_cwd() {
             ;;
     esac
 }
+
+#######################
+### Prompt Builders ###
+#######################
 
 # Actually set the prompt variables ('PROMPT' & 'RPROMPT') by calling `vcs_info`
 # which inserts info into `vcs_info_msg_0`
@@ -93,7 +138,12 @@ _dt_transient_prompt() {
     print -n "%(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) "
 }
 
-# Transient prompt from: https://github.com/romkatv/powerlevel10k/issues/888#issuecomment-657969840
+#############################
+### Main Prompt Functions ###
+#############################
+# [NOTE]: Transient prompt courteous of romkatv:
+#   https://github.com/romkatv/powerlevel10k/issues/888#issuecomment-657969840
+
 _dt_setup_transient_prompt() {
     # Localize options, patterns, and traps
     emulate -L zsh
@@ -144,13 +194,17 @@ _dt_setup_regular_prompt() {
     export RPROMPT="$vcs_info_msg_0_"
 }
 
+####################
+### Prompt Hooks ###
+####################
+
+# [TODO]: Scoped necessary?
+
 [[ $USERNAME != "root" ]] && {
     # Hook transient prompt to 'zle-line-init' widget
-    autoload -Uz add-zle-hook-widget
     add-zle-hook-widget -Uz zle-line-init _dt_setup_transient_prompt
     add-zle-hook-widget -Uz zle-line-init _dt_setup_regular_prompt
 }
 
 # Hook prompt setup to 'precmd' function
-autoload -Uz add-zsh-hook
 add-zsh-hook precmd _dt_setup_regular_prompt

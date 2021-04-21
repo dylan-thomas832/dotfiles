@@ -2,14 +2,13 @@
 #### ZSH Plugins ####
 #####################
 # Author: Dylan Thomas
-# Note: Loaded after other non-local zsh config files.
+# [NOTE]: Loaded after other non-local zsh config files.
 
 # Most plugins are scoped to only load if they exist.
 
 #######################
 ### ZSH Git Plugins ###
 #######################
-
 # [NOTE]: Syntax highlighting needs to be sourced after compinit, and before history substring search
 #   See https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file
 #   See https://github.com/zsh-users/zsh-history-substring-search#usage
@@ -21,8 +20,8 @@
 # Original syntax highlighting: https://github.com/zsh-users/zsh-syntax-highlighting
 
 # Substring fuzzy history search
+# [NOTE]: These overwrite the standard ZSH history searches
 [[ -d $ZVENDORDIR/zsh-history-substring-search ]] && {
-    ## [NOTE]: These overwrite the standard ZSH history searches
     source $ZVENDORDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 
     # Start typing + [Up-Arrow] - Search for sub-string in history backwards

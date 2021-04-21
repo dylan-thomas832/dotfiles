@@ -1,4 +1,15 @@
-# ZSH specific aliases
+##########################
+#### ZSH Aliases File ####
+##########################
+# Author: Dylan Thomas
+
+# These are aliases defined specifically for interactive ZSH shells.
+# Please read the section for 'alias' for context:
+#    http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html#Shell-Builtin-Commands
+
+########################
+### Standard Aliases ###
+########################
 
 # Open git repo in browser
 alias gh="xdg-open \`git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\/\//' -e's/\.git$//' | sed -E 's/(\/\/[^:]*):/\1\//'\`"
@@ -10,10 +21,20 @@ alias sudo='sudo '
 alias ag="ag --hidden --ignore '.git'"
 alias rg="rg --hidden --glob '!.git'"
 
-# Suffix aliases -> applied to end of the line
+######################
+### Suffix Aliases ###
+######################
+# [NOTE]: Applied to end of the command word. Be careful.
+
+# If command is "filename.log" it will call `tail -f` on "filename.log"
 alias -s log="tail -f"
 
-# Global aliases -> directly replaced on line
+######################
+### Global Aliases ###
+######################
+# [NOTE]: Aliases expanded even if they are not in the command position. Be careful.
+
+# cd laziness
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'

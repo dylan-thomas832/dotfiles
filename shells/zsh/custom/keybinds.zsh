@@ -1,12 +1,24 @@
-### Keybindings
+#########################
+#### ZSH Keybindings ####
+#########################
+# Author: Dylan Thomas
 
-## VIM Mode Settings ##
+# Place any keybindings and ZLE functions related to keybinds here.
+
+################
+### VIM Mode ###
+################
+
 bindkey -v              # vi mode
 export KEYTIMEOUT=10    # Helps with jk
 
-# create a zkbd compatible hash;
+##########################
+### Terminfo Key Array ###
+##########################
+
+# Create a zkbd compatible hash
 # to add other keys to this hash, see: man 5 terminfo
-typeset -g -A key
+typeset -gA key
 
 key[Home]="${terminfo[khome]}"
 key[End]="${terminfo[kend]}"
@@ -22,6 +34,12 @@ key[PageDown]="${terminfo[knp]}"
 key[Shift-Tab]="${terminfo[kcbt]}"
 key[Control-Left]="${terminfo[kLFT5]}"
 key[Control-Right]="${terminfo[kRIT5]}"
+
+########################
+### General Keybinds ###
+########################
+# [NOTE]: You may need to add "else" statements for terminals not supportive
+#   of 'terminfo'
 
 # Start typing + [Up-Arrow] - Search history backwards
 if [[ -n "${key[Up]}" ]]; then
@@ -100,14 +118,40 @@ else
     bindkey -M vicmd '^[[1;5C' forward-word
 fi
 
-# Enable incremental search. This must come __after__ "bindkey -v"
-# Only enable if fzf isn't installed
+# Enable incremental search
+# [NOTE]: This must come __after__ "bindkey -v"
+# [NOTE]: Only enable if fzf isn't installed
 if [[ ! -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ]]; then
     autoload -Uz history-incremental-search-backward
     bindkey "^R" history-incremental-search-backward
 fi
 
-# Makes CTRL+Z into a toggle switch
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+    function _dt_zle_application_mode_start { echoti smkx }
+    function _dt_zle_application_mode_stop { echoti rmkx }
+    add-zle-hook-widget -Uz zle-line-init _dt_zle_application_mode_start
+    add-zle-hook-widget -Uz zle-line-finish _dt_zle_application_mode_stop
+fi
+
+# Make run-help binded to ALT-H
+(( $+aliases[run-help] )) && unalias run-help
+autoload -Uz run-help
+bindkey '^[h' run-help
+
+# Use 'jk' to go to command mode
+bindkey -M viins 'jk' vi-cmd-mode
+
+# Edit line in vim with ctrl-e:
+autoload -Uz edit-command-line && zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+############################
+### Custom ZLE Functions ###
+############################
+
+# Makes CTRL+Z into a gf/bg toggle switch
 _dt_ctrlz_toggle_switch() {
     if [[ $#BUFFER == 0 ]]; then
         fg >/dev/null 2>&1 && zle redisplay && zle .reset-prompt
@@ -118,14 +162,7 @@ _dt_ctrlz_toggle_switch() {
 zle -N _dt_ctrlz_toggle_switch
 bindkey '^Z' _dt_ctrlz_toggle_switch
 
-# Use 'jk' to go to command mode
-bindkey -M viins 'jk' vi-cmd-mode
-
-# Edit line in vim with ctrl-e:
-autoload -Uz edit-command-line && zle -N edit-command-line
-bindkey '^e' edit-command-line
-
-# Change cursor & glyph depending on vi mode
+# Change cursor depending on vi mode
 _dt_vimode_switch () {
     # Setup and reset prompt on mode switch
     case ${KEYMAP} in
@@ -137,20 +174,4 @@ _dt_vimode_switch () {
     zle .reset-prompt
 }
 # Adds functions as hooks to zle widgets
-autoload -Uz add-zle-hook-widget
 add-zle-hook-widget -Uz zle-keymap-select _dt_vimode_switch
-
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-    autoload -Uz add-zle-hook-widget
-    function _dt_zle_application_mode_start { echoti smkx }
-    function _dt_zle_application_mode_stop { echoti rmkx }
-    add-zle-hook-widget -Uz zle-line-init _dt_zle_application_mode_start
-    add-zle-hook-widget -Uz zle-line-finish _dt_zle_application_mode_stop
-fi
-
-# Make run-help binded to ALT-H
-(( $+aliases[run-help] )) && unalias run-help
-autoload -Uz run-help
-bindkey '^[h' run-help

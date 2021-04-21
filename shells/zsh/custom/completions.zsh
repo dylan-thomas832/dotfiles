@@ -1,4 +1,14 @@
-### Completion Settings
+#############################
+#### ZSH Completion File ####
+#############################
+# Author: Dylan Thomas
+
+# Define all completion-specific settings/functions here, then initialize the
+#   completion system.
+
+###########################
+### Completion Settings ###
+###########################
 
 # Add completer styles
 zstyle ':completion:*' completer _complete _correct _approximate
@@ -37,10 +47,11 @@ zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
 # Load completion list
 zmodload -i zsh/complist
 
-# ZSH Completion Functions
-
-# NOTE: I believe it is best practice to source completion plugins before compinit
-#   see https://github.com/zsh-users/zsh-completions#manual-installation
+################################
+### ZSH Completion Functions ###
+################################
+# [NOTE]: I believe it is best practice to source completion plugins before compinit
+#   See https://github.com/zsh-users/zsh-completions#manual-installation
 
 # Extra completions
 [[ -d $ZVENDORDIR/zsh-completions ]] && fpath+=$ZVENDORDIR/zsh-completions
@@ -49,7 +60,11 @@ zmodload -i zsh/complist
 # Custom completion functions included in dotfiles
 [[ -d $ZDOTDIR/zfuncs ]] && fpath+=$ZDOTDIR/zfuncs
 
-# Initialize completions
+##############################
+### Initialize Completions ###
+##############################
+
+# Load, and call compinit. Cache zcompdump file in $ZCACHEDIR
 autoload -Uz compinit
 compinit -C -d "${ZCACHEDIR}/zcompdump-${HOST/.*/}-${ZSH_VERSION}"
 _comp_options+=(globdots)  # Include hidden files.

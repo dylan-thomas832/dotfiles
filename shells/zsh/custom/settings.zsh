@@ -1,7 +1,11 @@
-### Standard ZSH Settings File ###
+###################################
+#### General ZSH Settings File ####
+###################################
 # Author: Dylan Thomas
 
-## Standard Options/Settings
+############################
+### Standard ZSH Options ###
+############################
 
 ## Various options
 # interactivecomments:    Allow comments in interactive shell
@@ -57,12 +61,17 @@ unsetopt                    \
     menu_complete           \
     flow_control            \
 
-## ZSH History File Settings
+#############################
+### History File Settings ###
+#############################
+
 HISTFILE="${ZCACHEDIR}/history"
 HISTSIZE=10000
 SAVEHIST=10000
 
-## Miscellaneous settings/variables
+##############################
+### Miscellaneous Settings ###
+##############################
 
 # Report command running time if it is more than 3 seconds
 REPORTTIME=3

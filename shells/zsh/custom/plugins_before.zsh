@@ -1,12 +1,23 @@
-### ZSH Plugins loaded before compinit ###
+#####################
+#### ZSH Plugins ####
+#####################
 # Author: Dylan Thomas
+# [NOTE]: Loaded before other non-local zsh config files.
 
-## ZSH function plugins
+#######################
+### ZSH Git Plugins ###
+#######################
 
-## Custom ZSH plugins
+#####################
+### ZSH Functions ###
+#####################
+# [TODO]: Autoload $ZDOTDIR/zfuncs?
 
-# ZSH completion for pip
-# Retrieved via: `pip completion --zsh`
+##########################
+### Custom ZSH Plugins ###
+##########################
+
+# [NOTE]: Retrieved via: `pip completion --zsh`
 function _pip_completion {
   local words cword
   read -Ac words
