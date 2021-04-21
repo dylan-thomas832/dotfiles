@@ -104,10 +104,8 @@ _dt_prompt_cwd() {
 # which inserts info into `vcs_info_msg_0`
 # This also includes a conda prefix for the current environment
 _dt_full_prompt() {
-    # Empty line spacer. Not a big deal b/c we are using transient prompt
-    print
     # Grabs last bit of path in $CONDA_DEFAULT_ENV. This is updated when `conda activate` is called
-    local conda_env="%F{cyan}%B$(basename "$CONDA_DEFAULT_ENV")%b%f"
+    local conda_env="%F{cyan}%B%(!..$(basename "$CONDA_DEFAULT_ENV") )%b%f"
     # Flips the glyph if in vi command mode
     [ "$KEYMAP" = "vicmd" ] && local glyph='${PRCH[down]}' || local glyph='${PRCH[up]}'
     glyph="%F{blue}$glyph%f"
@@ -124,18 +122,20 @@ _dt_full_prompt() {
 
     # Includes the cwd and 3 trailing components.
     # If the current working directory starts with $HOME, that part is replaced by a ‘~’
-    # local cwd="%F{blue}%20<...<%~%f%<<"
-    local cwd="$(_dt_prompt_cwd)"
-    # print $'${(r:$COLUMNS::\u2500:)}'
+    local cwd="%(!.%F{blue}%~%f.$(_dt_prompt_cwd))"
+
+    # Empty line spacer. Not a big deal b/c we are using transient prompt
+    print
+    # Print the prompts as output of this function
     print "$ssh_hostname$cwd"
-    print "$conda_env $mode $background_jobs$prompt_symbol"
+    print "$conda_env$mode $background_jobs$prompt_symbol"
 }
 
 _dt_transient_prompt() {
     # Print 24hr time
-    print -n "%F{cyan}%* %f"
+    print -n '%F{cyan}%* %f'
     # Print the prompt
-    print -n "%(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) "
+    print -n '%(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) '
 }
 
 #############################
@@ -167,7 +167,7 @@ _dt_setup_transient_prompt() {
     local saved_prompt=$PROMPT
     local saved_rprompt=$RPROMPT
     # Write the transient prompts, and reset prompt
-    PS1="%F{cyan}%*%f %(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) "
+    PS1=$(_dt_transient_prompt)
     RPROMPT=''
     zle .reset-prompt
     # Reload saved prompt
@@ -185,13 +185,14 @@ _dt_setup_transient_prompt() {
 
 _dt_setup_regular_prompt() {
     setopt prompt_subst
+    ruler=${(r:$COLUMNS::\u2500:)}
     # Exporting is required for overriding root prompt
-    export PS1="$(_dt_full_prompt)"
-    export PS2="%F{cyan}%_ ${PRCH[prompt]}%f "
-    export PS3="%F{cyan}? ${PRCH[prompt]}%f "
-    export PS4="%F{cyan}%N | %i ${PRCH[prompt]}%f "
+    export PS1=$(_dt_full_prompt)
+    export PS2="%F{green}%_ %F{cyan}${PRCH[prompt]}%f "
+    export PS3="%F{green}? %F{cyan}${PRCH[prompt]}%f "
+    export PS4="%F{green}%N | %i %F{cyan}${PRCH[prompt]}%f "
     export PROMPT_EOL_MARK="%B${PRCH[eol]}%b"
-    export RPROMPT="$vcs_info_msg_0_"
+    export RPROMPT=$vcs_info_msg_0_
 }
 
 ####################
