@@ -1,12 +1,18 @@
-### ZSH Plugins loaded after compinit ###
+#####################
+#### ZSH Plugins ####
+#####################
 # Author: Dylan Thomas
+# Note: Loaded after other non-local zsh config files.
 
+# Most plugins are scoped to only load if they exist.
 
-## ZSH Script plugins
+#######################
+### ZSH Git Plugins ###
+#######################
 
 # [NOTE]: Syntax highlighting needs to be sourced after compinit, and before history substring search
-#   see https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file
-#   see https://github.com/zsh-users/zsh-history-substring-search#usage
+#   See https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file
+#   See https://github.com/zsh-users/zsh-history-substring-search#usage
 
 # Fast syntax highlighting
 [[ -d $ZVENDORDIR/fast-syntax-highlighting ]] && {
@@ -54,33 +60,32 @@
     bindkey '^ ' autosuggest-accept
 }
 
-# Custom ZSH plugins
+#######################
+### FZF Integration ###
+#######################
 
-# For running pfetch if interested
-[[ -x pfetch ]] && {
-    export PF_INFO="ascii title os host kernel de shell uptime pkgs memory palette"
-}
-
-# FZF setup
 [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ]] && {
     source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
     # Set the default FZF command to use ripgrep, silver-searcher, fd, or find
-    local 'fzf_command'
+    local fzf_rg='rg --files --hidden --color=auto --smart-case --follow --ignore-file ~/.config/agignore'
+    local fzf_ag='ag --hidden --path-to-ignore ~/.config/agignore -g ""'
+    local fzf_fd="fdfind --type f --hidden --ignore-file ~/.config/agignore"
+    local fzf_find="find --type f"
+
     if (( $+commands[rg] )) ; then
         # Force FZF to use `rg`
-        fzf_command='rg --files --hidden --color=auto --smart-case --follow --ignore-file ~/.config/agignore'
+        export FZF_DEFAULT_COMMAND=$fzf_rg
     elif (( $+commands[ag] )) ; then
         # Force FZF to use ag. -g "" allow `ag` to search filenames and pipe to fzf
-        fzf_command='ag --hidden --path-to-ignore ~/.config/agignore -g ""'
+        export FZF_DEFAULT_COMMAND=$fzf_ag
     elif (( $+commands[fdfind] )) ; then
         # Force FZF to use `fd` instead of `find`
-        fzf_command="fdfind --type f --hidden --ignore-file ~/.config/agignore"
+        export FZF_DEFAULT_COMMAND=$fzf_fd
     else
         # No search util found, use `find`
-        fzf_command="find --type f"
+        export FZF_DEFAULT_COMMAND=$fzf_find
     fi
-    export FZF_DEFAULT_COMMAND=$fzf_command
 
     # Default FZF options here
     FZF_DEFAULT_OPTS="--reverse"
@@ -94,40 +99,49 @@
     # CTRL+T uses default fzf command with toggle-able, colorized file preview
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-    # Set options for CTRL+T. Use `bat` if it exists, otherwise `cat`
-    local 'fzf_ctrl_t_opts'
-    if (( $+commands[bat] )) ; then
-        fzf_ctrl_t_opts="--reverse --preview 'bat --style=numbers --color=always --theme=Dracula --line-range :500 {}' --bind '?:toggle-preview'"
-    else
-        fzf_ctrl_t_opts="--reverse --preview 'cat {}' --bind '?:toggle-preview'"
-    fi
-    export FZF_CTRL_T_OPTS=$fzf_ctrl_t_opts
+    # Set options for CTRL+T.
+    local fzf_ctrl_t_bat="--reverse --preview 'bat --style=numbers --color=always --theme=Dracula --line-range :500 {}' --bind '?:toggle-preview'"
+    local fzf_ctrl_t_cat="--reverse --preview 'cat {}' --bind '?:toggle-preview'"
+
+    # Use `bat` if it exists, otherwise `cat`
+    (( $+commands[bat] )) && {
+        export FZF_CTRL_T_OPTS=$fzf_ctrl_t_bat
+    } || {
+        export FZF_CTRL_T_OPTS=$fzf_ctrl_t_cat
+    }
 
     # CTRL+R uses echo for toggle-able command preview under
     export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
     # ALT+C uses fd with toggle-able directory tree preview
-    local 'fzf_alt_c_command'
+    local fzf_alt_c_fd="fdfind -t d"
+    local fzf_alt_c_find="find -type d"
+
     # Use `fd` if available, otherwise default to `find`
-    if (( $+commands[fdfind] )) ; then
-        fzf_alt_c_command="fdfind -t d"
-    else
-        fzf_alt_c_command="find -type d"
-    fi
-    export FZF_ALT_C_COMMAND=$fzf_alt_c_command
+    (( $+commands[fdfind] )) && {
+        export FZF_ALT_C_COMMAND=$fzf_alt_c_fd
+    } || {
+        export FZF_ALT_C_COMMAND=$fzf_alt_c_find
+    }
 
     # If `tree` is available, enable tree-view preview panel for ALT+C
-    if (( $+commands[tree] )) ; then
-        export FZF_ALT_C_OPTS="--reverse --preview 'tree -adC {} | head -200' --bind '?:toggle-preview'"
-    fi
+    local fzf_alt_c_opts_tree="--reverse --preview 'tree -adC {} | head -200' --bind '?:toggle-preview'"
+    (( $+commands[tree] )) && export FZF_ALT_C_OPTS=$fzf_alt_c_opts_tree
 
     # Use bat as the manpager, if it's available
-    if (( $+commands[bat] )) ; then
-        export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-    fi
+    (( $+commands[bat] )) && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 }
 
-# Conda setup function. Slightly mondified from `conda init zsh`
+##########################
+### Custom ZSH Plugins ###
+##########################
+
+# For running pfetch if interested
+[[ -x pfetch ]] && {
+    export PF_INFO="ascii title os host kernel de shell uptime pkgs memory palette"
+}
+
+# Conda setup function. Slightly mondified from output of `conda init zsh`
 _dt_conda_setup () {
     local 'conda_dist'
     if [[ -d $HOME/miniconda3 ]]; then
@@ -153,6 +167,5 @@ _dt_conda_setup () {
     unset __conda_setup
     # <<< conda initialize <<<
 }
-
 # Call conda setup function
 _dt_conda_setup
