@@ -1,13 +1,31 @@
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+#############################
+#### Common Aliases File ####
+#############################
+# Author: Dylan Thomas
+# [NOTE]: This file should be POSIX compliant
+
+# Common aliases defined for all interactive shells
+
+# Guard to prevent sourcing multiple times
+[ -n "$_dt_shared_alias_loaded" ] && return 0
+
+##################
+### Navigation ###
+##################
+
+#######################
+### Common Programs ###
+#######################
 
 # Ensure VIM
 alias vi=vim
 
 # Git laziness
 alias g=git
+
+################
+### Colorize ###
+################
 
 # List files colorized in long format
 alias l="ls -lFh --color --show-control-chars --group-directories-first"
@@ -18,11 +36,6 @@ alias la="ls -lAFh --color --show-control-chars  --group-directories-first"
 # List only directories
 alias lsd="ls -lFh --color | grep --color=never '^d'"
 
-# Safer copy, move, remove
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
-
 # Colorize dir
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
@@ -31,6 +44,19 @@ alias vdir='vdir --color=auto'
 alias grep="grep --color=auto"
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+#########################
+### File Manipulation ###
+#########################
+
+# Safer copy, move, remove
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
+######################
+### Miscellaneous ####
+######################
 
 # Get the week number
 alias week="date +%V"
@@ -47,4 +73,7 @@ alias reload="exec ${SHELL}"
 alias clipboard='xclip -selection clipboard'
 
 # Print each PATH entry on a separate line
-alias path_print='echo -e ${PATH//:/\\n}'
+alias ppath='echo -e ${PATH//:/\\n}'
+
+# Guard to prevent sourcing multiple times
+_dt_shared_alias_loaded=y

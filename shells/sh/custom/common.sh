@@ -1,7 +1,20 @@
-### General functions and settings for all interactive shells to source
+########################
+#### Common RC File ####
+########################
+# Author: Dylan Thomas
+# [NOTE]: This file should be POSIX compliant
+
+# Common RC file to be set in all shells
+
+# Guard to prevent sourcing multiple times
+[ -n "$_dt_shared_rc_loaded" ] && return 0
+
+#################
+### Functions ###
+#################
 
 # Timestamp function
-timestamp () {
+timestamp() {
     python -c 'TIMESTAMP_FORMAT="%d-%m-%Y_%H-%M-%S";import time;print(time.strftime(TIMESTAMP_FORMAT, time.gmtime()))';
 }
 
@@ -9,17 +22,17 @@ timestamp () {
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
-function tre() {
+tre() {
     tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
 # Create a new directory and enter it
-function mkd() {
+mkd() {
     mkdir -p "$@" && cd "$_";
 }
 
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
-function targz() {
+targz() {
     local tmpFile="${@%/}.tar";
     tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
 
@@ -53,7 +66,7 @@ function targz() {
 }
 
 # Compare original and gzipped file size
-function gz() {
+gz() {
     local origsize=$(wc -c < "$1");
     local gzipsize=$(gzip -c "$1" | wc -c);
     local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
@@ -62,7 +75,7 @@ function gz() {
 }
 
 # Determine size of a file or total size of a directory
-function fs() {
+fs() {
     if du -b /dev/null > /dev/null 2>&1; then
         local arg=-sbh;
     else
@@ -75,26 +88,9 @@ function fs() {
     fi;
 }
 
-# Prepend string(s) to PATH
-pathprepend() {
-  for ((i=$#; i>0; i--)); 
-  do
-    ARG=${!i}
-    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
-        PATH="$ARG${PATH:+":$PATH"}"
-    fi
-  done
-}
-
-# Append string(s) to PATH
-pathappend() {
-  for ARG in "$@"
-  do
-    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
-        PATH="${PATH:+"$PATH:"}$ARG"
-    fi
-  done
-}
+####################
+### Color Scheme ###
+####################
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -106,5 +102,5 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 test -e ~/.dircolors && \
    eval `dircolors -b ~/.dircolors`
 
-# Source Rust build/compiler stuff
-[[ -f "$HOME/.local/share/cargo/env" ]] && source "$HOME/.local/share/cargo/env"
+# Guard to prevent sourcing multiple times
+_dt_shared_rc_loaded=y
