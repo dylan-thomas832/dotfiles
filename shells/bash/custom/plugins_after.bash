@@ -45,3 +45,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Source Rust build/compiler stuff
+[ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
