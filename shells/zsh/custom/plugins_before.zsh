@@ -15,8 +15,7 @@
 # Add custom ZSH functions
 [[ -n $ZFUNCSDIR ]] && {
     fpath+=$ZFUNCSDIR
-    fns=($ZFUNCSDIR/**/*(.))
-    (( $#fns )) && autoload -Uz "$fns[@]"
+    autoload -Uz $ZFUNCSDIR/*(.:t)
 }
 
 ##########################
