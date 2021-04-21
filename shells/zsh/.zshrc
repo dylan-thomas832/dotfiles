@@ -1,11 +1,26 @@
-# Run for interactive shells only
+##########################
+#### Main .zshrc File ####
+##########################
+# Author: Dylan Thomas
+# [NOTE]: Run for interactive shells only
 
-# Source additional sh configs
-for config in "${HOME}"/.config/sh/custom/*.sh ; do
-    source "${config}"
-done
+# Put all zsh config files to be sourced in interactive shells here.
+# Keep sourcing in local scope to prevents variables from cluttering shell environment.
 
-# Keep sourcing in local scope. Prevents variables from cluttering shell environment
+##################################
+### Source Common Config Files ###
+##################################
+
+() {
+    for config in "${HOME}"/.config/sh/custom/*.sh ; do
+        source "${config}"
+    done
+}
+
+###############################
+### Source ZSH Config Files ###
+###############################
+
 () {
     local zsh_dir="$ZDOTDIR/custom"
 
