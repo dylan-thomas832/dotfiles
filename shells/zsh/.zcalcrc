@@ -1,0 +1,8 @@
+########################
+#### ZCALC Settings ####
+########################
+# Author: Dylan Thomas
+# [NOTE]: See http://zsh.sourceforge.net/Doc/Release/User-Contributions.html#Mathematical-Functions
+
+# Set prompt for interactive zcalc
+ZCALCPROMPT="%1v %B%F{magenta}${PRCH[prompt]}%f%b"

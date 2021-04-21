@@ -14,4 +14,4 @@
 !.vscode/settings.json
 
 # ZSH history file
-zhistory
+*history
