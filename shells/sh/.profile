@@ -8,7 +8,3 @@
 
 # Set environment variables
 . "${HOME}/.config/sh/custom/environment.sh"
-
-# Add existing ssh keys to ssh-agent
-eval "$(ssh-agent)"
-ssh-add
