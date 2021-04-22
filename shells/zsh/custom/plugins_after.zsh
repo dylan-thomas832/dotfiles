@@ -149,29 +149,25 @@
 
 # Conda setup function. Slightly mondified from output of `conda init zsh`
 _dt_conda_setup () {
-    local 'conda_dist'
-    if [[ -d $HOME/miniconda3 ]]; then
-        conda_dist=miniconda3
-    elif [[ -d $HOME/anaconda3 ]]; then
-        conda_dist=anaconda3
+    # Check for conda distro folder
+    local _conda
+    if [[ -d $1/miniconda3 ]]; then
+        _conda=$1/miniconda3
+    elif [[ -d $1/anaconda3 ]]; then
+        _conda=$1/anaconda3
     else
-        echo "No conda distribution is installed."
+        echo "WARNING: No conda distribution is installed."
+        return 1
     fi
 
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup=$($HOME/$conda_dist/bin/conda 'shell.zsh' 'hook' 2> /dev/null)
-    if [ $? -eq 0 ]; then
-        eval $__conda_setup
+    # Source conda properly, and activate base environment
+    if [ -f $_conda/etc/profile.d/conda.sh ]; then
+        source $_conda/etc/profile.d/conda.sh
     else
-        if [ -f $HOME/$conda_dist/etc/profile.d/conda.sh ]; then
-            source $HOME/$conda_dist/etc/profile.d/conda.sh
-        else
-            export PATH=$HOME/$conda_dist/bin:$PATH
-        fi
+        export PATH=$_conda/bin:$PATH
     fi
-    unset __conda_setup
-    # <<< conda initialize <<<
+    conda activate base
 }
+
 # Call conda setup function
-_dt_conda_setup
+_dt_conda_setup $HOME
