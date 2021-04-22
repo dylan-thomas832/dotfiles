@@ -25,11 +25,15 @@
     source $ZVENDORDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 
     # Start typing + [Up-Arrow] - Search for sub-string in history backwards
+    bindkey -M viins "^[[A" history-substring-search-up
+    bindkey -M vicmd "^[[A" history-substring-search-up
     if [[ -n "${key[Up]}" ]]; then
         bindkey -M viins "${key[Up]}" history-substring-search-up
         bindkey -M vicmd "${key[Up]}" history-substring-search-up
     fi
     # Start typing + [Down-Arrow] - Search for sub-string in history forwards
+    bindkey -M viins "^[[B" history-substring-search-down
+    bindkey -M vicmd "^[[B" history-substring-search-down
     if [[ -n "${key[Down]}" ]]; then
         bindkey -M viins "${key[Down]}" history-substring-search-down
         bindkey -M vicmd "${key[Down]}" history-substring-search-down

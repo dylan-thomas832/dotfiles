@@ -41,34 +41,81 @@ key[Control-Right]="${terminfo[kRIT5]}"
 # [NOTE]: You may need to add "else" statements for terminals not supportive
 #   of 'terminfo'
 
+typeset -a zle_widgets
+zle_widgets=(
+    history-search-end
+    history-beginning-search-forward-end
+    history-beginning-search-backward-end
+    beginning-of-line
+    end-of-line
+    reverse-menu-complete
+    backward-delete-char
+    delete-char
+    kill-word
+    backward-word
+    forward-word
+    history-incremental-search-backward
+    run-help
+    edit-command-line
+)
+autoload -Uz ${zle_widgets[@]}
+
 # Start typing + [Up-Arrow] - Search history backwards
 if [[ -n "${key[Up]}" ]]; then
     # Makes searching history go to the end of the line
-    autoload -Uz history-beginning-search-backward-end history-search-end
     zle -N history-beginning-search-backward-end history-search-end
 
     bindkey -M viins "${key[Up]}" history-beginning-search-backward-end
     bindkey -M vicmd "${key[Up]}" history-beginning-search-backward-end
+    # Hack for bad terminfo
+    bindkey -M viins "^[[A" history-beginning-search-backward-end
+    bindkey -M vicmd "^[[A" history-beginning-search-backward-end
+else
+    # Makes searching history go to the end of the line
+    zle -N history-beginning-search-backward-end history-search-end
+
+    bindkey -M viins "^[[A" history-beginning-search-backward-end
+    bindkey -M vicmd "^[[A" history-beginning-search-backward-end
 fi
 # Start typing + [Down-Arrow] - Search history forwards
 if [[ -n "${key[Down]}" ]]; then
     # Makes searching history go to the end of the line
-    autoload -Uz history-beginning-search-forward-end history-search-end
     zle -N history-beginning-search-forward-end history-search-end
 
     bindkey -M viins "${key[Down]}" history-beginning-search-forward-end
     bindkey -M vicmd "${key[Down]}" history-beginning-search-forward-end
+    # Hack for bad terminfo
+    bindkey -M viins "^[[B" history-beginning-search-forward-end
+    bindkey -M vicmd "^[[B" history-beginning-search-forward-end
+else
+    # Makes searching history go to the end of the line
+    zle -N history-beginning-search-forward-end history-search-end
+
+    bindkey -M viins "^[[B" history-beginning-search-forward-end
+    bindkey -M vicmd "^[[B" history-beginning-search-forward-end
 fi
 
 # [Home] - Go to beginning of line
 if [[ -n "${key[Home]}" ]]; then
     bindkey -M viins "${key[Home]}" beginning-of-line
     bindkey -M vicmd "${key[Home]}" beginning-of-line
+    # Hack for bad terminfo
+    bindkey -M viins "^[[H" beginning-of-line
+    bindkey -M vicmd "^[[H" beginning-of-line
+else
+    bindkey -M viins "^[[H" beginning-of-line
+    bindkey -M vicmd "^[[H" beginning-of-line
 fi
 # [End] - Go to end of line
 if [[ -n "${key[End]}" ]]; then
     bindkey -M viins "${key[End]}"  end-of-line
     bindkey -M vicmd "${key[End]}"  end-of-line
+    # Hack for bad terminfo
+    bindkey -M viins "^[[F" end-of-line
+    bindkey -M vicmd "^[[F" end-of-line
+else
+    bindkey -M viins "^[[F" end-of-line
+    bindkey -M vicmd "^[[F" end-of-line
 fi
 
 # [Shift-Tab] - move through the completion menu backwards
@@ -122,7 +169,6 @@ fi
 # [NOTE]: This must come __after__ "bindkey -v"
 # [NOTE]: Only enable if fzf isn't installed
 if [[ ! -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ]]; then
-    autoload -Uz history-incremental-search-backward
     bindkey "^R" history-incremental-search-backward
 fi
 
@@ -137,14 +183,13 @@ fi
 
 # Make run-help binded to ALT-H
 (( $+aliases[run-help] )) && unalias run-help
-autoload -Uz run-help
 bindkey '^[h' run-help
 
 # Use 'jk' to go to command mode
 bindkey -M viins 'jk' vi-cmd-mode
 
 # Edit line in vim with ctrl-e:
-autoload -Uz edit-command-line && zle -N edit-command-line
+zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 ############################
