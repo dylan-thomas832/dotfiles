@@ -69,9 +69,9 @@ if _dt_can_do_unicode; then
 else
     PRCH=(
         sep "/" end ""
-        retb "" reta ""
-        circle "*" branch "\`|"
-        ok "X" ellipsis ".."
+        retb "" reta "x"
+        circle "*" branch ""
+        ok "+" ellipsis ".."
         eol "~~" running "> "
         python "python"
         docker "docker"
