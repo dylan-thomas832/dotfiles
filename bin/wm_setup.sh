@@ -4,7 +4,7 @@
 ## This should prep for a complete window manager installation
 
 # Install apt dependencies
-sudo apt install libxcb-render0-dev libffi-dev libcairo2 libpangocairo-1.0-0
+sudo apt install -y libxcb-render0-dev libffi-dev libcairo2 libpangocairo-1.0-0
 
 # Install Xcffib. Recommended to install first by itself
 /usr/bin/pip3 install --no-cache-dir xcffib
@@ -19,4 +19,4 @@ sudo apt install libxcb-render0-dev libffi-dev libcairo2 libpangocairo-1.0-0
 /usr/bin/pip3 install psutil pyxdg
 
 # Install other tools for Qtile to work with
-sudo apt install nitrogen dunst rofi
+sudo apt install -y nitrogen dunst rofi

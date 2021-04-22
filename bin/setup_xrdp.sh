@@ -3,7 +3,7 @@
 ## This script installs all requirements/dependencies for xrdp on Ubuntu WSL
 
 # Install xrdp package
-sudo apt install xrdp
+sudo apt install -y xrdp
 
 # Back up default config files
 sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak
