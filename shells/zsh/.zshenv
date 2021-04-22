@@ -14,6 +14,10 @@
 # [NOTE]: This might be Ubuntu specific
 skip_global_compinit=1
 
+# Don't source any other system ZSH startup files.
+# [NOTE]: This makes the above useless, but good to keep as a reminder
+unsetopt global_rcs
+
 # Force set shell
 export SHELL=$(which zsh)
 
