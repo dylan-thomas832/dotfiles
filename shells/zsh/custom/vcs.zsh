@@ -2,68 +2,52 @@
 #### ZSH Git Prompt Integration ####
 ####################################
 # Author: Dylan Thomas
-# [NOTE]: Idea to use async.zsh from:
-#   https://vincent.bernat.ch/en/blog/2019-zsh-async-vcs-info
+
+# Custom asynchronous git prompt using forks. Assumes git information in the
+#   right prompt, but you could modify this for anywhere
 
 # [TODO]: scoped?
+# [TODO]: Only do 'command true' for older zsh versions
+# [TODO]: Add up/down arrow for ahead/behind remote?
 
-########################
-### Helper Functions ###
-########################
+_dt_vcs_async() {
+    typeset -g VCS_ASYNC_FD=
+    # Fork process to call VCS and update 'vcs_info_msg_0_'
+    exec {VCS_ASYNC_FD}< <(
+        vcs_info
+        # sleep 0.2
+        echo -nE ${vcs_info_msg_0_}
+    )
 
-# Define async worker "vcs_info" & set callback to "_dt_vcs_info_done"
-_dt_vcs_async_start() {
-    async_start_worker vcs_info
-    async_register_callback vcs_info _dt_vcs_info_done
+    # There's a weird bug here where ^C stops working unless we force a fork
+    # See https://github.com/zsh-users/zsh-autosuggestions/issues/364
+    # Only required for ZSH_VERSION<5.7.1
+    command true
+
+    # When the fd is readable, call the response handler
+    zle -F "$VCS_ASYNC_FD" _dt_vcs_async::set
 }
 
-# Function that is actually executed asynchronously by "vcs_info" worker
-# CD into directory, call `vcs_info`, print output to stdout
-_dt_vcs_info() {
-    cd -q $1
-    vcs_info
-    print ${vcs_info_msg_0_}
-}
+# Called when new data is ready to be read from the pipe
+# First arg will be fd ready for reading
+# Second arg will be passed in case of error
+_dt_vcs_async::set() {
+    emulate -L zsh
 
-######################
-### Async Callback ###
-######################
+    # Check for error
+    if [[ -z "$2" || "$2" == "hup" ]]; then
+        # Read everything from fd, and put into RPROMPT
+        read -r -u "$VCS_ASYNC_FD" RPROMPT
 
-# Called when "vcs_info" worker completes it's job(s)
-# Restarts if bad return code. Set VCS variable. Resets prompt if no is done.
-_dt_vcs_info_done() {
-    local job=$1
-    local return_code=$2
-    local stdout=$3
-    local more=$6
-    if [[ $job == '[async]' ]]; then
-        if [[ $return_code -eq 2 ]]; then
-            # Need to restart the worker. Taken from
-            # https://github.com/mengelbrecht/slimline/blob/master/lib/async.zsh
-            _dt_vcs_async_start
-            return
-        fi
+        # Only force prompt reset if not empty
+        [[ -n $RPROMPT ]] && zle reset-prompt
+
+        # Close th fd
+        exec {1}<&-
     fi
-    vcs_info_msg_0_=$stdout
-    # We shouldn't reset unless all jobs are done. Make sure to re-draw prompt
-    [[ $more == 1 ]] || _dt_setup_regular_prompt && zle reset-prompt
-}
 
-###################
-### Async Hooks ###
-###################
-
-# Run when initially changing directory: chpwd
-# Sets VCS variable to empty string
-_dt_vcs_chpwd() {
-    vcs_info_msg_0_=
-}
-
-# Run before prompt is printed: precmd
-# Flushes jobs from "vcs_info", and assigns it "_dt_vcs_info"
-_dt_vcs_precmd() {
-    async_flush_jobs vcs_info
-    async_job vcs_info _dt_vcs_info $PWD
+    # Always remove the handler
+    zle -F "$1"
 }
 
 # Encapsulate in check for root user; Don't do git stuff if root.
@@ -100,18 +84,4 @@ _dt_vcs_precmd() {
         fi
     }
 
-    #############################
-    ### Initialize Git Prompt ###
-    #############################
-
-    # Load async zsh plugin
-    source ~/.config/zsh/vendor/zsh-async/async.zsh
-
-    # Initialize async plugin and create async worker
-    async_init
-    _dt_vcs_async_start
-
-    # Add ZSH hooks
-    add-zsh-hook precmd _dt_vcs_precmd
-    add-zsh-hook chpwd _dt_vcs_chpwd
 }

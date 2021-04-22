@@ -104,6 +104,8 @@ _dt_prompt_cwd() {
 # which inserts info into `vcs_info_msg_0`
 # This also includes a conda prefix for the current environment
 _dt_full_prompt() {
+    # [TODO]: Move each into it's own function, cand call directly from _dt_setup_regular_prompt
+
     # Grabs last bit of path in $CONDA_DEFAULT_ENV. This is updated when `conda activate` is called
     local conda_env="%F{cyan}%B%(!..$(basename "$CONDA_DEFAULT_ENV") )%b%f"
     # Flips the glyph if in vi command mode
@@ -111,7 +113,7 @@ _dt_full_prompt() {
     glyph="%F{blue}$glyph%f"
     # Sets the character based on the previous command exit code
     # Add ' %?' in between `}` and `%f` at the end to print the exit code directly
-    local mode="%(?.%F{green}${PRCH[ok]}%f.%F{red}${PRCH[reta]}%f)"
+    local mode="%(?.%F{green}${PRCH[ok]}.%F{red}${PRCH[reta]}%f)"
     # Sets the symbol used for user prompt
     local prompt_symbol="%(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) "
     # Includes the hostname if logged in using SSH
@@ -125,17 +127,15 @@ _dt_full_prompt() {
     local cwd="%(!.%F{blue}%~%f.$(_dt_prompt_cwd))"
 
     # Empty line spacer. Not a big deal b/c we are using transient prompt
-    print
+    print -n '\n'
     # Print the prompts as output of this function
-    print "$ssh_hostname$cwd"
+    echo -E "$ssh_hostname$cwd"
     print "$conda_env$mode $background_jobs$prompt_symbol"
 }
 
 _dt_transient_prompt() {
-    # Print 24hr time
-    print -n '%F{cyan}%* %f'
-    # Print the prompt
-    print -n '%(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) '
+    # Print 24hr time and prompt symbol
+    print -n '%F{cyan}%* %(!.%F{red}#%f.%B%F{magenta}${PRCH[prompt]}%f%b) '
 }
 
 #############################
@@ -184,15 +184,17 @@ _dt_setup_transient_prompt() {
 }
 
 _dt_setup_regular_prompt() {
+    # Required for proper subtituting
     setopt prompt_subst
-    ruler=${(r:$COLUMNS::\u2500:)}
     # Exporting is required for overriding root prompt
-    export PS1=$(_dt_full_prompt)
-    export PS2="%F{green}%_ %F{cyan}${PRCH[prompt]}%f "
-    export PS3="%F{green}? %F{cyan}${PRCH[prompt]}%f "
-    export PS4="%F{green}%N | %i %F{cyan}${PRCH[prompt]}%f "
-    export PROMPT_EOL_MARK="%B${PRCH[eol]}%b"
-    export RPROMPT=$vcs_info_msg_0_
+    PS1=$(_dt_full_prompt)
+    PS2="%F{green}%_ %F{cyan}${PRCH[prompt]}%f "
+    PS3="%F{green}? %F{cyan}${PRCH[prompt]}%f "
+    PS4="%F{green}%N | %i %F{cyan}${PRCH[prompt]}%f "
+    PROMPT_EOL_MARK="%B${PRCH[eol]}%b"
+    # Set to empty, and allow async function to populate
+    RPROMPT=
+    _dt_vcs_async
 }
 
 ####################
@@ -202,10 +204,11 @@ _dt_setup_regular_prompt() {
 # [TODO]: Scoped necessary?
 
 [[ $USERNAME != "root" ]] && {
-    # Hook transient prompt to 'zle-line-init' widget
+    # Hook prompts to 'zle-line-init' widget
     add-zle-hook-widget -Uz zle-line-init _dt_setup_transient_prompt
-    add-zle-hook-widget -Uz zle-line-init _dt_setup_regular_prompt
+    # Hook prompt setup to 'precmd' function
+    add-zsh-hook precmd _dt_setup_regular_prompt
 }
 
-# Hook prompt setup to 'precmd' function
-add-zsh-hook precmd _dt_setup_regular_prompt
+# Set prompt directly on login
+_dt_setup_regular_prompt

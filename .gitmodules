@@ -38,10 +38,6 @@
     path = shells/zsh/vendor/conda-zsh-completion
     url = https://github.com/esc/conda-zsh-completion
     ignore = dirty
-[submodule "shells/zsh/vendor/zsh-async"]
-	path = shells/zsh/vendor/zsh-async
-	url = https://github.com/mafredri/zsh-async
-    ignore = dirty
 [submodule "shells/zsh/vendor/fast-syntax-highlighting"]
 	path = shells/zsh/vendor/fast-syntax-highlighting
 	url = https://github.com/zdharma/fast-syntax-highlighting
