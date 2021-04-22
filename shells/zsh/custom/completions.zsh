@@ -60,14 +60,53 @@ zmodload -i zsh/complist
 # Custom completion functions included in dotfiles
 [[ -n $ZCOMPLETIONSDIR ]] && fpath+=$ZCOMPLETIONSDIR
 
+#######################
+### ZSH Comp Update ###
+#######################
+
+_update_zcomp() {
+    # Reset options to default, localize any settings
+    emulate -LR zsh
+    # Turn on extended glob
+    setopt extendedglob
+
+    # Load compinit
+    autoload -Uz compinit
+
+    # Track compdump file
+    local zcompf="$1/zcompdump-${HOST/.*/}-${ZSH_VERSION}"
+    # use a separate file to determine when to regenerate, as compinit doesn't
+    # always need to modify the compdump
+    local zcompf_a="${zcompf}.augur"
+
+    # Check if .augur file was last modified more than a day ago
+    if [[ -e "$zcompf_a" && -f "$zcompf_a"(#qN.md-1) ]]; then
+        compinit -C -d "$zcompf"
+    else
+        compinit -d "$zcompf"
+        touch "$zcompf_a"
+    fi
+    _comp_options+=(globdots)  # Include hidden files.
+
+    # if zcompdump exists (and is non-zero), and is older than the .zwc file,
+    # then regenerate
+    if [[ -s "$zcompf" && (! -s "${zcompf}.zwc" || "$zcompf" -nt "${zcompf}.zwc") ]]; then
+        # since file is mapped, it might be mapped right now (current shells), so
+        # rename it then make a new one
+        [[ -e "$zcompf.zwc" ]] && mv -f "$zcompf.zwc" "$zcompf.zwc.old"
+        # compile it mapped, so multiple shells can share it (total mem reduction)
+        # run in background
+        zcompile -M "$zcompf" &!
+    fi
+}
+
 ##############################
 ### Initialize Completions ###
 ##############################
 
 # Load, and call compinit. Cache zcompdump file in $ZCACHEDIR
-autoload -Uz compinit
-compinit -C -d "${ZCACHEDIR}/zcompdump-${HOST/.*/}-${ZSH_VERSION}"
-_comp_options+=(globdots)  # Include hidden files.
+_update_zcomp "$ZCACHEDIR"
+unfunction _update_zcomp
 
 # Automatically load bash completion functions
 autoload -U +X bashcompinit && bashcompinit
