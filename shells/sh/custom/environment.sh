@@ -79,6 +79,9 @@ export GOBIN="$HOME/.local/bin"
 export EDITOR=vim
 export VISUAL=vim
 
+# Set the readline config file
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+
 # Path to manpages
 export MANPATH="/usr/local/man:$MANPATH"
 

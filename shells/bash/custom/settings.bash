@@ -11,6 +11,3 @@ shopt -s checkwinsize globstar autocd
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# Set the readline config file
-export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
