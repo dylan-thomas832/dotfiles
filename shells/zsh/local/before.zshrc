@@ -14,6 +14,6 @@
 #   - User & host
 #   - Prompt characters
 #   - Color array
-#   - User scripts
+#   - User scripts/functions
 #
 # See https://github.com/geometry-zsh/geometry for ideas on making functions

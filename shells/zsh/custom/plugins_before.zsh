@@ -11,12 +11,15 @@
 #####################
 ### ZSH Functions ###
 #####################
+# [TODO]: Are these better loaded directly, or autoloaded?
+#        Likely need a ton of functions to make a diff?
 
 # Add custom ZSH functions
 [[ -n $ZFUNCSDIR ]] && {
     fpath+=$ZFUNCSDIR
     autoload -Uz $ZFUNCSDIR/*(.:t)
 }
+# source $ZFUNCSDIR/functions.zsh
 
 ##########################
 ### Custom ZSH Plugins ###
