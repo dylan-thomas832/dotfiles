@@ -10,6 +10,10 @@
 # [TODO]: Only do 'command true' for older zsh versions
 # [TODO]: Add up/down arrow for ahead/behind remote?
 
+#######################
+### Async Functions ###
+#######################
+
 _dt_vcs_async() {
     typeset -g VCS_ASYNC_FD=
     # Fork process to call VCS and update 'vcs_info_msg_0_'
@@ -37,7 +41,7 @@ _dt_vcs_async::set() {
     # Check for error
     if [[ -z "$2" || "$2" == "hup" ]]; then
         # Read everything from fd, and put into RPROMPT
-        read -r -u "$VCS_ASYNC_FD" RPROMPT
+        read -r -u "$1" RPROMPT
 
         # Only force prompt reset if not empty
         [[ -n $RPROMPT ]] && zle reset-prompt
@@ -50,12 +54,12 @@ _dt_vcs_async::set() {
     zle -F "$1"
 }
 
+########################
+### Git Prompt Style ###
+########################
+
 # Encapsulate in check for root user; Don't do git stuff if root.
 [[ $USERNAME != "root" ]] && {
-
-    ########################
-    ### Git Prompt Style ###
-    ########################
 
     # Only enable git
     zstyle ':vcs_info:*' enable git
