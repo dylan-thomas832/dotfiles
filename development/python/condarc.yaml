@@ -22,3 +22,10 @@ envs_dirs:
 # Define where conda should store packages
 pkgs_dirs:
   - ~/.config/conda/pkgs
+
+# changeps1 (bool)
+#   When using activate, change the command prompt ($PS1) to include the
+#   activated environment.
+# 
+# [NOTE]: I do this manually for a better version
+changeps1: False
