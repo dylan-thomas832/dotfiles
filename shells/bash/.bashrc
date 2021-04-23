@@ -1,3 +1,9 @@
+##########################
+#### Main .zshrc File ####
+##########################
+# Author: Dylan Thomas
+# [NOTE]: Run for interactive shells only
+
 # ~/.bashrc
 #
 # this file is sourced by all *interactive* bash shells on startup,
@@ -13,10 +19,18 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
+##################################
+### Source Common Config Files ###
+##################################
+
 # Source additional sh configs
 for config in "${HOME}"/.config/sh/custom/*.sh ; do
     source "${config}"
 done
+
+################################
+### Source BASH Config Files ###
+################################
 
 # For easy variable expansion
 bash_dir="$XDG_CONFIG_HOME/bash/custom"

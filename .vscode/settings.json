@@ -3,7 +3,8 @@
         "install-profile": "shellscript",
         "install-standalone": "shellscript",
         "vimrc*": "viml",
-        "**/zfuncs/**": "shellscript"
+        "**/zfuncs/**": "shellscript",
+        "**/completions/**": "shellscript"
     },
     "cSpell.words": [
         "Conda",

@@ -1,5 +1,6 @@
 # Setup dotfiles for bash shell on Linux
 - link:
     ~/.config/bash/custom: shells/bash/custom
+    ~/.config/bash/completions: shells/bash/completions
     ~/.bash_profile: shells/bash/.bash_profile
     ~/.bashrc: shells/bash/.bashrc

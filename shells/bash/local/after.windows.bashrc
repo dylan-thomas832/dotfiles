@@ -1,4 +1,11 @@
-### Local bash settings to be sourced last for Windows
+#####################################
+#### Windows Local BASH Settings ####
+#####################################
+# Author: Dylan Thomas
+
+####################
+### Source Conda ###
+####################
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

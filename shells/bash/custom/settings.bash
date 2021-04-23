@@ -1,12 +1,19 @@
-### Bash general settings
+###################################
+#### General ZSH Settings File ####
+###################################
+# Author: Dylan Thomas
 
-# History settings
+#############################
+### History File Settings ###
+#############################
 export HISTFILE="$XDG_CACHE_HOME/bash/history"
 HISTCONTROL=ignoreboth
 HISTSIZE= HISTFILESIZE=2000
 shopt -s histappend
 
-# Additional options
+#############################
+### Standard Bash Options ###
+#############################
 shopt -s checkwinsize globstar autocd
 
 # make less more friendly for non-text input files, see lesspipe(1)
