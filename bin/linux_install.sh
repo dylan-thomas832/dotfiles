@@ -61,7 +61,7 @@ sudo apt autoclean -y
 if [ ! -x "$CARGO_HOME/bin/rustup" ]; then
     # Get Rust installer and run it
     install_log "Installing Rust for cargo packages"
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path --verbose
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path --verbose -y
     "$CARGO_HOME/bin/rustup" override set stable
     "$CARGO_HOME/bin/rustup" update stable
 fi

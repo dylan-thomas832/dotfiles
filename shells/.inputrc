@@ -1,9 +1,14 @@
-# Custom readline config for all programs editing command line
+##########################
+#### Main .inputrc File ####
+##########################
+# Author: Dylan Thomas
+
+# [NOTE]: Sets common shell line editor settings/keybinds for bash
 
 # Ensure vi editing style
 set editing-mode vi
 
-# Set block shaped cursos in cmd mode, and pip in insert mode
+# Set block shaped cursor in cmd mode, and beam in insert mode
 $if term=linux
     set vi-ins-mode-string \1\e[?0c\2
     set vi-cmd-mode-string \1\e[?8c\2

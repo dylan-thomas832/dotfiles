@@ -186,12 +186,13 @@ _dt_setup_transient_prompt() {
 _dt_setup_regular_prompt() {
     # Required for proper subtituting
     setopt prompt_subst
-    # Exporting is required for overriding root prompt
+
     PS1=$(_dt_full_prompt)
     PS2="%F{green}%_ %F{cyan}${PRCH[prompt]}%f "
     PS3="%F{green}? %F{cyan}${PRCH[prompt]}%f "
     PS4="%F{green}%N | %i %F{cyan}${PRCH[prompt]}%f "
     PROMPT_EOL_MARK="%B${PRCH[eol]}%b"
+
     # Set to empty, and allow async function to populate
     RPROMPT=
     _dt_vcs_async
@@ -209,6 +210,3 @@ _dt_setup_regular_prompt() {
     # Hook prompt setup to 'precmd' function
     add-zsh-hook precmd _dt_setup_regular_prompt
 }
-
-# Set prompt directly on login
-_dt_setup_regular_prompt
