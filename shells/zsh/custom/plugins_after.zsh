@@ -107,11 +107,11 @@
     local fzf_ctrl_t_cat="--reverse --preview 'cat {}' --bind '?:toggle-preview'"
 
     # Use `bat` if it exists, otherwise `cat`
-    (( $+commands[bat] )) && {
+    if (( $+commands[bat] )) ; then
         export FZF_CTRL_T_OPTS=$fzf_ctrl_t_bat
-    } || {
+    else
         export FZF_CTRL_T_OPTS=$fzf_ctrl_t_cat
-    }
+    fi
 
     # CTRL+R uses echo for toggle-able command preview under
     export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
