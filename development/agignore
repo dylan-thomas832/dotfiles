@@ -183,3 +183,6 @@ $RECYCLE.BIN/
 # VCS
 .git/
 .hg/
+
+# Ubuntu snap store
+snap-store
