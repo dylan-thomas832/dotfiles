@@ -5,7 +5,7 @@
     // Editor settings
     "editor.autoIndent": "advanced",
     "editor.cursorBlinking": "expand",
-    "editor.fontFamily": "'Fira Mono', Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "Fira Code, MesloLGS NF, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss05', ",
     "editor.fontWeight": "300",
     "editor.mouseWheelScrollSensitivity": 2,
@@ -24,7 +24,7 @@
     "workbench.startupEditor": "readme",
     "workbench.editorAssociations": [
         {
-            "viewType": "jupyter.notebook.ipynb",
+            "viewType": "jupyter-notebook",
             "filenamePattern": "*.ipynb"
         }
     ],
@@ -79,6 +79,7 @@
     "terminal.integrated.shell.windows": "/usr/bin/zsh",
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.fontFamily": "Fira Code, MesloLGS NF, Consolas, 'Courier New', monospace",
     // Remote VSCode settings
     "remote.SSH.remotePlatform": {
         "aosl-ml-1": "linux",
@@ -185,6 +186,7 @@
         "Kalman",
         "Lyapunov",
         "Matlab",
+        "RESONAATE",
         "Transductive",
         "Uncomment",
         "VERNER",
