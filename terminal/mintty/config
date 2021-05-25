@@ -1,8 +1,12 @@
 # Mintty settings for WSL
-Font=DejaVu Sans Mono for Powerline
+Font=MesloLGS NF
 # ThemeFile=ocean.minttyrc
 # ThemeFile=oceanicnext.minttyrc
 ThemeFile=nord.minttyrc
 # ThemeFile=eightiesminttyrc
 # ThemeFile=solarized.minttyrc
 Term=xterm-256color
+FontHeight=12
+BoldAsFont=yes
+BoldAsColour=yes
+FontSmoothing=default
