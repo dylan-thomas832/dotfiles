@@ -10,7 +10,3 @@
 # Create python cache directory
 - create:
     - ~/.cache/python
-
-# Run a command to create an empty python history file
-- shell:
-    - [touch ~/.cache/python/history]
