@@ -1,6 +1,7 @@
 # Setup dotfiles for bash shell on Windows
 - link:
     ~/.config/bash/custom: shells/bash/custom
+    ~/.config/bash/completions: shells/bash/completions
     ~/.bash_profile: shells/bash/.bash_profile
     ~/.bashrc: shells/bash/.bashrc
     ~/.bashrc_local_after: shells/bash/local/after.windows.bashrc

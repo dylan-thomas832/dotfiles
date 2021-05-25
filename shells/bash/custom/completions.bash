@@ -29,6 +29,10 @@ fi
 ### Completion Functions ###
 ############################
 
-source "$XDG_CONFIG_HOME/bash/completions/pip.bash"
-source "$XDG_CONFIG_HOME/bash/completions/cargo.bash"
-source "$XDG_CONFIG_HOME/bash/completions/rustup.bash"
+if [ -n $OS ]; then
+    if [ $OS != "Windows_NT" ]; then
+        source "$XDG_CONFIG_HOME/bash/completions/pip.bash"
+        source "$XDG_CONFIG_HOME/bash/completions/cargo.bash"
+        source "$XDG_CONFIG_HOME/bash/completions/rustup.bash"
+    fi
+fi
