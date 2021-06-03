@@ -3,7 +3,7 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     // Editor settings
-    "editor.autoIndent": "keep",
+    "editor.autoIndent": "advanced",
     "editor.cursorBlinking": "expand",
     "editor.mouseWheelScrollSensitivity": 2,
     "editor.multiCursorModifier": "ctrlCmd",
@@ -35,8 +35,6 @@
     // Window behavior
     "window.newWindowDimensions": "inherit",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
-    // VS Icons
-    "vsicons.dontShowNewVersionMessage": true,
     // Stop asking for confirmation when moving files
     "explorer.confirmDragAndDrop": false,
     // Files to exclude in Explorer tab
@@ -56,7 +54,8 @@
         "*gitconfig*": "properties",
         "*ignore*": "ignore",
         "*pythonrc*": "python",
-        "*.flake8": "properties"
+        "*.flake8": "properties",
+        "*.log.*": "log",
     },
     "files.eol": "\n", // /r/n is bad!
     // Default configuration overrides for html, markdown, & python languages
@@ -129,7 +128,7 @@
     // Standard Python settings. 
     "python.autoComplete.extraPaths": [],
     // Path to default Python version & ctags exectuable
-    "python.pythonPath": "python", // Uncomment to set manually. Useful to put directly in path rather than here. Add python environments for specific projects
+    // "python.pythonPath": "C:\\Users\\dylan93\\Miniconda3\\python.exe", // Uncomment to set manually. Useful to put directly in path rather than here. Add python environments for specific projects
     // Pylint settings (style/code linting)
     "python.linting.pylintEnabled": true,
     "python.linting.flake8Enabled": true,
@@ -257,4 +256,44 @@
     "cSpell.flagWords": [
         "relevent",
     ],
+    // Color customizations for Log File Highlight extension
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "log.error",
+                "settings": {
+                    "foreground": "#af1f1f",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "log.warning",
+                "settings": {
+                    "foreground": "#ca7900",
+                    "fontStyle": ""
+                }
+            },
+            {
+                "scope": "log.info",
+                "settings": {
+                    "foreground": "#7fa6fa",
+                    "fontStyle": ""
+                }
+            },
+            {
+                "scope": "log.debug",
+                "settings": {
+                    "foreground": "#57835d",
+                    "fontStyle": ""
+                }
+            },
+            {
+                "scope": "log.date",
+                "settings": {
+                    "foreground": "#0c99ac7a",
+                    "fontStyle": ""
+                }
+            }
+        ]
+    }
 }
