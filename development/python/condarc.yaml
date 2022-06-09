@@ -16,12 +16,10 @@ channels:
 show_channel_urls: True
 
 # Define where conda should store environments
-envs_dirs:
-  - ~/.config/conda/envs
+# envs_dirs:
 
 # Define where conda should store packages
-pkgs_dirs:
-  - ~/.config/conda/pkgs
+# pkgs_dirs:
 
 # changeps1 (bool)
 #   When using activate, change the command prompt ($PS1) to include the
