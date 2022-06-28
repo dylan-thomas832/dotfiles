@@ -40,6 +40,9 @@
     # Auto-detect copies as well as renames
     renames = copies
 
+[sequence]
+    editor = code --wait
+
 [merge]
 
     # Controls which merge tool is used

@@ -29,7 +29,6 @@
         "submodules"
     ],
     "editor.renderControlCharacters": true,
-    "editor.renderIndentGuides": true,
     "editor.renderWhitespace": "all",
     "cSpell.ignoreWords": [
         "alacritty",
@@ -53,4 +52,5 @@
         "xmonad",
         "xprop"
     ],
+    "editor.guides.indentation": true,
 }

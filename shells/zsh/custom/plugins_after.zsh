@@ -166,8 +166,15 @@ _dt_conda_setup () {
     else
         export PATH=$_conda/bin:$PATH
     fi
-    conda activate base
+
+    # Source mamba if it is installed
+    if [ -f $_conda/etc/profile.d/mamba.sh ]; then
+        . $_conda/etc/profile.d/mamba.sh
+        mamba activate base
+    else
+        conda activate base
+    fi
 }
 
-# Call conda setup function
+# # Call conda setup function
 _dt_conda_setup $HOME
