@@ -1,217 +1,544 @@
 {
-    // Don't want telemetry
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    // Editor settings
-    "editor.autoIndent": "advanced",
-    "editor.cursorBlinking": "expand",
-    "editor.fontFamily": "Fira Code, MesloLGS NF, Consolas, 'Courier New', monospace",
-    "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss05', ",
-    "editor.fontWeight": "300",
-    "editor.mouseWheelScrollSensitivity": 2,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.parameterHints.cycle": true,
-    "editor.renderLineHighlight": "all",
-    "editor.renderWhitespace": "boundary",
-    "editor.showFoldingControls": "always",
+  // Recommended extensions:
+  //
+  // Language Tools
+  //  - ms-vscode.cpptools-extension-pack
+  //  - jeff-hykin.better-cpp-syntax
+  //  - james-yu.latex-workshop
+  //  - yzhang.markdown-all-in-one
+  //  - bierner.markdown-mermaid
+  //  - ExecutableBookProject.myst-highlight
+  //  - ms-python.python
+  //  - ms-python.vscode-pylance
+  //  - njpwerner.autodocstring
+  //  - esbenp.prettier-vscode
+  //  - bungcip.better-toml
+  //  - vscode.yaml
+  //
+  // File Utilities
+  //  - sleistner.vscode-fileutils
+  //  - patbenatar.advanced-new-file
+  //  - christian-kohler.path-intellisense
+  //
+  // Visual Imrpovements
+  //  - emilast.LogFileHighlighter
+  //  - usernamehw.errorlens
+  //  - ryanluker.vscode-coverage-gutters
+  //
+  // Git / Source Control
+  //  - eamodio.gitlens
+  //  - GitLab.gitlab-workflow
+  //  - donjayamanne.githistory
+  //  - mhutchie.git-graph
+  //
+  // Remote / Containers
+  //  - ms-vscode-remote.vscode-remote-extensionpack
+  //  - ms-azuretools.vscode-docker
+  //
+  // Miscellaneous
+  //  - streetsidesoftware.code-spell-checker
+  //  - mutantdino.resourcemonitor
+  //  - adpyke.codesnap
+  //  - quicktype.quicktype
+
+  // Recommended Themes:
+  //
+  //  - bbrakenhoff.solarized-light-custom
+  //  - dracula-theme.theme-dracula
+  //  - zhuangtongfa.material-theme
+  //  - PKief.material-icon-theme
+
+  // Don't want telemetry
+  "telemetry.telemetryLevel": "off",
+  // Editor settings
+  "editor.autoIndent": "advanced",
+  "editor.cursorBlinking": "expand",
+  "editor.fontFamily": "Fira Code",
+  "editor.fontWeight": "500",
+  "editor.mouseWheelScrollSensitivity": 2,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.parameterHints.cycle": true,
+  "editor.renderLineHighlight": "all",
+  "editor.renderWhitespace": "boundary",
+  "editor.showFoldingControls": "always",
+  "editor.wordWrap": "on",
+  "editor.wrappingIndent": "indent",
+  "editor.autoClosingOvertype": "auto",
+  "editor.largeFileOptimizations": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  // Workbench settings
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.settings.editor": "json",
+  "workbench.startupEditor": "readme",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  // Window behavior
+  "window.newWindowDimensions": "inherit",
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
+  "window.zoomLevel": -1,
+  // Stop asking for confirmation when moving files
+  "explorer.confirmDragAndDrop": false,
+  // Don't show white space trims in diff editor
+  "diffEditor.ignoreTrimWhitespace": false,
+  // Files to exclude in Explorer tab
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/__pycache__": true,
+    "**/**/**/*.pyc": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true
+  },
+  // Helps with syntax highlighting
+  "files.associations": {
+    "*gitconfig*": "properties",
+    "*.config": "properties",
+    "*ignore*": "ignore",
+    "*pythonrc*": "python",
+    "*.flake8": "properties",
+    ".pylintrc": "properties",
+    "development.txt": "pip-requirements",
+    "*.log.*": "log"
+  },
+  "files.eol": "\n", // /r/n is bad!
+  // Default configuration overrides for html, markdown, & python languages
+  "[html]": {
     "editor.wordWrap": "on",
-    "editor.wrappingIndent": "indent",
-    // Workbench settings
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.settings.editor": "json",
-    "workbench.startupEditor": "readme",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter-notebook",
-            "filenamePattern": "*.ipynb"
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.autoIndent": "advanced"
+  },
+  // Markdown settings
+  "[markdown]": {
+    "editor.unicodeHighlight.ambiguousCharacters": true,
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "editor.autoIndent": "full",
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": false,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "gitlens.codeLens.scopes": ["document"]
+  },
+  // YAML settings
+  "[yaml]": {
+    "editor.autoIndent": "full",
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "gitlens.codeLens.scopes": ["document"]
+  },
+  // JSON settings
+  "[json]": {
+    "editor.autoIndent": "full",
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "gitlens.codeLens.scopes": ["document"]
+  },
+  "[jsonc]": {
+    "editor.autoIndent": "full",
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "gitlens.codeLens.scopes": ["document"]
+  },
+  // Integrated Terminal Profiles (Windows)
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "Cmder": {
+      "path": "C:\\WINDOWS\\System32\\cmd.exe",
+      "args": ["/k", "%CMDER_ROOT%\\vendor\\init.bat"]
+    }
+  },
+  // Integrated Terminal Profiles (Linux)
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash"
+    },
+    "zsh": {
+      "path": "zsh",
+      "args": ["-l"]
+    }
+  },
+  // Terminal settings
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.defaultProfile.windows": "Cmder",
+  "terminal.integrated.useWslProfiles": true,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.fontFamily": "Fira Code",
+  // Remote VSCode settings
+  "remote.SSH.remotePlatform": {
+    "aosl-ml-1": "linux",
+    "aosl-ml-2": "linux"
+  },
+  "remote.SSH.defaultExtensions": [
+    "eamodio.gitlens",
+    "mutantdino.resourcemonitor",
+    "ms-vscode.cpptools-extension-pack",
+    "yzhang.markdown-all-in-one",
+    "ms-python.python",
+    "njpwerner.autodocstring",
+    "streetsidesoftware.code-spell-checker",
+    "sleistner.vscode-fileutils",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+    "ms-python.vscode-pylance",
+    "patbenatar.advanced-new-file",
+    "bungcip.better-toml",
+    "ryanluker.vscode-coverage-gutters",
+    "bierner.markdown-mermaid",
+    "ExecutableBookProject.myst-highlight",
+    "jeff-hykin.better-cpp-syntax",
+    "vscode.yaml"
+  ],
+  // Breadcrumbs are a useful navigation tool. Use Ctrl+Shift+. to focus.
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "last",
+  // Standard Python settings.
+  "[python]": {
+    "editor.autoIndent": "advanced",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.wordBasedSuggestions": false,
+    "editor.wordWrap": "on",
+    "gitlens.codeLens.symbolScopes": ["!Module"]
+  },
+  "python.autoComplete.extraPaths": [],
+  "python.analysis.extraPaths": [],
+  "python.languageServer": "Pylance",
+  "python.dataScience.sendSelectionToInteractiveWindow": false,
+  // Path to default Python version & ctags exectuable
+  // "python.pythonPath": "~/miniconda3/bin/python3", // Uncomment to set manually.
+  // Pylint settings (style/code linting)
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "python.analysis.autoImportCompletions": false,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--fast", "--line-length", "99"],
+  "python.sortImports.args": ["--profile", "black", "--line-length", "99"],
+  // Jupyter notebook stuff
+  "jupyter.askForKernelRestart": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  // Improve ErrorLens
+  "errorLens.excludeBySource": ["cSpell"],
+  "errorLens.messageTemplate": "$message - $source",
+  // Make rebase order oldest -> newest (I think?)
+  "gitlens.rebaseEditor.ordering": "asc",
+  // Code snap should copy rather than save
+  "codesnap.shutterAction": "copy",
+  // Latex Workshop settings
+  "latex-workshop.chktex.enabled": true,
+  "latex-workshop.chktex.exec.path": "chktex",
+  "latex-workshop.intellisense.package.enabled": true,
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    },
+    {
+      "name": "pdflatex -> bibtex -> pdflatex*2",
+      "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": ["%DOCFILE%"]
+    }
+  ],
+  // Git & Git Lens settings
+  "git.autofetch": true,
+  "gitlens.currentLine.format": "${authorAgoOrDate} • ${id}",
+  "gitlens.defaultGravatarsStyle": "retro",
+  "gitlens.keymap": "alternate", // Allows alt+b to toggle Git Blame
+  "git.detectSubmodules": false, // Auto ignore submodules
+  "git.ignoreSubmodules": true,
+  "gitlens.heatmap.toggleMode": "file",
+  // Markdown extension settings
+  "markdown.extension.list.indentationSize": "inherit",
+  "markdown.extension.orderedList.marker": "one",
+  "markdown.extension.preview.autoShowPreviewToSide": false,
+  // Matlab settings
+  // "matlab.mlintpath": "C:\\Program Files\\MATLAB\\R2019a\\bin\\win64\\mlint.exe",
+  // "matlab.matlabpath": "C:\\Program Files\\MATLAB\\R2019a\\bin\\win64\\MATLAB.exe",
+  "matlab.lintOnSave": true,
+  "matlab.linterEncoding": "utf8",
+  // Auto-docstring Google style
+  "autoDocstring.docstringFormat": "google",
+  // Configure prettier formatter
+  "prettier.enable": true,
+  "prettier.configPath": ".prettierrc.yaml",
+  // Code spell-checker settings
+  "cSpell.spellCheckDelayMs": 20,
+  "cSpell.userWords": [
+    "Astromechanics",
+    "Blacksburg",
+    "Cubesat",
+    "Kalman",
+    "Lyapunov",
+    "Matlab",
+    "RESONAATE",
+    "Vallado"
+
+  ],
+  "cSpell.ignoreWords": [
+    "docstring",
+    "linalg",
+    "ndarray",
+    "noqa",
+    "numba",
+    "numpy",
+    "pycache",
+    "pylint",
+    "pyplot",
+    "scipy",
+    "xlabel",
+    "ylabel",
+    "toctree"
+  ],
+  "cSpell.flagWords": ["relevent"],
+  // Line & hover highlights in the workbench -- Improve visibility
+  "workbench.colorCustomizations": {
+    "[Solarized Custom Extra Dark Italic]": {
+      "editor.lineHighlightBackground": "#1c272c",
+      "editor.selectionHighlightBackground": "#4e5659",
+      "editor.selectionBackground": "#4e5659",
+      "editor.hoverHighlightBackground": "#4e5659",
+      "editor.wordHighlightBackground": "#405979",
+      "editor.symbolHighlightBackground": "#405979",
+      "editor.wordHighlightStrongBackground": "#405979"
+    },
+    "[Solarized Custom Extra Dark]": {
+      "editor.lineHighlightBackground": "#1c272c",
+      "editor.selectionHighlightBackground": "#4e5659",
+      "editor.selectionBackground": "#4e5659",
+      "editor.hoverHighlightBackground": "#4e5659",
+      "editor.wordHighlightBackground": "#405979",
+      "editor.symbolHighlightBackground": "#405979",
+      "editor.wordHighlightStrongBackground": "#405979"
+    }
+  },
+  // [NOTE]: This is the better way to control the color for themes (Python)
+  "editor.semanticTokenColorCustomizations": {
+    "[One Dark Pro Flat]": {
+      "enabled": true,
+      "rules": {
+        "variable": "#ABB2BF",
+        "*.readonly": "#dd78b6",
+        "parameter": "#D19A66",
+        "selfParameter": "#a778e5",
+        "clsParameter": "#a778e5"
+      }
+    },
+    "[One Dark Pro]": {
+      "enabled": true,
+      "rules": {
+        "variable": "#ABB2BF",
+        "*.readonly": "#dd78b6",
+        "parameter": "#D19A66",
+        "selfParameter": "#a778e5",
+        "clsParameter": "#a778e5"
+      }
+    },
+    "[Dracula]": {
+      "enabled": true,
+      "rules": {
+        "variable": "#a2b2d1",
+        "*.readonly": "#bf9eee",
+        "selfParameter": "#9c58b8",
+        "clsParameter": "#9c58b8",
+        "*.abstract": "#ff0000"
+      }
+    },
+    "[Dracula Soft]": {
+      "enabled": true,
+      "rules": {
+        "variable": "#a2b2d1",
+        "*.readonly": "#bf9eee",
+        "selfParameter": "#9c58b8",
+        "clsParameter": "#9c58b8",
+        "*.abstract": "#ff0000"
+      }
+    },
+    "[Solarized Custom Extra Dark Italic]": {
+      "enabled": true,
+      "rules": {
+        "variable": "#ABB2BF",
+        "parameter": "#8da0c5",
+        "*.readonly": "#d691bcc7",
+        "selfParameter": "#9c58b8",
+        "clsParameter": "#9c58b8"
+      }
+    },
+    "[Solarized Custom Extra Dark]": {
+      "enabled": true,
+      "rules": {
+        "variable": "#ABB2BF",
+        "parameter": "#8da0c5",
+        "*.readonly": "#d691bcc7",
+        "selfParameter": "#9c58b8",
+        "clsParameter": "#9c58b8"
+      }
+    }
+  },
+  // Color customizations for Log File Highlight extension
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "log.error",
+        "settings": {
+          "foreground": "#af1f1f",
+          "fontStyle": "bold"
         }
-    ],
-    "vsicons.dontShowNewVersionMessage": true,
-    // Window behavior
-    "window.newWindowDimensions": "inherit",
-    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${rootPath}",
-    // Stop asking for confirmation when moving files
-    "explorer.confirmDragAndDrop": false,
-    // Files to exclude in Explorer tab
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/__pycache__": true,
-        "**/**/**/*.pyc": true,
-        "**/.mypy_cache": true,
-        "**/.pytest_cache": true
-    },
-    // Helps with syntax highlighting
-    "files.associations": {
-        "*gitconfig*": "properties",
-        "*.config": "properties",
-        "*ignore*": "ignore",
-        "*pythonrc*": "python",
-        "development.txt": "pip-requirements",
-        ".pylintrc": "properties"
-    },
-    "files.eol": "\n", // /r/n is bad!
-    // Default configuration overrides for html, markdown, & python languages
-    "[html]": {
-        "editor.wordWrap": "on",
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.autoIndent": "advanced"
-    },
-    "[markdown]": {
-        "editor.wordWrap": "on",
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.autoIndent": "advanced"
-    },
-    "[python]": {
-        "editor.wordWrap": "on",
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.autoIndent": "advanced"
-    },
-    // Terminal settings
-    "terminal.integrated.shell.windows": "/usr/bin/zsh",
-    "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.fontFamily": "Fira Code, MesloLGS NF, Consolas, 'Courier New', monospace",
-    // Remote VSCode settings
-    "remote.SSH.remotePlatform": {
-        "aosl-ml-1": "linux",
-        "aosl-ml-2": "linux"
-    },
-    "remote.SSH.defaultExtensions": [
-        "eamodio.gitlens",
-        "mutantdino.resourcemonitor",
-        "ms-vscode.cpptools",
-        "james-yu.latex-workshop",
-        "yzhang.markdown-all-in-one",
-        "ms-python.python",
-        "njpwerner.autodocstring",
-        "streetsidesoftware.code-spell-checker"
-    ],
-    // Breadcrumbs are a useful navigation tool. Use Ctrl+Shift+. to focus.
-    "breadcrumbs.enabled": true,
-    "breadcrumbs.filePath": "last",
-    // Standard Python settings. 
-    "python.autoComplete.extraPaths": [],
-    // // Path to default Python version & ctags exectuable
-    // "python.pythonPath": "~/miniconda3/bin/python3", // Uncomment to set manually.
-    // Pylint settings (style/code linting)
-    "python.linting.pylintEnabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": false,
-    "python.formatting.provider": "yapf",
-    "python.dataScience.sendSelectionToInteractiveWindow": false,
-    // Latex Workshop settings
-    "latex-workshop.message.update.show": false,
-    "latex-workshop.chktex.enabled": true,
-    "latex-workshop.chktex.path": "chktex",
-    "latex-workshop.intellisense.package.enabled": true,
-    "latex-workshop.latex.autoClean.run": "onBuilt",
-    "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "latexmk",
-            "tools": [
-                "latexmk"
-            ]
-        },
-        {
-            "name": "pdflatex -> bibtex -> pdflatex*2",
-            "tools": [
-                "pdflatex",
-                "bibtex",
-                "pdflatex",
-                "pdflatex"
-            ]
+      },
+      {
+        "scope": "log.warning",
+        "settings": {
+          "foreground": "#ca7900",
+          "fontStyle": ""
         }
-    ],
-    "latex-workshop.latex.tools": [
-        {
-            "name": "latexmk",
-            "command": "latexmk",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "-pdf",
-                "%DOC%"
-            ]
-        },
-        {
-            "name": "pdflatex",
-            "command": "pdflatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "%DOC%"
-            ]
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
-            ]
+      },
+      {
+        "scope": "log.info",
+        "settings": {
+          "foreground": "#7fa6fa",
+          "fontStyle": ""
         }
-    ],
-    // Git & Git Lens settings
-    "git.autofetch": true,
-    "gitlens.currentLine.format": "${authorAgoOrDate} • ${id}",
-    "gitlens.defaultGravatarsStyle": "retro",
-    "gitlens.keymap": "alternate", // Allows alt+b to toggle Git Blame
-    "git.detectSubmodules": false, // Auto ignore submodules
-    "git.ignoreSubmodules": true,
-    // Markdown extension settings
-    "markdown.extension.list.indentationSize": "inherit",
-    "markdown.extension.orderedList.marker": "one",
-    "markdown.extension.preview.autoShowPreviewToSide": false,
-    // Auto-docstring Google style
-    "autoDocstring.docstringFormat": "google",
-    // Code spell-checker settings
-    "cSpell.spellCheckDelayMs": 20,
-    "cSpell.userWords": [
-        "Astromechanics",
-        "Blacksburg",
-        "Cubesat",
-        "Gurobi",
-        "Invariance",
-        "Kalman",
-        "Lyapunov",
-        "Matlab",
-        "RESONAATE",
-        "Transductive",
-        "Uncomment",
-        "VERNER",
-        "Vallado",
-        "asarray",
-        "assimulo",
-        "covariances",
-        "cventry",
-        "dispy",
-        "docstring",
-        "linalg",
-        "mdhms",
-        "ndarray",
-        "nonsingular",
-        "noqa",
-        "numba",
-        "numpy",
-        "pycache",
-        "pylint",
-        "pyplot",
-        "remediate",
-        "scipy",
-        "undeformed",
-        "xlabel",
-        "ylabel"
-    ],
-    "sqltools.useNodeRuntime": true
+      },
+      {
+        "scope": "log.debug",
+        "settings": {
+          "foreground": "#57835d",
+          "fontStyle": ""
+        }
+      },
+      {
+        "scope": "log.date",
+        "settings": {
+          "foreground": "#0c99ac7a",
+          "fontStyle": ""
+        }
+      },
+      // [NOTE]: This is the better way to control the font for themes
+      // Italicized & bold
+      {
+        "name": "italic + bold font",
+        "scope": ["comment"],
+        "settings": {
+          "fontStyle": "italic bold"
+        }
+      },
+      // Italicized only
+      {
+        "name": "italic font",
+        "scope": [
+          "variable.parameter.function.language.special.self",
+          "variable.parameter.function.language.special.cls"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      // Bold only
+      {
+        "name": "bold font",
+        "scope": ["constant"],
+        "settings": {
+          "fontStyle": "bold"
+        }
+      },
+      // Force no italics, or bold
+      {
+        "name": "regular font",
+        "scope": [
+          "variable.parameter.function.language.python",
+          "variable.parameter"
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      }
+    ]
+  }
 }
