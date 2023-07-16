@@ -155,6 +155,8 @@ _dt_conda_setup () {
         _conda=$1/miniconda3
     elif [[ -d $1/anaconda3 ]]; then
         _conda=$1/anaconda3
+    elif [[ -d $1/micromamba ]]; then
+        _conda=$1/micromamba
     else
         echo "WARNING: No conda distribution is installed."
         return 1
@@ -171,6 +173,21 @@ _dt_conda_setup () {
     if [ -f $_conda/etc/profile.d/mamba.sh ]; then
         . $_conda/etc/profile.d/mamba.sh
         mamba activate base
+    elif [ -f $_conda/etc/profile.d/micromamba.sh ]; then
+        # >>> mamba initialize >>>
+        # !! Contents within this block are managed by 'mamba init' !!
+        export MAMBA_EXE='/home/dylan93/.local/bin/micromamba';
+        export MAMBA_ROOT_PREFIX='/home/dylan93/micromamba';
+        __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+        if [ $? -eq 0 ]; then
+            eval "$__mamba_setup"
+        else
+            alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+        fi
+        unset __mamba_setup
+        # <<< mamba initialize <<<
+        micromamba activate base
+
     else
         conda activate base
     fi

@@ -25,6 +25,9 @@ alias zcalc='zcalc -f'
 alias ag="ag --hidden --ignore '.git'"
 alias rg="rg --hidden --glob '!.git'"
 
+# A lot to type...
+alias mm=micromamba
+
 ######################
 ### Suffix Aliases ###
 ######################

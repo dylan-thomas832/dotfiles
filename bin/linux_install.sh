@@ -45,7 +45,7 @@ sudo apt install -y \
     build-essential gfortran cmake cmake-curses-gui \
     python3-dev python3-pip python3-tk \
     libopenblas-dev libatlas-base-dev liblapack-dev \
-    git wget curl vim ctags xdg-utils tree zsh \
+    git wget curl vim exuberant-ctags xdg-utils tree zsh \
     ack-grep silversearcher-ag fd-find ripgrep \
     pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev
 
