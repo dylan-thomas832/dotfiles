@@ -144,54 +144,19 @@
     export PF_INFO="ascii title os host kernel de shell uptime pkgs memory palette"
 }
 
-# Source Rust build/compiler stuff
-[ -f "$CARGO_HOME/env" ] && source "$CARGO_HOME/env"
+# rust/cargo stuff
+if [ -f "$CARGO_HOME/env" ] ; then
+    source "$CARGO_HOME/env"
+fi
 
-# Conda setup function. Slightly mondified from output of `conda init zsh`
-_dt_conda_setup () {
-    # Check for conda distro folder
-    local _conda
-    if [[ -d $1/miniconda3 ]]; then
-        _conda=$1/miniconda3
-    elif [[ -d $1/anaconda3 ]]; then
-        _conda=$1/anaconda3
-    elif [[ -d $1/micromamba ]]; then
-        _conda=$1/micromamba
-    else
-        echo "WARNING: No conda distribution is installed."
-        return 1
-    fi
+# pyenv setup
+if [ -d "$HOME/.pyenv" ] ; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
 
-    # Source conda properly, and activate base environment
-    if [ -f $_conda/etc/profile.d/conda.sh ]; then
-        source $_conda/etc/profile.d/conda.sh
-    else
-        export PATH=$_conda/bin:$PATH
-    fi
-
-    # Source mamba if it is installed
-    if [ -f $_conda/etc/profile.d/mamba.sh ]; then
-        . $_conda/etc/profile.d/mamba.sh
-        mamba activate base
-    elif [ -f $_conda/etc/profile.d/micromamba.sh ]; then
-        # >>> mamba initialize >>>
-        # !! Contents within this block are managed by 'mamba init' !!
-        export MAMBA_EXE='/home/dylan93/.local/bin/micromamba';
-        export MAMBA_ROOT_PREFIX='/home/dylan93/micromamba';
-        __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-        if [ $? -eq 0 ]; then
-            eval "$__mamba_setup"
-        else
-            alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
-        fi
-        unset __mamba_setup
-        # <<< mamba initialize <<<
-        micromamba activate base
-
-    else
-        conda activate base
-    fi
-}
-
-# # Call conda setup function
-_dt_conda_setup $HOME
+# pipx
+if (( $+commands[pipx] )) ; then
+    eval "$(register-python-argcomplete pipx)"
+fi
