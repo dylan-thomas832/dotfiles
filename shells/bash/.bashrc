@@ -59,3 +59,5 @@ bash_dir="$XDG_CONFIG_HOME/bash/custom"
 # Allow local customizations in the ~/.bashrc_local_after file
 # Note: This is where conda sourcing goes & Display export for WSL
 [[ -f ~/.bashrc_local_after ]] && source ~/.bashrc_local_after
+
+. "$HOME/.local/share/../bin/env"

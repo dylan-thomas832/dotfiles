@@ -8,3 +8,5 @@
 
 # Set environment variables
 . "${HOME}/.config/sh/custom/environment.sh"
+
+. "$HOME/.local/share/../bin/env"

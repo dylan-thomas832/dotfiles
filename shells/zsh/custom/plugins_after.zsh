@@ -150,13 +150,26 @@ if [ -f "$CARGO_HOME/env" ] ; then
 fi
 
 # pyenv setup
-if [ -d "$HOME/.pyenv" ] ; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
+if [ -n "$ZSH_DJT_USE_PYENV" ] ; then
+    if [ -d "$HOME/.pyenv" ] ; then
+        export PYENV_ROOT="$HOME/.pyenv"
+        command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init -)"
+    else
+        echo "Tried to load pyenv, but not installed to $HOME/.pyenv"
+    fi
 fi
 
 # pipx
-if (( $+commands[pipx] )) ; then
-    eval "$(register-python-argcomplete pipx)"
+if [ -n "$ZSH_DJT_USE_PIPX" ] ; then
+    if (( $+commands[pipx] )) ; then
+        eval "$(register-python-argcomplete pipx)"
+    fi
+fi
+
+# uv
+if [ -n "$ZSH_DJT_USE_UV" ] ; then
+    if (( $+commands[uv] )) ; then
+        eval "$(uv generate-shell-completion zsh)"
+    fi
 fi

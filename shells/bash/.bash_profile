@@ -17,3 +17,5 @@ source "${HOME}/.profile"
 ################################
 
 source "${HOME}/.bashrc"
+
+. "$HOME/.local/share/../bin/env"

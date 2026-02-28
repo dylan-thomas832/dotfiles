@@ -58,3 +58,5 @@
     # Note: This is where conda sourcing goes & Display export for WSL
     [[ -f ~/.zshrc_local_after ]] && source ~/.zshrc_local_after
 }
+
+. "$HOME/.local/share/../bin/env"
